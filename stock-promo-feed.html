@@ -1,0 +1,3128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PennyStocksNow.com — Real-time Small Cap Intelligence</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --border-light: #edf2f7;
+      --text-primary: #1a202c;
+      --text-secondary: #4a5568;
+      --text-muted: #a0aec0;
+      --accent: #d92b2b;
+      --accent-light: #fff5f5;
+      --accent-border: #fed7d7;
+      --green: #276749;
+      --green-bg: #f0fff4;
+      --green-border: #9ae6b4;
+      --blue: #2b6cb0;
+      --blue-bg: #ebf8ff;
+      --blue-border: #90cdf4;
+      --orange: #c05621;
+      --orange-bg: #fffaf0;
+      --orange-border: #fbd38d;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow: 0 4px 6px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.04);
+      --radius: 10px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: system-ui, -apple-system, 'Segoe UI', 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo-text .brand {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text .brand span {
+      color: var(--accent);
+    }
+
+    .logo-text .tagline {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover { background: var(--bg); color: var(--text-primary); }
+    .nav-links a.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+    }
+
+    .page-header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .page-title h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .page-title p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ── SEARCH BAR ── */
+    .search-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: none;
+    }
+
+    .search-bar.active { display: block; }
+
+    .search-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      height: 36px;
+      padding: 0 12px 0 36px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-size: 13px;
+      color: var(--text-primary);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .search-wrap input:focus { border-color: #a0aec0; background: #fff; }
+
+    .search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 13px;
+      pointer-events: none;
+    }
+
+    .filter-btns {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      height: 32px;
+      padding: 0 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .filter-btn:hover { border-color: #a0aec0; color: var(--text-primary); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    .filter-count {
+      background: rgba(0,0,0,0.12);
+      color: inherit;
+      border-radius: 10px;
+      padding: 1px 6px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .filter-btn.active .filter-count { background: rgba(255,255,255,0.25); }
+
+
+    /* ── MAIN LAYOUT ── */
+    .main-layout {
+      max-width: 1280px;
+      margin: 24px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .main-layout.no-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    /* ── TAB CONTENT ── */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .tab-content.active .sidebar {
+      display: block;
+    }
+
+    .tab-content:not(.active) .sidebar {
+      display: none;
+    }
+
+    /* ── FEED ── */
+    .feed-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .feed-header h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .sort-select {
+      font-size: 12px;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 8px;
+      background: #fff;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow);
+      border-color: #cbd5e0;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .card-tags {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 9px;
+      border-radius: 5px;
+    }
+
+    .tag-promo {
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+    }
+
+    .tag-news {
+      background: var(--blue-bg);
+      color: var(--blue);
+      border: 1px solid var(--blue-border);
+    }
+
+    .card-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .ticker {
+      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green);
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+      border-radius: 4px;
+      padding: 2px 7px;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .hired-box {
+      background: var(--orange-bg);
+      border: 1px solid var(--orange-border);
+      border-radius: 7px;
+      padding: 11px 15px;
+      margin-bottom: 13px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .hired-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .hired-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--orange);
+      margin-bottom: 2px;
+    }
+
+    .hired-firm {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .hired-purpose {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .card-body {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .card-body strong { color: var(--text-primary); }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .alert-kw {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .alert-kw span {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .coverage {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .pill {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    .card.hidden { display: none; }
+
+    /* ── TABLE STYLES ── */
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead {
+      background: var(--bg);
+      border-bottom: 2px solid var(--border);
+    }
+
+    th {
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    th:hover {
+      background: #edf2f7;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-secondary);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: var(--bg);
+    }
+
+    .ticker-col {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .exchange-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: var(--blue-bg);
+      color: var(--blue);
+      border: 1px solid var(--blue-border);
+      margin-left: 6px;
+    }
+
+    .up {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .down {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .badge-green {
+      display: inline-block;
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid var(--green-border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-blue {
+      display: inline-block;
+      background: var(--blue-bg);
+      color: var(--blue);
+      border: 1px solid var(--blue-border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-red {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-grey {
+      display: inline-block;
+      background: #f0f0f0;
+      color: #666;
+      border: 1px solid #ddd;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0;
+      line-height: 1;
+      transition: color 0.15s;
+    }
+
+    .remove-btn:hover {
+      color: var(--accent);
+    }
+
+    /* ── TOP MOVERS SECTION ── */
+    .movers-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .movers-tab {
+      padding: 12px 16px;
+      border: none;
+      background: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+    }
+
+    .movers-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .movers-content {
+      display: none;
+    }
+
+    .movers-content.active {
+      display: block;
+    }
+
+    /* ── FILTER CONTROLS ── */
+    .filter-controls {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .filter-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .filter-group select {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text-primary);
+      font-size: 13px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .filter-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      display: block;
+    }
+
+    .sidebar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .sidebar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .sidebar-row:last-child { border-bottom: none; }
+
+    .sidebar-row-label {
+      font-size: 13px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .sidebar-row-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .sidebar-count {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-light);
+      border-radius: 5px;
+      padding: 2px 8px;
+    }
+
+    .alert-item {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border-light);
+      cursor: pointer;
+    }
+
+    .alert-item:last-child { border-bottom: none; }
+
+    .alert-item:hover .alert-item-title { color: var(--accent); }
+
+    .alert-item-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      transition: color 0.15s;
+    }
+
+    .alert-item-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .alert-item-meta span {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-muted);
+    }
+
+    .watch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .watch-row:last-child { border-bottom: none; }
+
+    .watch-ticker {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-bg);
+      border: 1px solid var(--blue-border);
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+
+    .watch-name {
+      font-size: 12px;
+      color: var(--text-secondary);
+      flex: 1;
+      margin-left: 9px;
+    }
+
+    .watch-date {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 20px 24px;
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .footer-brand span { color: var(--accent); }
+
+    footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .disclaimer {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 7px;
+      padding: 10px 14px;
+      font-size: 11.5px;
+      color: #92400e;
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo" onclick="return false">
+      <div class="logo-icon">📈</div>
+      <div class="logo-text">
+        <span class="brand">PennyStocks<span>Now</span>.com</span>
+        <span class="tagline">Real-time small cap intelligence</span>
+      </div>
+    </a>
+    <div class="nav-links">
+    </div>
+    <div class="nav-right">
+      <div class="nav-badge">
+        <div class="live-dot"></div>
+        LIVE
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="search-bar active" style="background:var(--nav-bg);border-bottom:1px solid var(--border);padding:8px 0;">
+  <div class="search-inner">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()"/>
+    </div>
+    <div class="filter-btns">
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">52</span></button>
+      <button class="filter-btn" onclick="setFilter('market-making', this)">Market-Making <span class="filter-count">28</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">24</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- WELCOME BANNER -->
+<div style="background:#f0fdf4;border-bottom:1px solid #c6f6d5;padding:14px 0;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
+    <p style="margin:0;font-size:13.5px;color:#276749;line-height:1.7;">
+      👋 <strong>Welcome to PennyStocksNow.com</strong> — your real-time intelligence feed for small-cap stock promotions.
+      We track every public filing and disclosure in which a company hires a marketing, investor relations, or market-making firm,
+      so you always know which penny stocks are being actively promoted before the crowd does.
+      Each alert is sourced directly from SEC, TSXV, and CSE filings: no speculation, no noise, just verified disclosures.
+      Use the search and filters above to zero in on the alert type that matters most to your trading strategy.
+    </p>
+  </div>
+</div>
+
+<!-- TOP MOVERS TAB -->
+<div id="top-movers" class="tab-content">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-title">
+        <h2>Top Movers — Year-to-Date (YTD)</h2>
+        <p id="movers-subtitle">Biggest gainers &amp; losers among Promo Alert companies &middot; Jan 1 – Apr 5, 2026</p>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;margin-left:auto;">
+        <button onclick="showLiveSetup()" id="live-btn"
+          style="padding:7px 14px;background:transparent;color:#276749;border:1px solid #276749;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;">
+          ⚡ Go Live
+        </button>
+        <button id="refresh-btn" onclick="loadTopMovers(true)" style="display:none;
+          padding:8px 16px;background:#d92b2b;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">
+          ↻ Refresh Prices
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE PRICES SETUP (hidden by default) -->
+  <div id="movers-setup" style="display:none;background:#f0fff4;border-bottom:2px solid #9ae6b4;padding:16px 24px;">
+    <div style="max-width:700px;display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;">
+      <div style="flex:1;min-width:280px;">
+        <div style="font-weight:700;font-size:13px;color:#276749;margin-bottom:4px;">⚡ Live prices via Twelve Data API (free)</div>
+        <div style="font-size:12px;color:#2f855a;">
+          Get a free key at <a href="https://twelvedata.com/pricing" target="_blank" style="color:#d92b2b;font-weight:600;">twelvedata.com</a>
+          (30 sec, no card) · 800 calls/day free
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex:1;min-width:280px;">
+        <input id="td-api-key-input" type="text" placeholder="Paste your Twelve Data API key…"
+          style="flex:1;padding:7px 10px;border:1px solid #9ae6b4;border-radius:6px;font-size:12px;outline:none;"
+          onkeydown="if(event.key==='Enter') saveTdKey()"/>
+        <button onclick="saveTdKey()"
+          style="padding:7px 14px;background:#276749;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;">
+          Save &amp; Load
+        </button>
+        <button onclick="hideLiveSetup()"
+          style="padding:7px 10px;background:transparent;color:#a0aec0;border:1px solid #e2e8f0;border-radius:6px;font-size:12px;cursor:pointer;">
+          ✕
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS BAR -->
+  <div id="movers-status" style="display:none;text-align:center;padding:10px 20px;color:#718096;font-size:12px;background:#fffaf0;border-bottom:1px solid #fbd38d;">
+    <span id="movers-status-text"></span>
+    &nbsp;<a href="#" onclick="resetTdKey();return false;" style="color:#d92b2b;font-size:11px;">Reset key</a>
+  </div>
+
+  <div class="main-layout no-sidebar">
+    <div class="feed">
+      <div class="movers-tabs">
+        <button class="movers-tab active" onclick="switchMoversView('gainers', this)">🟢 Top Gainers YTD</button>
+        <button class="movers-tab" onclick="switchMoversView('losers', this)">🔴 Top Losers YTD</button>
+      </div>
+
+      <!-- GAINERS -->
+      <div id="gainers" class="movers-content active">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Ticker</th>
+                <th>Company</th>
+                <th>Exchange</th>
+                <th style="text-align:right;">Jan 1 Open</th>
+                <th style="text-align:right;">Price</th>
+                <th style="text-align:right;">YTD Change</th>
+                <th style="text-align:right;">YTD %</th>
+              </tr>
+            </thead>
+            <tbody id="gainers-tbody">
+              <tr>
+                <td class="ticker-col">SPAI / SPAIF</td><td>SPARC AI Inc.</td><td><span class="exchange-badge">CSE / OTCQB</span></td>
+                <td style="text-align:right;">C$0.35</td><td style="text-align:right;font-weight:600;">C$1.87</td>
+                <td class="up" style="text-align:right;">+C$1.52</td><td class="up" style="text-align:right;font-weight:700;">+434.3%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">NUE / NUEPF</td><td>NU E Power Corp.</td><td><span class="exchange-badge">CSE / OTC</span></td>
+                <td style="text-align:right;">C$0.013</td><td style="text-align:right;font-weight:600;">C$0.024</td>
+                <td class="up" style="text-align:right;">+C$0.011</td><td class="up" style="text-align:right;font-weight:700;">+84.6%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">BLST / BLSRF</td><td>Blast Resources Inc.</td><td><span class="exchange-badge">CSE / OTCQB</span></td>
+                <td style="text-align:right;">C$0.030</td><td style="text-align:right;font-weight:600;">C$0.055</td>
+                <td class="up" style="text-align:right;">+C$0.025</td><td class="up" style="text-align:right;font-weight:700;">+83.3%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">BNKR / BHLL</td><td>Bunker Hill Mining</td><td><span class="exchange-badge">TSXV / OTCQB</span></td>
+                <td style="text-align:right;">$0.022</td><td style="text-align:right;font-weight:600;">$0.038</td>
+                <td class="up" style="text-align:right;">+$0.016</td><td class="up" style="text-align:right;font-weight:700;">+72.7%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">FAT / FMST</td><td>Foremost Clean Energy</td><td><span class="exchange-badge">CSE / NASDAQ</span></td>
+                <td style="text-align:right;">$0.82</td><td style="text-align:right;font-weight:600;">$1.24</td>
+                <td class="up" style="text-align:right;">+$0.42</td><td class="up" style="text-align:right;font-weight:700;">+51.2%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">BATX</td><td>Battery X Metals Inc.</td><td><span class="exchange-badge">CSE</span></td>
+                <td style="text-align:right;">C$0.050</td><td style="text-align:right;font-weight:600;">C$0.073</td>
+                <td class="up" style="text-align:right;">+C$0.023</td><td class="up" style="text-align:right;font-weight:700;">+46.0%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">ZEN / ZTEK</td><td>Zentek Ltd.</td><td><span class="exchange-badge">TSXV / NASDAQ</span></td>
+                <td style="text-align:right;">$0.58</td><td style="text-align:right;font-weight:600;">$0.74</td>
+                <td class="up" style="text-align:right;">+$0.16</td><td class="up" style="text-align:right;font-weight:700;">+27.6%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">RCK / RCKTF</td><td>Rock Tech Lithium</td><td><span class="exchange-badge">TSXV / OTCQB</span></td>
+                <td style="text-align:right;">$0.48</td><td style="text-align:right;font-weight:600;">$0.61</td>
+                <td class="up" style="text-align:right;">+$0.13</td><td class="up" style="text-align:right;font-weight:700;">+27.1%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">DMCU / DMCUF</td><td>Domestic Metals Corp.</td><td><span class="exchange-badge">TSXV / OTCQB</span></td>
+                <td style="text-align:right;">$0.040</td><td style="text-align:right;font-weight:600;">$0.049</td>
+                <td class="up" style="text-align:right;">+$0.009</td><td class="up" style="text-align:right;font-weight:700;">+22.5%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">LIFT / LIFFF</td><td>Li-FT Power Ltd.</td><td><span class="exchange-badge">CSE / OTCQX</span></td>
+                <td style="text-align:right;">$2.85</td><td style="text-align:right;font-weight:600;">$3.45</td>
+                <td class="up" style="text-align:right;">+$0.60</td><td class="up" style="text-align:right;font-weight:700;">+21.1%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- LOSERS -->
+      <div id="losers" class="movers-content">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Ticker</th>
+                <th>Company</th>
+                <th>Exchange</th>
+                <th style="text-align:right;">Jan 1 Open</th>
+                <th style="text-align:right;">Price</th>
+                <th style="text-align:right;">YTD Change</th>
+                <th style="text-align:right;">YTD %</th>
+              </tr>
+            </thead>
+            <tbody id="losers-tbody">
+              <tr>
+                <td class="ticker-col">GMG / GMGMF</td><td>Graphene Mfg Group</td><td><span class="exchange-badge">TSXV / OTCQX</span></td>
+                <td style="text-align:right;">$5.20</td><td style="text-align:right;font-weight:600;">$2.14</td>
+                <td class="down" style="text-align:right;">-$3.06</td><td class="down" style="text-align:right;font-weight:700;">-58.8%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">BLLG</td><td>Blue Lagoon Resources</td><td><span class="exchange-badge">CSE</span></td>
+                <td style="text-align:right;">C$0.080</td><td style="text-align:right;font-weight:600;">C$0.035</td>
+                <td class="down" style="text-align:right;">-C$0.045</td><td class="down" style="text-align:right;font-weight:700;">-56.3%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">MINK / MNKVF</td><td>Mink Ventures Corp.</td><td><span class="exchange-badge">TSXV / OTC</span></td>
+                <td style="text-align:right;">$0.120</td><td style="text-align:right;font-weight:600;">$0.060</td>
+                <td class="down" style="text-align:right;">-$0.060</td><td class="down" style="text-align:right;font-weight:700;">-50.0%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">ROBO / RBOHF</td><td>Humanoid Global Holdings</td><td><span class="exchange-badge">CSE / OTC</span></td>
+                <td style="text-align:right;">C$0.140</td><td style="text-align:right;font-weight:600;">C$0.080</td>
+                <td class="down" style="text-align:right;">-C$0.060</td><td class="down" style="text-align:right;font-weight:700;">-42.9%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">MEDA</td><td>Medaro Mining Inc.</td><td><span class="exchange-badge">TSXV</span></td>
+                <td style="text-align:right;">C$0.065</td><td style="text-align:right;font-weight:600;">C$0.038</td>
+                <td class="down" style="text-align:right;">-C$0.027</td><td class="down" style="text-align:right;font-weight:700;">-41.5%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">ATOM</td><td>Atomic Minerals Corp.</td><td><span class="exchange-badge">TSXV</span></td>
+                <td style="text-align:right;">C$0.090</td><td style="text-align:right;font-weight:600;">C$0.055</td>
+                <td class="down" style="text-align:right;">-C$0.035</td><td class="down" style="text-align:right;font-weight:700;">-38.9%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">CQX / IMIMF</td><td>Copper Quest Exploration</td><td><span class="exchange-badge">CSE / OTCQB</span></td>
+                <td style="text-align:right;">$0.050</td><td style="text-align:right;font-weight:600;">$0.032</td>
+                <td class="down" style="text-align:right;">-$0.018</td><td class="down" style="text-align:right;font-weight:700;">-36.0%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">INTG / ITGLF</td><td>Integral Metals Corp.</td><td><span class="exchange-badge">CSE / OTC</span></td>
+                <td style="text-align:right;">$0.032</td><td style="text-align:right;font-weight:600;">$0.021</td>
+                <td class="down" style="text-align:right;">-$0.011</td><td class="down" style="text-align:right;font-weight:700;">-34.4%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">ROCK / TRDTF</td><td>Trident Resources Corp.</td><td><span class="exchange-badge">TSXV / OTCQB</span></td>
+                <td style="text-align:right;">$0.085</td><td style="text-align:right;font-weight:600;">$0.057</td>
+                <td class="down" style="text-align:right;">-$0.028</td><td class="down" style="text-align:right;font-weight:700;">-32.9%</td>
+              </tr>
+              <tr>
+                <td class="ticker-col">LITT / RMANF</td><td>FutureGen Industries</td><td><span class="exchange-badge">TSXV / OTC</span></td>
+                <td style="text-align:right;">$0.045</td><td style="text-align:right;font-weight:600;">$0.032</td>
+                <td class="down" style="text-align:right;">-$0.013</td><td class="down" style="text-align:right;font-weight:700;">-28.9%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- PROMO ALERTS TAB -->
+<div id="promo-alerts" class="tab-content active">
+
+  <!-- MAIN LAYOUT -->
+  <div class="main-layout">
+
+    <!-- FEED -->
+    <div class="feed">
+      <div class="feed-header">
+        <h3></h3>
+        <select class="sort-select">
+          <option>Newest First</option>
+          <option>Oldest First</option>
+        </select>
+      </div>
+
+      <!-- Card 1 - NU E Power Corp -->
+      <div class="card" data-tags="market-making" data-text="nu e power corp nuepf venture liquidity providers vlp market making cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">April 4, 2026</span>
+        </div>
+        <div class="card-title">
+          NU E Power Corp. Retains Market-Making Services
+          <span class="ticker">CSE: NUE</span>
+          <span class="ticker">OTC Pink: NUEPF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Venture Liquidity Providers Inc. (VLP)</div>
+            <div class="hired-purpose">Specialized market-making &amp; consulting for CSE-listed companies · Toronto, ON</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>NU E Power Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: NUE</span> <span class="ticker" style="font-size:11px;">OTC Pink: NUEPF</span> has retained <strong>Venture Liquidity Providers Inc.</strong> to initiate its market-making service, subject to regulatory approval. The company has agreed to pay VLP <strong>$5,000 per month for a term of 12 months</strong> (total commitment: $60,000). Market-making activities will be conducted through registered broker W.D. Latimer Co. Ltd. in compliance with CSE policies.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>SEC / CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Stock Titan</span><span class="pill">Globe and Mail</span></div>
+        </div>
+      </div>
+
+      <!-- Card 2 - Blast Resources -->
+      <div class="card" data-tags="investor-awareness" data-text="blast resources echo elite spark newswire investor awareness marketing blst blsrf">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">April 3, 2026</span>
+        </div>
+        <div class="card-title">
+          Blast Resources Hires Echo Elite &amp; Spark Newswire
+          <span class="ticker">CSE: BLST</span>
+          <span class="ticker">OTCQB: BLSRF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firms Hired</div>
+            <div class="hired-firm">Echo Elite &amp; Spark Newswire</div>
+            <div class="hired-purpose">Investor awareness campaign · Total budget: CAD$325,000</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Blast Resources Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: BLST</span> <span class="ticker" style="font-size:11px;">OTCQB: BLSRF</span> has engaged both <strong>Echo Elite</strong> and <strong>Spark Newswire</strong> for a combined investor awareness campaign totalling <strong>CAD$325,000</strong>. Echo Elite will be paid up to <strong>CAD$200,000 over approximately 10 weeks</strong>, commencing April 7, 2026. Spark Newswire will receive <strong>CAD$125,000 over approximately 2 months</strong>.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">TheNewswire</span></div>
+        </div>
+      </div>
+
+      <!-- Card 3 - Zentek -->
+      <div class="card" data-tags="market-making" data-text="zentek ztek zen icp securities algorithmic market making liquidity">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">April 2, 2026</span>
+        </div>
+        <div class="card-title">
+          Zentek Engages ICP Securities for Algorithmic Market-Making
+          <span class="ticker">TSXV: ZEN</span>
+          <span class="ticker">NASDAQ: ZTEK</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm · C$7,500/month</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Zentek Ltd.</strong> <span class="ticker" style="font-size:11px;">TSXV: ZEN</span> <span class="ticker" style="font-size:11px;">NASDAQ: ZTEK</span> has engaged <strong>ICP Securities Inc.</strong> for automated market-making using the <em>ICP Premium®</em> algorithm. Fee: <strong>C$7,500 per month plus applicable taxes</strong>. Agreement commenced April 1, 2026 with an <strong>initial 4-month term</strong>, renewing monthly thereafter. Disclosed via Form 6-K filing with the SEC.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>SEC Filing (Form 6-K)</span></div>
+          <div class="coverage"><span class="pill">Globe and Mail</span><span class="pill">SEC 6-K</span></div>
+        </div>
+      </div>
+
+      <!-- Card 4 - SPARC AI -->
+      <div class="card" data-tags="investor-awareness" data-text="sparc ai spai spaif senergy communications marketing investor awareness cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">April 1, 2026</span>
+        </div>
+        <div class="card-title">
+          SPARC AI Inc. Hires Senergy Communications for Investor Campaign
+          <span class="ticker">CSE: SPAI</span>
+          <span class="ticker">OTCQB: SPAIF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Senergy Communications Capital Inc.</div>
+            <div class="hired-purpose">Marketing &amp; investor awareness services · 3-month term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>SPARC AI Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: SPAI</span> <span class="ticker" style="font-size:11px;">OTCQB: SPAIF</span> has retained <strong>Senergy Communications Capital Inc.</strong> to provide marketing and investor awareness services. The agreement is for a <strong>3-month initial term</strong>. Payment terms were not publicly disclosed. The company develops spatial, predictive, approximation, and radial convolution (SPARC) technology for targeting and navigation.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 5 - Casa Minerals -->
+      <div class="card" data-tags="market-making" data-text="casa minerals casa independent trading group itg market making tsxv british columbia">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 31, 2026</span>
+        </div>
+        <div class="card-title">
+          Casa Minerals Engages Independent Trading Group as Market Maker
+          <span class="ticker">TSXV: CASA</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG) Inc.</div>
+            <div class="hired-purpose">Market-making services on TSX Venture Exchange</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Casa Minerals Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: CASA</span> has retained <strong>Independent Trading Group (ITG) Inc.</strong> to act as a market maker for its shares on the TSX Venture Exchange and other trading platforms. ITG is a Toronto-based CIRO dealer-member specializing in market-making services for publicly listed companies. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Newsfile Press Release</span></div>
+          <div class="coverage"><span class="pill">Globe and Mail</span><span class="pill">Junior Mining Network</span></div>
+        </div>
+      </div>
+
+      <!-- Card 6 - Li-FT Power -->
+      <div class="card" data-tags="market-making" data-text="li-ft power lift lifff venture liquidity providers vlp market making cse otcqx lithium">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 31, 2026</span>
+        </div>
+        <div class="card-title">
+          Li-FT Power Retains Venture Liquidity Providers for Market-Making
+          <span class="ticker">CSE: LIFT</span>
+          <span class="ticker">OTCQX: LIFFF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Venture Liquidity Providers Inc. (VLP)</div>
+            <div class="hired-purpose">Market-making services for CSE-listed lithium explorer</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Li-FT Power Ltd.</strong> <span class="ticker" style="font-size:11px;">CSE: LIFT</span> <span class="ticker" style="font-size:11px;">OTCQX: LIFFF</span> has engaged <strong>Venture Liquidity Providers Inc.</strong> to initiate market-making services, subject to regulatory approval. Li-FT Power is a lithium pegmatite explorer with its flagship Yellowknife Lithium Project in the NWT, Canada. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
+          <div class="coverage"><span class="pill">Junior Mining Network</span></div>
+        </div>
+      </div>
+
+      <!-- Card 6 - Azarga Metals -->
+      <div class="card" data-tags="investor-awareness" data-text="azarga metals azr euunf capital analytica marketing investor awareness tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">March 31, 2026</span>
+        </div>
+        <div class="card-title">
+          Azarga Metals Corp. Engages Capital Analytica for 6-Month Campaign
+          <span class="ticker">TSXV: AZR</span>
+          <span class="ticker">OTC: EUUNF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📊</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Capital Analytica</div>
+            <div class="hired-purpose">Marketing services · CAD$150,000 + 300,000 stock options · 6-month term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Azarga Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: AZR</span> <span class="ticker" style="font-size:11px;">OTC: EUUNF</span> has retained <strong>Capital Analytica</strong> for marketing services. The company will pay <strong>CAD$150,000 over a 6-month term</strong>, plus grant <strong>300,000 stock options</strong> as additional compensation. The engagement covers investor outreach, content creation, and digital marketing activities.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 7 - Argo Corporation -->
+      <div class="card" data-tags="market-making" data-text="argo corporation argh arghf independent trading group itg market making tsxv otcqx">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 29, 2026</span>
+        </div>
+        <div class="card-title">
+          Argo Corporation Engages Independent Trading Group
+          <span class="ticker">TSXV: ARGH</span>
+          <span class="ticker">OTCQX: ARGHF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Market-making services · TSXV-listed company</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Argo Corporation</strong> <span class="ticker" style="font-size:11px;">TSXV: ARGH</span> <span class="ticker" style="font-size:11px;">OTCQX: ARGHF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market-making services. ITG will work to improve liquidity and correct temporary supply-demand imbalances in the company's shares. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 8 - Battery X Metals -->
+      <div class="card" data-tags="investor-awareness" data-text="battery x metals batx bullvestor i2i marketing investor awareness cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">March 28, 2026</span>
+        </div>
+        <div class="card-title">
+          Battery X Metals Hires bullVestor &amp; i2i Marketing
+          <span class="ticker">CSE: BATX</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firms Hired</div>
+            <div class="hired-firm">bullVestor Medien GmbH &amp; i2i Marketing Group LLC</div>
+            <div class="hired-purpose">Dual investor awareness campaign · bullVestor: 1-month initial term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Battery X Metals Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: BATX</span> has engaged both <strong>bullVestor Medien GmbH</strong> and <strong>i2i Marketing Group LLC</strong> for a combined investor awareness campaign. bullVestor's engagement is for a <strong>1-month initial term</strong>. The company focuses on battery metal exploration projects. Payment terms were not fully disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 9 - Medaro Mining -->
+      <div class="card" data-tags="investor-awareness" data-text="medaro mining meda senergy communications digital marketing tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">March 28, 2026</span>
+        </div>
+        <div class="card-title">
+          Medaro Mining Extends Digital Marketing with Senergy Communications
+          <span class="ticker">TSXV: MEDA</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔁</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Senergy Communications Capital Inc.</div>
+            <div class="hired-purpose">Digital marketing services — 4-month extension</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Medaro Mining Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: MEDA</span> has extended its digital marketing services agreement with <strong>Senergy Communications Capital Inc.</strong> for an additional <strong>4-month term</strong>. The extension continues the company's ongoing investor outreach and digital marketing program. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 10 - Homeland Nickel -->
+      <div class="card" data-tags="market-making" data-text="homeland nickel shl srcgf national inflation association gra enterprises investor relations tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 26, 2026</span>
+        </div>
+        <div class="card-title">
+          Homeland Nickel Retains National Inflation Association for IR
+          <span class="ticker">TSXV: SHL</span>
+          <span class="ticker">OTC: SRCGF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📈</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">National Inflation Association (GRA Enterprises LLC)</div>
+            <div class="hired-purpose">Investor relations &amp; promotional services · 6-month term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Homeland Nickel Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: SHL</span> <span class="ticker" style="font-size:11px;">OTC: SRCGF</span> has retained <strong>National Inflation Association (GRA Enterprises LLC)</strong> to provide investor relations and promotional services. The agreement is for a <strong>6-month term</strong>. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 11 - Fredonia Mining -->
+      <div class="card" data-tags="market-making" data-text="fredonia mining fred icp securities market making automated liquidity">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 26, 2026</span>
+        </div>
+        <div class="card-title">
+          Fredonia Mining Engages ICP Securities for Market-Making
+          <span class="ticker">TSX: FRED</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Fredonia Mining Inc.</strong> <span class="ticker" style="font-size:11px;">TSX: FRED</span> has engaged <strong>ICP Securities Inc.</strong> to provide automated market-making services using the ICP Premium™ algorithm. The engagement is aimed at improving share liquidity and quote health. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSX Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 12 - Integral Metals -->
+      <div class="card" data-tags="investor-awareness" data-text="integral metals intg itglf rumble strip media marketing campaign cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">March 22, 2026</span>
+        </div>
+        <div class="card-title">
+          Integral Metals Hires Rumble Strip Media for 45-Day Campaign
+          <span class="ticker">CSE: INTG</span>
+          <span class="ticker">OTC Pink: ITGLF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Rumble Strip Media Inc.</div>
+            <div class="hired-purpose">Marketing campaign services · ~45-day term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Integral Metals Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: INTG</span> <span class="ticker" style="font-size:11px;">OTC Pink: ITGLF</span> has retained <strong>Rumble Strip Media Inc.</strong> to conduct a marketing campaign for approximately <strong>45 days</strong>. The campaign is intended to raise the company's profile among retail investors. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 13 - UberDoc Health Technologies -->
+      <div class="card" data-tags="market-making" data-text="uberdoc health appt esvnf independent trading group itg market making cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 21, 2026</span>
+        </div>
+        <div class="card-title">
+          UberDoc Health Technologies Engages ITG for Market-Making
+          <span class="ticker">CSE: APPT</span>
+          <span class="ticker">OTC: ESVNF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Market-making services for CSE-listed health tech company</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>UberDoc Health Technologies Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: APPT</span> <span class="ticker" style="font-size:11px;">OTC: ESVNF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market-making services. ITG will work to enhance share liquidity through regulatory-compliant market-making activities. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 14 - Avanti Gold -->
+      <div class="card" data-tags="market-making" data-text="avanti gold agc avtgf icp securities market making cse otcqb">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 19, 2026</span>
+        </div>
+        <div class="card-title">
+          Avanti Gold Corp. Engages ICP Securities for Automated Market-Making
+          <span class="ticker">CSE: AGC</span>
+          <span class="ticker">OTCQB: AVTGF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm · C$7,500/month</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Avanti Gold Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: AGC</span> <span class="ticker" style="font-size:11px;">OTCQB: AVTGF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market-making services using the ICP Premium™ algorithm, effective March 18, 2026. The company will pay <strong>C$7,500 per month plus applicable taxes</strong> for an <strong>initial 4-month term</strong>, renewing monthly thereafter.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span><span class="pill">Investing News Network</span></div>
+        </div>
+      </div>
+
+      <!-- Card 15 - Graphene Manufacturing Group -->
+      <div class="card" data-tags="investor-awareness" data-text="graphene manufacturing group gmg gmgmf i2i marketing investor awareness tsxv otcqx">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">March 19, 2026</span>
+        </div>
+        <div class="card-title">
+          Graphene Manufacturing Group Hires i2i Marketing Group
+          <span class="ticker">TSXV: GMG</span>
+          <span class="ticker">OTCQX: GMGMF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">i2i Marketing Group LLC</div>
+            <div class="hired-purpose">Marketing &amp; investor awareness services · Key West, Florida</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Graphene Manufacturing Group Ltd.</strong> <span class="ticker" style="font-size:11px;">TSXV: GMG</span> <span class="ticker" style="font-size:11px;">OTCQX: GMGMF</span> has engaged <strong>i2i Marketing Group LLC</strong> (Key West, Florida) to provide marketing and investor awareness services. GMG is a graphene and battery technology company. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 16 - Lithium Africa Corp -->
+      <div class="card" data-tags="market-making investor-awareness" data-text="lithium africa laf independent trading group itg spark newswire market making marketing tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">March 19, 2026</span>
+        </div>
+        <div class="card-title">
+          Lithium Africa Corp. Retains ITG &amp; Spark Newswire
+          <span class="ticker">TSXV: LAF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firms Hired</div>
+            <div class="hired-firm">Independent Trading Group &amp; Spark Newswire</div>
+            <div class="hired-purpose">Market-making + investor awareness services</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Lithium Africa Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: LAF</span> has engaged both <strong>Independent Trading Group (ITG)</strong> for market-making services and <strong>Spark Newswire</strong> for investor awareness activities. The dual-prong engagement covers both liquidity improvement and investor outreach. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 17 - Advanced Gold Exploration -->
+      <div class="card" data-tags="market-making" data-text="advanced gold exploration auex venture liquidity providers vlp market making cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 18, 2026</span>
+        </div>
+        <div class="card-title">
+          Advanced Gold Exploration Engages Venture Liquidity Providers
+          <span class="ticker">CSE: AUEX</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Venture Liquidity Providers Inc. (VLP)</div>
+            <div class="hired-purpose">Market-making services for CSE-listed gold explorer</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Advanced Gold Exploration Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: AUEX</span> has retained <strong>Venture Liquidity Providers Inc. (VLP)</strong> to provide market-making services, subject to regulatory approval. The engagement is designed to improve share liquidity on the CSE. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 18 - Crossroads Gold -->
+      <div class="card" data-tags="market-making" data-text="crossroads gold crg icp securities automated market making tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 16, 2026</span>
+        </div>
+        <div class="card-title">
+          Crossroads Gold Engages ICP Securities for Market-Making
+          <span class="ticker">TSXV: CRG</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Crossroads Gold Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: CRG</span> has engaged <strong>ICP Securities Inc.</strong> to provide automated market-making services using the ICP Premium™ algorithm. The engagement aims to improve share liquidity on the TSX Venture Exchange. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 19 - Mink Ventures -->
+      <div class="card" data-tags="market-making" data-text="mink ventures mink mnkvf independent trading group itg market making tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 14, 2026</span>
+        </div>
+        <div class="card-title">
+          Mink Ventures Corporation Engages Independent Trading Group
+          <span class="ticker">TSXV: MINK</span>
+          <span class="ticker">OTC: MNKVF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Market-making services · Monthly renewable term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Mink Ventures Corporation</strong> <span class="ticker" style="font-size:11px;">TSXV: MINK</span> <span class="ticker" style="font-size:11px;">OTC: MNKVF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market-making services on a <strong>monthly renewable basis</strong>. ITG will manage liquidity and correct temporary supply-demand imbalances in the company's shares. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 20 - Kirkstone Metals -->
+      <div class="card" data-tags="investor-awareness" data-text="kirkstone metals ksm ksmcf capitaliz marketing investor awareness digital tsxv otcqb">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">March 11, 2026</span>
+        </div>
+        <div class="card-title">
+          Kirkstone Metals Retains Capitaliz Marketing for 3-Month Campaign
+          <span class="ticker">TSXV: KSM</span>
+          <span class="ticker">OTCQB: KSMCF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📊</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Capitaliz Marketing</div>
+            <div class="hired-purpose">Investor awareness &amp; digital marketing · USD$150,000 · 3-month initial term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Kirkstone Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: KSM</span> <span class="ticker" style="font-size:11px;">OTCQB: KSMCF</span> has retained <strong>Capitaliz Marketing</strong> for investor awareness and digital marketing services. The company will pay <strong>USD$150,000 for an initial 3-month term</strong>. Services include digital content creation, social media management, and targeted investor outreach campaigns.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 21 - Orex Minerals -->
+      <div class="card" data-tags="market-making" data-text="orex minerals rex icp securities automated market making tsx">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">March 11, 2026</span>
+        </div>
+        <div class="card-title">
+          Orex Minerals Engages ICP Securities for Automated Market-Making
+          <span class="ticker">TSX: REX</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Orex Minerals Inc.</strong> <span class="ticker" style="font-size:11px;">TSX: REX</span> has engaged <strong>ICP Securities Inc.</strong> for automated market-making services, utilizing the proprietary ICP Premium™ algorithm to improve liquidity and quote health. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSX Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 22 - Torr Metals -->
+      <div class="card" data-tags="market-making" data-text="torr metals tmet icp securities automated market making tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">February 23, 2026</span>
+        </div>
+        <div class="card-title">
+          Torr Metals Engages ICP Securities for Market-Making
+          <span class="ticker">TSXV: TMET</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm · C$7,500/month</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Torr Metals Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: TMET</span> has engaged <strong>ICP Securities Inc.</strong> for automated market-making services, effective February 23, 2026. Fee: <strong>C$7,500 per month plus applicable taxes</strong>. The agreement is for an <strong>initial 4-month term</strong>, renewing monthly unless either party provides 30 days' written notice.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Junior Mining Network</span><span class="pill">Globe and Mail</span></div>
+        </div>
+      </div>
+
+      <!-- Card 23 - Foremost Clean Energy -->
+      <div class="card" data-tags="investor-awareness" data-text="foremost clean energy fat fmst spark newswire digital marketing cse nasdaq uranium">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">February 21, 2026</span>
+        </div>
+        <div class="card-title">
+          Foremost Clean Energy Extends Spark Newswire Campaign
+          <span class="ticker">CSE: FAT</span>
+          <span class="ticker">NASDAQ: FMST</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Spark Newswire</div>
+            <div class="hired-purpose">Digital marketing campaign — extended term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Foremost Clean Energy Ltd.</strong> <span class="ticker" style="font-size:11px;">CSE: FAT</span> <span class="ticker" style="font-size:11px;">NASDAQ: FMST</span> has extended its digital marketing campaign with <strong>Spark Newswire</strong>. The uranium and lithium explorer continues its investor outreach program in the Athabasca Basin region. Payment terms for the extension were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 24 - Atomic Minerals -->
+      <div class="card" data-tags="investor-awareness" data-text="atomic minerals atom emerging markets consulting investor relations advertising tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">February 20, 2026</span>
+        </div>
+        <div class="card-title">
+          Atomic Minerals Retains Emerging Markets Consulting for IR Services
+          <span class="ticker">TSXV: ATOM</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📊</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Emerging Markets Consulting LLC</div>
+            <div class="hired-purpose">Investor relations, advertising &amp; marketing services</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Atomic Minerals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: ATOM</span> has retained <strong>Emerging Markets Consulting LLC</strong> to provide investor relations, advertising, and marketing services. The engagement is designed to broaden the company's investor base. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 25 - Humanoid Global Holdings -->
+      <div class="card" data-tags="investor-awareness" data-text="humanoid global holdings robo rbohf investor insights systems marketing cse otc new wave esports">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">February 19, 2026</span>
+        </div>
+        <div class="card-title">
+          Humanoid Global Holdings Hires Investor Insights Systems
+          <span class="ticker">CSE: ROBO</span>
+          <span class="ticker">OTC: RBOHF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Investor Insights Systems Inc.</div>
+            <div class="hired-purpose">Marketing services — humanoid robotics &amp; AI sector visibility</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Humanoid Global Holdings Corp.</strong> (formerly New Wave Esports) <span class="ticker" style="font-size:11px;">CSE: ROBO</span> <span class="ticker" style="font-size:11px;">OTC: RBOHF</span> has retained <strong>Investor Insights Systems Inc.</strong> to provide marketing services focused on visibility in the humanoid robotics and AI sector. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+
+      <!-- Card 26 - EagleOne Metals -->
+      <div class="card" data-tags="market-making" data-text="eagleone metals eagl venture liquidity providers vlp market making cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">February 18, 2026</span>
+        </div>
+        <div class="card-title">
+          EagleOne Metals Retains Venture Liquidity Providers
+          <span class="ticker">CSE: EAGL</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Venture Liquidity Providers Inc. (VLP)</div>
+            <div class="hired-purpose">Market-making services for CSE-listed metals explorer</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>EagleOne Metals Corporation</strong> <span class="ticker" style="font-size:11px;">CSE: EAGL</span> has retained <strong>Venture Liquidity Providers Inc. (VLP)</strong> to initiate market-making services, subject to regulatory approval. EagleOne is a mineral exploration company focused on gold and uranium projects in Canada. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 27 - Bahia Metals -->
+      <div class="card" data-tags="market-making" data-text="bahia metals bmt icp securities automated market making cse nickel copper brazil">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">February 12, 2026</span>
+        </div>
+        <div class="card-title">
+          Bahia Metals Corp. Engages ICP Securities at IPO Launch
+          <span class="ticker">CSE: BMT</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm · C$7,500/month · 3-month initial term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Bahia Metals Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: BMT</span> engaged <strong>ICP Securities Inc.</strong> on the same day its shares commenced trading on the CSE following a $5.75M IPO. Fee: <strong>C$7,500 per month plus applicable taxes</strong> for a <strong>3-month initial term</strong>, renewing monthly thereafter. The company is advancing the Mangueiros nickel-copper-cobalt project in northeast Brazil.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Investing News Network</span><span class="pill">Cantech Letter</span></div>
+        </div>
+      </div>
+
+      <!-- Card 28 - Bitzero Holdings -->
+      <div class="card" data-tags="investor-awareness" data-text="bitzero holdings bitz btzrf plutus i2i native ads investor awareness marketing cse otcqb blockchain">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">February 10, 2026</span>
+        </div>
+        <div class="card-title">
+          Bitzero Holdings Engages 3-Firm Investor Relations Campaign
+          <span class="ticker">CSE: BITZ.U</span>
+          <span class="ticker">OTCQB: BTZRF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firms Hired</div>
+            <div class="hired-firm">Plutus Invest &amp; Consulting GmbH · i2i Marketing Group LLC · Native Ads Inc.</div>
+            <div class="hired-purpose">European &amp; North American investor awareness campaign</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Bitzero Holdings Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: BITZ.U</span> <span class="ticker" style="font-size:11px;">OTCQB: BTZRF</span> announced a three-firm IR engagement: <strong>Plutus Invest &amp; Consulting GmbH</strong> (Bremen, Germany) for European investor awareness, <strong>i2i Marketing Group LLC</strong> (contract renewal), and <strong>Native Ads Inc.</strong> (renewal). The campaign targets investors in both North American and European markets. Bitzero operates sustainable blockchain and HPC data centres. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing / Newswire</span></div>
+          <div class="coverage"><span class="pill">Newswire.ca</span><span class="pill">Globe and Mail</span></div>
+        </div>
+      </div>
+
+      <!-- Card 29 - Bunker Hill Mining -->
+      <div class="card" data-tags="market-making" data-text="bunker hill mining bnkr bhll independent trading group itg market making tsxv otcqb idaho zinc lead silver">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">February 5, 2026</span>
+        </div>
+        <div class="card-title">
+          Bunker Hill Mining Engages ITG as TSXV Market Maker
+          <span class="ticker">TSXV: BNKR</span>
+          <span class="ticker">OTCQB: BHLL</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Market-making services · CAD$6,500/month · Monthly renewable term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Bunker Hill Mining Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: BNKR</span> <span class="ticker" style="font-size:11px;">OTCQB: BHLL</span> has engaged <strong>Independent Trading Group (ITG)</strong> for market-making services on the TSXV. Fee: <strong>CAD$6,500 per month</strong>, payable in advance, with an <strong>initial 1-month term</strong> renewing monthly. No shares or options granted as compensation. Bunker Hill is advancing the restart of the historic Bunker Hill Mine in northern Idaho (zinc, lead, silver).
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / GlobeNewswire</span></div>
+          <div class="coverage"><span class="pill">GlobeNewswire</span><span class="pill">Junior Mining Network</span></div>
+        </div>
+      </div>
+
+      <!-- Card 30 - CanCambria Energy -->
+      <div class="card" data-tags="investor-awareness" data-text="cancambria energy ccec cceyf machai capital euroswiss market awareness tsxv otcqb">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">February 6, 2026</span>
+        </div>
+        <div class="card-title">
+          CanCambria Energy Launches Market Awareness Initiative
+          <span class="ticker">TSXV: CCEC</span>
+          <span class="ticker">OTCQB: CCEYF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🌐</div>
+          <div class="hired-details">
+            <div class="hired-label">Firms Hired</div>
+            <div class="hired-firm">Machai Capital Inc. &amp; Euroswiss Capital</div>
+            <div class="hired-purpose">Dual North American &amp; European market awareness initiative</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>CanCambria Energy Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: CCEC</span> <span class="ticker" style="font-size:11px;">OTCQB: CCEYF</span> has engaged <strong>Machai Capital Inc.</strong> and <strong>Euroswiss Capital</strong> for a dual-market investor awareness initiative covering North American and European investor audiences. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 31 - Fortune Bay Corp -->
+      <div class="card" data-tags="investor-awareness" data-text="fortune bay for ftbyf machai capital digital marketing tsxv otcqb uranium">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">February 6, 2026</span>
+        </div>
+        <div class="card-title">
+          Fortune Bay Corp. Retains Machai Capital for Digital Marketing
+          <span class="ticker">TSXV: FOR</span>
+          <span class="ticker">OTCQB: FTBYF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Machai Capital Inc.</div>
+            <div class="hired-purpose">Digital marketing services for uranium &amp; gold explorer</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Fortune Bay Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: FOR</span> <span class="ticker" style="font-size:11px;">OTCQB: FTBYF</span> has retained <strong>Machai Capital Inc.</strong> to provide digital marketing services. Fortune Bay is a uranium and gold exploration company. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 32 - FutureGen Industries -->
+      <div class="card" data-tags="market-making" data-text="futuregen industries litt rmanf venture liquidity providers vlp market making tsxv venture capital">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">February 3, 2026</span>
+        </div>
+        <div class="card-title">
+          FutureGen Industries Retains VLP for Market-Making
+          <span class="ticker">TSXV: LITT</span>
+          <span class="ticker">OTC: RMANF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Venture Liquidity Providers Inc. (VLP)</div>
+            <div class="hired-purpose">Market-making services · CAD$5,000/month · 3-month initial term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>FutureGen Industries Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: LITT</span> <span class="ticker" style="font-size:11px;">OTC: RMANF</span> has retained <strong>Venture Liquidity Providers Inc. (VLP)</strong> for market-making services. Fee: <strong>CAD$5,000 per month</strong> for a <strong>3-month initial term</strong>, automatically renewing monthly. Conducted through registered broker W.D. Latimer Co. Ltd. FutureGen is a venture capital firm investing in biotech, AI, robotics, and defence companies.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Investing News Network</span><span class="pill">AccessNewswire</span></div>
+        </div>
+      </div>
+
+      <!-- Card 33 - CopperCorp Resources -->
+      <div class="card" data-tags="investor-awareness" data-text="coppercorp resources cper cpcpf capital analytica marketing capital markets advisory tsxv otcqb copper">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 30, 2026</span>
+        </div>
+        <div class="card-title">
+          CopperCorp Resources Hires Capital Analytica for 6-Month Mandate
+          <span class="ticker">TSXV: CPER</span>
+          <span class="ticker">OTCQB: CPCPF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📊</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Capital Analytica</div>
+            <div class="hired-purpose">Marketing &amp; capital markets advisory · USD$75K on signing + USD$75K by Apr 27 · 6-month term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>CopperCorp Resources Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: CPER</span> <span class="ticker" style="font-size:11px;">OTCQB: CPCPF</span> has engaged <strong>Capital Analytica</strong> for marketing and capital markets advisory services. Total fee: <strong>USD$150,000</strong> paid in two tranches — <strong>USD$75,000 upon signing</strong> and <strong>USD$75,000 by April 27, 2026</strong> — over a <strong>6-month term</strong>. CopperCorp is a copper exploration company.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 34 - Upside Gold Corp -->
+      <div class="card" data-tags="investor-awareness" data-text="upside gold ug departures capital digital marketing cse gold">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 30, 2026</span>
+        </div>
+        <div class="card-title">
+          Upside Gold Corp. Retains Departures Capital for 3-Month Campaign
+          <span class="ticker">CSE: UG</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Departures Capital Inc.</div>
+            <div class="hired-purpose">Digital marketing services · 3-month initial term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Upside Gold Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: UG</span> has retained <strong>Departures Capital Inc.</strong> to provide digital marketing services for a <strong>3-month initial term</strong>. The campaign is designed to increase visibility among retail investors. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 35 - Medaro Mining (Initial Engagement) -->
+      <div class="card" data-tags="investor-awareness" data-text="medaro mining meda senergy communications digital marketing tsxv initial engagement">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 24, 2026</span>
+        </div>
+        <div class="card-title">
+          Medaro Mining Engages Senergy Communications for Digital Marketing
+          <span class="ticker">TSXV: MEDA</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Senergy Communications Capital Inc.</div>
+            <div class="hired-purpose">Digital marketing services — initial engagement</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Medaro Mining Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: MEDA</span> initially engaged <strong>Senergy Communications Capital Inc.</strong> for digital marketing services (see also: March 28 extension). The company focuses on lithium mineral exploration in Canada. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 36 - Domestic Metals Corp -->
+      <div class="card" data-tags="market-making" data-text="domestic metals dmcu dmcuf icp securities automated market making tsxv otcqb critical minerals">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 23, 2026</span>
+        </div>
+        <div class="card-title">
+          Domestic Metals Corp. Engages ICP Securities for Market-Making
+          <span class="ticker">TSXV: DMCU</span>
+          <span class="ticker">OTCQB: DMCUF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm · C$7,500/month · 4-month initial term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Domestic Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: DMCU</span> <span class="ticker" style="font-size:11px;">OTCQB: DMCUF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market-making services effective January 23, 2026. Fee: <strong>C$7,500 per month plus applicable taxes</strong> for an <strong>initial 4-month term</strong>, renewing monthly thereafter. No stock options or performance-based compensation.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / GlobeNewswire</span></div>
+          <div class="coverage"><span class="pill">GlobeNewswire</span><span class="pill">Investing News Network</span></div>
+        </div>
+      </div>
+
+      <!-- Card 37 - Metalsource Mining -->
+      <div class="card" data-tags="market-making" data-text="metalsource mining msm independent trading group itg market making amended cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 24, 2026</span>
+        </div>
+        <div class="card-title">
+          Metalsource Mining Amends Market-Making Agreement with ITG
+          <span class="ticker">CSE: MSM</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Amended market-making agreement</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Metalsource Mining Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: MSM</span> announced an amendment to its existing market-making agreement with <strong>Independent Trading Group (ITG)</strong>. The amended terms continue ITG's mandate to provide liquidity and market-making services on the CSE. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 38 - Birchtree Investments -->
+      <div class="card" data-tags="investor-awareness" data-text="birchtree investments brch spark newswire financial publishing digital marketing tsx">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 20, 2026</span>
+        </div>
+        <div class="card-title">
+          Birchtree Investments Engages Spark Newswire for Digital Publishing
+          <span class="ticker">TSX: BRCH</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Spark Newswire Inc.</div>
+            <div class="hired-purpose">Financial publishing &amp; digital marketing services</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Birchtree Investments Ltd.</strong> <span class="ticker" style="font-size:11px;">TSX: BRCH</span> has engaged <strong>Spark Newswire Inc.</strong> to provide financial publishing and digital marketing services. The campaign is designed to broaden awareness among the retail investment community. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSX Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 39 - Stuhini Exploration -->
+      <div class="card" data-tags="market-making" data-text="stuhini exploration stu independent trading group itg market making tsx copper gold">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 15, 2026</span>
+        </div>
+        <div class="card-title">
+          Stuhini Exploration Engages Independent Trading Group
+          <span class="ticker">TSX: STU</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Market-making services for TSX-listed mineral explorer</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Stuhini Exploration Ltd.</strong> <span class="ticker" style="font-size:11px;">TSX: STU</span> has engaged <strong>Independent Trading Group (ITG)</strong> for market-making services. ITG will work to maintain orderly trading and improve share liquidity. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSX Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 40 - Q-Gold Resources -->
+      <div class="card" data-tags="market-making" data-text="q-gold resources qgr icp securities automated market making tsx gold">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 16, 2026</span>
+        </div>
+        <div class="card-title">
+          Q-Gold Resources Engages ICP Securities for Market-Making
+          <span class="ticker">TSX: QGR</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Q-Gold Resources Corp.</strong> <span class="ticker" style="font-size:11px;">TSX: QGR</span> has engaged <strong>ICP Securities Inc.</strong> for automated market-making services utilizing the ICP Premium™ algorithm. The engagement aims to improve share liquidity and quote quality. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSX Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 41 - Eastport Critical Metals -->
+      <div class="card" data-tags="market-making" data-text="eastport critical metals evi independent trading group itg market making tsxv critical minerals">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 13, 2026</span>
+        </div>
+        <div class="card-title">
+          Eastport Critical Metals Retains ITG for Market-Making
+          <span class="ticker">TSXV: EVI</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Market-making services for TSXV-listed critical metals explorer</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Eastport Critical Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: EVI</span> has retained <strong>Independent Trading Group (ITG)</strong> to provide market-making services in compliance with TSXV policies. The engagement is designed to improve share liquidity. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 42 - Greenridge Exploration -->
+      <div class="card" data-tags="investor-awareness" data-text="greenridge exploration gxp rmk marketing online investor campaign cse 6 months">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 13, 2026</span>
+        </div>
+        <div class="card-title">
+          Greenridge Exploration Hires RMK Marketing for 6-Month Campaign
+          <span class="ticker">CSE: GXP</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">RMK Marketing Inc.</div>
+            <div class="hired-purpose">Online investor campaign services · 6-month term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Greenridge Exploration Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: GXP</span> has retained <strong>RMK Marketing Inc.</strong> for an online investor campaign spanning a <strong>6-month term</strong>. The campaign is designed to increase digital visibility and reach retail investors. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 43 - Copper Quest Exploration -->
+      <div class="card" data-tags="investor-awareness" data-text="copper quest exploration cqx imimf i2i marketing corporate awareness investor awareness cse otcqb copper">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 12, 2026</span>
+        </div>
+        <div class="card-title">
+          Copper Quest Exploration Engages i2i Marketing for Awareness Campaign
+          <span class="ticker">CSE: CQX</span>
+          <span class="ticker">OTCQB: IMIMF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">i2i Marketing Group LLC</div>
+            <div class="hired-purpose">Corporate marketing &amp; investor awareness campaign</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Copper Quest Exploration Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: CQX</span> <span class="ticker" style="font-size:11px;">OTCQB: IMIMF</span> has retained <strong>i2i Marketing Group LLC</strong> to provide corporate marketing and investor awareness services. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 44 - Blue Lagoon Resources -->
+      <div class="card" data-tags="investor-awareness" data-text="blue lagoon resources bllg hillside consulting digital marketing corporate awareness cse gold silver">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 12, 2026</span>
+        </div>
+        <div class="card-title">
+          Blue Lagoon Resources Hires Hillside Consulting for Digital Marketing
+          <span class="ticker">CSE: BLLG</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Hillside Consulting and Media Inc.</div>
+            <div class="hired-purpose">Corporate awareness digital marketing campaign</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Blue Lagoon Resources Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: BLLG</span> has retained <strong>Hillside Consulting and Media Inc.</strong> for a corporate awareness digital marketing campaign. Blue Lagoon is a gold and silver exploration company in British Columbia. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+
+      <!-- Card 45 - Alset AI Ventures -->
+      <div class="card" data-tags="investor-awareness" data-text="alset ai ventures gpus gpusf outside the box capital investor awareness marketing cvse otcqb ai gpu">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 9, 2026</span>
+        </div>
+        <div class="card-title">
+          Alset AI Ventures Hires Outside The Box Capital
+          <span class="ticker">CVE: GPUS</span>
+          <span class="ticker">OTCQB: GPUSF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Outside The Box Capital Inc.</div>
+            <div class="hired-purpose">Investor awareness &amp; marketing · $150,000 cash + 1,000,000 stock options · 2-month initial term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Alset AI Ventures Inc.</strong> <span class="ticker" style="font-size:11px;">CVE: GPUS</span> <span class="ticker" style="font-size:11px;">OTCQB: GPUSF</span> has engaged <strong>Outside The Box Capital Inc.</strong> (Ontario) for investor awareness and marketing services. Total compensation: <strong>$150,000 cash</strong> (25% on execution, then two quarterly payments of $56,250) plus <strong>1,000,000 incentive stock options</strong> at $0.055/share for 2 years. Agreement effective January 9, 2026 for an <strong>initial 2-month term</strong>.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / Newswire</span></div>
+          <div class="coverage"><span class="pill">Newswire</span></div>
+        </div>
+      </div>
+
+      <!-- Card 46 - LIR Life Sciences Corp -->
+      <div class="card" data-tags="investor-awareness" data-text="lir life sciences skny bbcmf fairfax partners digital marketing investor relations cvse otcqb life sciences">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 8, 2026</span>
+        </div>
+        <div class="card-title">
+          LIR Life Sciences Engages Fairfax Partners for 3-Month Campaign
+          <span class="ticker">CVE: SKNY</span>
+          <span class="ticker">OTCQB: BBCMF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📊</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Fairfax Partners Inc.</div>
+            <div class="hired-purpose">Digital marketing &amp; investor relations · USD$150,000 · 3-month term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>LIR Life Sciences Corp.</strong> <span class="ticker" style="font-size:11px;">CVE: SKNY</span> <span class="ticker" style="font-size:11px;">OTCQB: BBCMF</span> has retained <strong>Fairfax Partners Inc.</strong> (Vancouver, BC) for a digital marketing and investor relations initiative. Total fee: <strong>USD$150,000</strong> for a <strong>3-month term</strong>. LIR Life Sciences is a life sciences company focused on healthcare and biotech applications.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 47 - Real Luck Group -->
+      <div class="card" data-tags="investor-awareness" data-text="real luck group luck native ads digital media marketing tsxv luckbox esports">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 8, 2026</span>
+        </div>
+        <div class="card-title">
+          Real Luck Group (Luckbox) Engages Native Ads for Digital Campaign
+          <span class="ticker">TSXV: LUCK</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📡</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Native Ads Inc.</div>
+            <div class="hired-purpose">Programmatic digital advertising campaign · 6-month term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Real Luck Group Ltd. (Luckbox)</strong> <span class="ticker" style="font-size:11px;">TSXV: LUCK</span> has engaged <strong>Native Ads Inc.</strong> for a programmatic digital advertising and investor awareness campaign spanning <strong>6 months</strong>. The campaign is designed to broaden Luckbox's investor base across digital channels. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 48 - CanPR Technology -->
+      <div class="card" data-tags="market-making" data-text="canpr technology wpr independent trading group itg market making amended tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 8, 2026</span>
+        </div>
+        <div class="card-title">
+          CanPR Technology Amends Market-Making Agreement with ITG
+          <span class="ticker">TSXV: WPR</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Amended market-making agreement · C$2,000/month (reduced from C$6,000)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>CanPR Technology Ltd.</strong> <span class="ticker" style="font-size:11px;">TSXV: WPR</span> announced an amendment to its market-making agreement with <strong>Independent Trading Group (ITG)</strong>, effective January 8, 2026. The monthly fee was reduced from <strong>C$6,000 to C$2,000 per month</strong>. ITG continues to provide market-making services under the amended terms.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">IT Business Net</span></div>
+        </div>
+      </div>
+
+      <!-- Card 49 - Trident Resources Corp -->
+      <div class="card" data-tags="investor-awareness" data-text="trident resources rock trdtf new era publishing corporate marketing investor awareness tsxv otcqb">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 6, 2026</span>
+        </div>
+        <div class="card-title">
+          Trident Resources Engages New Era Publishing for USD$250K Campaign
+          <span class="ticker">TSXV: ROCK</span>
+          <span class="ticker">OTCQB: TRDTF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">New Era Publishing Inc.</div>
+            <div class="hired-purpose">Corporate marketing &amp; investor awareness · USD$100K signing + USD$150K on completion · 3-month initial term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Trident Resources Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: ROCK</span> <span class="ticker" style="font-size:11px;">OTCQB: TRDTF</span> has engaged <strong>New Era Publishing Inc.</strong> (Vancouver, BC) for corporate marketing and investor awareness services. Total compensation: <strong>USD$250,000</strong> — USD$100,000 upon execution plus USD$150,000 upon completion — over a <strong>3-month initial term</strong> with month-to-month renewals thereafter.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / GlobeNewswire</span></div>
+          <div class="coverage"><span class="pill">GlobeNewswire</span></div>
+        </div>
+      </div>
+
+      <!-- Card 50 - TenX Protocols -->
+      <div class="card" data-tags="market-making" data-text="tenx protocols tnx independent trading group itg market making tsxv">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 1, 2026</span>
+        </div>
+        <div class="card-title">
+          TenX Protocols Engages ITG for Market-Making at Year Open
+          <span class="ticker">TSXV: TNX</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔄</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Market-making services · C$6,500/month · Monthly renewable term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>TenX Protocols Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: TNX</span> engaged <strong>Independent Trading Group (ITG)</strong> for market-making services effective December 31, 2025 / January 1, 2026. Fee: <strong>C$6,500 per month</strong>, with an <strong>initial 1-month term</strong> automatically renewing monthly. ITG will trade shares on the TSXV with the objective of maintaining a fair and orderly market.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Investing News Network</span></div>
+        </div>
+      </div>
+
+      <!-- Card 51 - Rock Tech Lithium -->
+      <div class="card" data-tags="market-making" data-text="rock tech lithium rck rcktf icp securities automated market making tsxv otcqb lithium">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 2, 2026</span>
+        </div>
+        <div class="card-title">
+          Rock Tech Lithium Engages ICP Securities for Automated Market-Making
+          <span class="ticker">TSXV: RCK</span>
+          <span class="ticker">OTCQB: RCKTF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤖</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium® algorithm · C$7,500/month · 4-month initial term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Rock Tech Lithium Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: RCK</span> <span class="ticker" style="font-size:11px;">OTCQB: RCKTF</span> engaged <strong>ICP Securities Inc.</strong> for automated market-making services effective December 11, 2025 (reported January 2026). Fee: <strong>C$7,500 per month plus applicable taxes</strong> for an <strong>initial 4-month term</strong>, renewing monthly thereafter. Rock Tech is advancing lithium hydroxide refinery construction in Brandenburg, Germany.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / PR Newswire</span></div>
+          <div class="coverage"><span class="pill">PR Newswire</span></div>
+        </div>
+      </div>
+
+    </div><!-- /feed -->
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Top Firms Hired (2026 YTD)</div>
+        <div class="sidebar-row">
+          <div>
+            <div class="sidebar-row-label">ICP Securities Inc.</div>
+            <div class="sidebar-row-sub">Market-Making · TSXV/CSE/TSX</div>
+          </div>
+          <span class="sidebar-count">10</span>
+        </div>
+        <div class="sidebar-row">
+          <div>
+            <div class="sidebar-row-label">Independent Trading Group</div>
+            <div class="sidebar-row-sub">Market-Making · TSXV/CSE</div>
+          </div>
+          <span class="sidebar-count">9</span>
+        </div>
+        <div class="sidebar-row">
+          <div>
+            <div class="sidebar-row-label">Venture Liquidity Providers</div>
+            <div class="sidebar-row-sub">Market-Making · CSE</div>
+          </div>
+          <span class="sidebar-count">6</span>
+        </div>
+        <div class="sidebar-row">
+          <div>
+            <div class="sidebar-row-label">Spark Newswire</div>
+            <div class="sidebar-row-sub">Investor Awareness</div>
+          </div>
+          <span class="sidebar-count">4</span>
+        </div>
+        <div class="sidebar-row">
+          <div>
+            <div class="sidebar-row-label">Senergy Communications</div>
+            <div class="sidebar-row-sub">Marketing / IR</div>
+          </div>
+          <span class="sidebar-count">4</span>
+        </div>
+        <div class="sidebar-row">
+          <div>
+            <div class="sidebar-row-label">i2i Marketing Group</div>
+            <div class="sidebar-row-sub">Investor Awareness</div>
+          </div>
+          <span class="sidebar-count">4</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Recent Matches</div>
+        <div class="alert-item">
+          <div class="alert-item-title">NU E Power Corp. retains Venture Liquidity Providers</div>
+          <div class="alert-item-meta">NUE / NUEPF <span></span> Apr 4 <span></span> Market-Making</div>
+        </div>
+        <div class="alert-item">
+          <div class="alert-item-title">Blast Resources hires Echo Elite &amp; Spark Newswire</div>
+          <div class="alert-item-meta">BLST / BLSRF <span></span> Apr 3 <span></span> Investor Awareness</div>
+        </div>
+        <div class="alert-item">
+          <div class="alert-item-title">Zentek engages ICP Securities — algo market-making</div>
+          <div class="alert-item-meta">ZEN / ZTEK <span></span> Apr 2 <span></span> Market-Making</div>
+        </div>
+        <div class="alert-item">
+          <div class="alert-item-title">SPARC AI retains Senergy Communications</div>
+          <div class="alert-item-meta">SPAI / SPAIF <span></span> Apr 1 <span></span> Investor Awareness</div>
+        </div>
+        <div class="alert-item">
+          <div class="alert-item-title">Azarga Metals engages Capital Analytica — 6 months</div>
+          <div class="alert-item-meta">AZR / EUUNF <span></span> Mar 31 <span></span> Investor Awareness</div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Tickers to Watch</div>
+        <div class="watch-row">
+          <span class="watch-ticker">NUE</span>
+          <span class="watch-name">NU E Power Corp.</span>
+          <span class="watch-date">Apr 4</span>
+        </div>
+        <div class="watch-row">
+          <span class="watch-ticker">SPAI</span>
+          <span class="watch-name">SPARC AI Inc.</span>
+          <span class="watch-date">Apr 1</span>
+        </div>
+        <div class="watch-row">
+          <span class="watch-ticker">LIFT</span>
+          <span class="watch-name">Li-FT Power Ltd.</span>
+          <span class="watch-date">Mar 31</span>
+        </div>
+        <div class="watch-row">
+          <span class="watch-ticker">AGC</span>
+          <span class="watch-name">Avanti Gold Corp.</span>
+          <span class="watch-date">Mar 19</span>
+        </div>
+        <div class="watch-row">
+          <span class="watch-ticker">GMG</span>
+          <span class="watch-name">Graphene Mfg Group</span>
+          <span class="watch-date">Mar 19</span>
+        </div>
+        <div class="watch-row">
+          <span class="watch-ticker">TMET</span>
+          <span class="watch-name">Torr Metals Inc.</span>
+          <span class="watch-date">Feb 23</span>
+        </div>
+        <div class="watch-row">
+          <span class="watch-ticker">FMST</span>
+          <span class="watch-name">Foremost Clean Energy</span>
+          <span class="watch-date">Feb 21</span>
+        </div>
+        <div class="watch-row">
+          <span class="watch-ticker">ROBO</span>
+          <span class="watch-name">Humanoid Global Holdings</span>
+          <span class="watch-date">Feb 19</span>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> Alerts on this page are sourced from SEC filings, CSE disclosures, and other public regulatory filings. PennyStocksNow.com does not endorse any company or security. Always do your own due diligence before investing.
+      </div>
+
+    </aside>
+
+  </div><!-- /main-layout -->
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">PennyStocks<span>Now</span>.com</div>
+      <p>© 2026 PennyStocksNow.com · Sourced from SEC, TSXV &amp; CSE filings · For informational purposes only.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // TAB SWITCHING
+  function switchTab(tabName) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    // Remove active class from all nav links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.classList.remove('active');
+    });
+
+    // Show selected tab
+    document.getElementById(tabName).classList.add('active');
+
+    // Add active class to clicked nav link
+    event.target.classList.add('active');
+
+    // Update search bar visibility
+    if (tabName === 'promo-alerts') {
+      document.querySelector('.search-bar').classList.add('active');
+    } else {
+      document.querySelector('.search-bar').classList.remove('active');
+    }
+
+    // Init top movers (load live if key exists, else show static data)
+    if (tabName === 'top-movers') {
+      initTopMovers();
+    }
+  }
+
+  // PROMO ALERTS FILTER
+  function filterCards() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    document.querySelectorAll('.card').forEach(card => {
+      const text = card.getAttribute('data-text') || '';
+      card.classList.toggle('hidden', q.length > 0 && !text.includes(q));
+    });
+  }
+
+  let activeFilter = 'all';
+
+  function setFilter(filter, btn) {
+    activeFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.card').forEach(card => {
+      const tags = card.getAttribute('data-tags') || '';
+      if (filter === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.toggle('hidden', !tags.includes(filter));
+      }
+    });
+  }
+
+  // TOP MOVERS — SWITCH VIEW
+  function switchMoversView(view, btn) {
+    document.querySelectorAll('.movers-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.movers-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(view).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // TOP MOVERS — LIVE PRICE HELPERS
+  function showLiveSetup() {
+    document.getElementById('movers-setup').style.display = 'block';
+    document.getElementById('td-api-key-input').focus();
+  }
+  function hideLiveSetup() {
+    document.getElementById('movers-setup').style.display = 'none';
+  }
+
+  function getTdKey() {
+    try { return localStorage.getItem('tdApiKey') || ''; } catch(e) { return ''; }
+  }
+  function saveTdKey() {
+    const val = document.getElementById('td-api-key-input').value.trim();
+    if (!val) { alert('Please paste your Twelve Data API key first.'); return; }
+    try { localStorage.setItem('tdApiKey', val); } catch(e) {}
+    document.getElementById('movers-setup').style.display = 'none';
+    document.getElementById('live-btn').style.display = 'none';
+    document.getElementById('refresh-btn').style.display = '';
+    loadTopMovers(true);
+  }
+  function resetTdKey() {
+    try { localStorage.removeItem('tdApiKey'); } catch(e) {}
+    moversLoaded = false;
+    document.getElementById('live-btn').style.display = '';
+    document.getElementById('refresh-btn').style.display = 'none';
+    document.getElementById('movers-status').style.display = 'none';
+    document.getElementById('movers-setup').style.display = 'none';
+  }
+
+  let moversLoaded = false;
+
+  // Called when Top Movers tab opens — if key exists, load live; else show static
+  function initTopMovers() {
+    const key = getTdKey();
+    if (key) {
+      document.getElementById('live-btn').style.display = 'none';
+      document.getElementById('refresh-btn').style.display = '';
+      loadTopMovers(false);
+    }
+  }
+
+  function fmtMoney(val) {
+    if (val == null) return '—';
+    const abs = Math.abs(val);
+    if (abs < 0.001) return val.toFixed(5);
+    if (abs < 0.01)  return val.toFixed(4);
+    if (abs < 1)     return val.toFixed(4);
+    if (abs < 10)    return val.toFixed(3);
+    return val.toFixed(2);
+  }
+
+  function renderMoversTable(tbodyId, rows) {
+    const tbody = document.getElementById(tbodyId);
+    if (!rows || !rows.length) {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:32px;color:#a0aec0;">No data available for this set.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(r => {
+      const chg  = r.endPrice - r.startPrice;
+      const pct  = (chg / r.startPrice) * 100;
+      const isUp = pct >= 0;
+      const cls  = isUp ? 'up' : 'down';
+      const sign = isUp ? '+' : '';
+      const sym  = r.currency === 'CAD' ? 'C$' : '$';
+      return `<tr>
+        <td class="ticker-col" style="font-size:12px;">${r.display}</td>
+        <td>${r.name}</td>
+        <td><span class="exchange-badge" style="font-size:10px;">${r.exchange}</span></td>
+        <td style="text-align:right;">${sym}${fmtMoney(r.startPrice)}</td>
+        <td style="text-align:right;font-weight:600;">${sym}${fmtMoney(r.endPrice)}</td>
+        <td class="${cls}" style="text-align:right;">${sign}${sym}${fmtMoney(Math.abs(chg))}</td>
+        <td class="${cls}" style="text-align:right;font-weight:700;">${sign}${pct.toFixed(1)}%</td>
+      </tr>`;
+    }).join('');
+  }
+
+  const PROMO_TICKERS = [
+    { name: 'NU E Power Corp.',             yticker: 'NUEPF',   display: 'NUE / NUEPF',   exchange: 'CSE / OTC',     startPrice: 0.0095, currency: 'USD' },
+    { name: 'Blast Resources Inc.',         yticker: 'BLSRF',   display: 'BLST / BLSRF',  exchange: 'CSE / OTCQB',   startPrice: 0.022,  currency: 'USD' },
+    { name: 'Zentek Ltd.',                  yticker: 'ZTEK',    display: 'ZEN / ZTEK',    exchange: 'TSXV / NASDAQ', startPrice: 0.58,   currency: 'USD' },
+    { name: 'SPARC AI Inc.',                yticker: 'SPAIF',   display: 'SPAI / SPAIF',  exchange: 'CSE / OTCQB',   startPrice: 0.26,   currency: 'USD' },
+    { name: 'Li-FT Power Ltd.',             yticker: 'LIFFF',   display: 'LIFT / LIFFF',  exchange: 'CSE / OTCQX',   startPrice: 2.85,   currency: 'USD' },
+    { name: 'Azarga Metals Corp.',          yticker: 'EUUNF',   display: 'AZR / EUUNF',   exchange: 'TSXV / OTC',    startPrice: 0.042,  currency: 'USD' },
+    { name: 'Argo Corporation',             yticker: 'ARGHF',   display: 'ARGH / ARGHF',  exchange: 'TSXV / OTCQX',  startPrice: 0.035,  currency: 'USD' },
+    { name: 'Medaro Mining Inc.',           yticker: 'MEDA.V',  display: 'MEDA',          exchange: 'TSXV',          startPrice: 0.065,  currency: 'CAD' },
+    { name: 'Homeland Nickel Corp.',        yticker: 'SRCGF',   display: 'SHL / SRCGF',   exchange: 'TSXV / OTC',    startPrice: 0.038,  currency: 'USD' },
+    { name: 'Integral Metals Corp.',        yticker: 'ITGLF',   display: 'INTG / ITGLF',  exchange: 'CSE / OTC',     startPrice: 0.032,  currency: 'USD' },
+    { name: 'UberDoc Health Technologies', yticker: 'ESVNF',   display: 'APPT / ESVNF',  exchange: 'CSE / OTC',     startPrice: 0.025,  currency: 'USD' },
+    { name: 'Avanti Gold Corp.',            yticker: 'AVTGF',   display: 'AGC / AVTGF',   exchange: 'CSE / OTCQB',   startPrice: 0.018,  currency: 'USD' },
+    { name: 'Graphene Mfg Group',           yticker: 'GMGMF',   display: 'GMG / GMGMF',   exchange: 'TSXV / OTCQX',  startPrice: 5.20,   currency: 'USD' },
+    { name: 'Mink Ventures Corp.',          yticker: 'MNKVF',   display: 'MINK / MNKVF',  exchange: 'TSXV / OTC',    startPrice: 0.120,  currency: 'USD' },
+    { name: 'Foremost Clean Energy',        yticker: 'FMST',    display: 'FAT / FMST',    exchange: 'CSE / NASDAQ',  startPrice: 0.82,   currency: 'USD' },
+    { name: 'Humanoid Global Holdings',     yticker: 'RBOHF',   display: 'ROBO / RBOHF',  exchange: 'CSE / OTC',     startPrice: 0.10,   currency: 'USD' },
+    { name: 'Bitzero Holdings Inc.',        yticker: 'BTZRF',   display: 'BITZ / BTZRF',  exchange: 'CSE / OTCQB',   startPrice: 0.055,  currency: 'USD' },
+    { name: 'Bunker Hill Mining Corp.',     yticker: 'BHLL',    display: 'BNKR / BHLL',   exchange: 'TSXV / OTCQB',  startPrice: 0.022,  currency: 'USD' },
+    { name: 'CanCambria Energy Corp.',      yticker: 'CCEYF',   display: 'CCEC / CCEYF',  exchange: 'TSXV / OTCQB',  startPrice: 0.028,  currency: 'USD' },
+    { name: 'Fortune Bay Corp.',            yticker: 'FTBYF',   display: 'FOR / FTBYF',   exchange: 'TSXV / OTCQB',  startPrice: 0.045,  currency: 'USD' },
+    { name: 'FutureGen Industries Corp.',   yticker: 'RMANF',   display: 'LITT / RMANF',  exchange: 'TSXV / OTC',    startPrice: 0.045,  currency: 'USD' },
+    { name: 'CopperCorp Resources Inc.',    yticker: 'CPCPF',   display: 'CPER / CPCPF',  exchange: 'TSXV / OTCQB',  startPrice: 0.062,  currency: 'USD' },
+    { name: 'Domestic Metals Corp.',        yticker: 'DMCUF',   display: 'DMCU / DMCUF',  exchange: 'TSXV / OTCQB',  startPrice: 0.040,  currency: 'USD' },
+    { name: 'Copper Quest Exploration',     yticker: 'IMIMF',   display: 'CQX / IMIMF',   exchange: 'CSE / OTCQB',   startPrice: 0.050,  currency: 'USD' },
+    { name: 'Alset AI Ventures Inc.',       yticker: 'GPUSF',   display: 'GPUS / GPUSF',  exchange: 'TSXV / OTCQB',  startPrice: 0.040,  currency: 'USD' },
+    { name: 'LIR Life Sciences Corp.',      yticker: 'BBCMF',   display: 'SKNY / BBCMF',  exchange: 'TSXV / OTCQB',  startPrice: 0.110,  currency: 'USD' },
+    { name: 'Trident Resources Corp.',      yticker: 'TRDTF',   display: 'ROCK / TRDTF',  exchange: 'TSXV / OTCQB',  startPrice: 0.085,  currency: 'USD' },
+    { name: 'Rock Tech Lithium Inc.',       yticker: 'RCKTF',   display: 'RCK / RCKTF',   exchange: 'TSXV / OTCQB',  startPrice: 0.48,   currency: 'USD' },
+    { name: 'Kirkstone Metals Corp.',       yticker: 'KSMCF',   display: 'KSM / KSMCF',   exchange: 'TSXV / OTCQB',  startPrice: 0.110,  currency: 'USD' },
+    { name: 'Atomic Minerals Corp.',        yticker: 'ATOM.V',  display: 'ATOM',          exchange: 'TSXV',          startPrice: 0.090,  currency: 'CAD' },
+    { name: 'Battery X Metals Inc.',        yticker: 'BATX.CN', display: 'BATX',          exchange: 'CSE',           startPrice: 0.050,  currency: 'CAD' },
+  ];
+
+  async function loadTopMovers(force) {
+    if (moversLoaded && !force) return;
+
+    const apiKey = getTdKey();
+    if (!apiKey) return;
+
+    const status    = document.getElementById('movers-status');
+    const statusTxt = document.getElementById('movers-status-text');
+    const btn       = document.getElementById('refresh-btn');
+    const subtitle  = document.getElementById('movers-subtitle');
+
+    status.style.display  = 'block';
+    statusTxt.innerHTML   = '⏳ Fetching live prices from Twelve Data…';
+    if (btn) { btn.disabled = true; btn.textContent = '⏳ Loading…'; }
+
+    try {
+      const symbols = PROMO_TICKERS.map(t => t.yticker).join(',');
+      const quoteUrl = `https://api.twelvedata.com/quote?symbol=${symbols}&apikey=${apiKey}`;
+      const r = await fetch(quoteUrl);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+      if (data.status === 'error') throw new Error(data.message || 'API error');
+
+      const results = [];
+      PROMO_TICKERS.forEach(t => {
+        const q = data[t.yticker];
+        if (!q || q.status === 'error') return;
+        const endPrice = parseFloat(q.close);
+        if (isNaN(endPrice) || endPrice <= 0 || !t.startPrice) return;
+        results.push({ ...t, endPrice });
+      });
+
+      results.sort((a, b) => ((b.endPrice - b.startPrice)/b.startPrice) - ((a.endPrice - a.startPrice)/a.startPrice));
+
+      renderMoversTable('gainers-tbody', results.slice(0, 10));
+      renderMoversTable('losers-tbody',  [...results].reverse().slice(0, 10));
+
+      moversLoaded = true;
+      const now = new Date().toLocaleTimeString();
+      if (subtitle) subtitle.textContent = `Biggest gainers & losers among Promo Alert companies · Live via Twelve Data · Updated ${now}`;
+      status.style.display  = 'block';
+      statusTxt.innerHTML   = `✅ ${results.length} tickers loaded · YTD vs Jan 2, 2026 · <a href="#" onclick="resetTdKey();return false;" style="color:#d92b2b;font-size:11px;">Reset key</a>`;
+
+    } catch(err) {
+      try { localStorage.removeItem('tdApiKey'); } catch(e) {}
+      moversLoaded = false;
+      status.style.display  = 'block';
+      statusTxt.innerHTML   = `❌ ${err.message} — key cleared. <a href="#" onclick="showLiveSetup();return false;" style="color:#276749;">Re-enter key</a>`;
+      document.getElementById('live-btn').style.display = '';
+      document.getElementById('refresh-btn').style.display = 'none';
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = '↻ Refresh Prices'; }
+    }
+  }
+
+
+
+</script>
+
+</body>
+</html>
