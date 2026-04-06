@@ -3050,14 +3050,24 @@
     applyFilters();
   }
 
+  // Store the original card order on first load
+  let originalCardOrder = null;
+
   function sortCards(order) {
     const feed = document.querySelector('.feed');
     const cards = Array.from(feed.querySelectorAll('.card'));
     if (cards.length === 0) return;
-    if (order === 'oldest') {
-      cards.reverse();
+
+    // Save original order the first time
+    if (!originalCardOrder) {
+      originalCardOrder = cards.map(c => c);
     }
-    cards.forEach(card => feed.appendChild(card));
+
+    const sorted = order === 'oldest'
+      ? [...originalCardOrder].reverse()
+      : [...originalCardOrder];
+
+    sorted.forEach(card => feed.appendChild(card));
   }
 
   // TOP MOVERS — SWITCH VIEW
