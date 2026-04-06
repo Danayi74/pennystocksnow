@@ -16,16 +16,14 @@
   <meta name="description" content="Track penny stocks and small cap stock promotions in real time. See today's top gainers and losers, SEC-sourced promo alerts, market-making disclosures, and investor awareness filings — all in one live dashboard."/>
   <meta name="keywords" content="penny stocks, penny stocks today, small cap stocks, penny stock alerts, top penny stocks, small cap movers, penny stock screener, stock promotions, SEC filings, OTC stocks, CSE stocks, TSXV stocks"/>
   <meta name="robots" content="index, follow"/>
-  <link rel="icon" type="image/png" href="favicon.png"/>
-  <link rel="apple-touch-icon" href="favicon.png"/>
   <link rel="canonical" href="https://pennystocksnow.com/stock-promo-feed"/>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="PennyStocksNow.com"/>
-  <meta property="og:title" content="Penny Stocks Now — Know Who's Being Promoted Before the Crowd Does"/>
-  <meta property="og:description" content="Track penny stocks and small cap promotions in real time. Exchange-sourced promo alerts, and market-making disclosures."/>
-  <meta property="og:url" content="https://pennystocksnow.com"/>
+  <meta property="og:title" content="Penny Stocks Today — Real-Time Small Cap Stock Alerts &amp; Top Movers"/>
+  <meta property="og:description" content="Track penny stocks and small cap promotions in real time. Live top gainers &amp; losers, SEC-sourced promo alerts, and market-making disclosures."/>
+  <meta property="og:url" content="https://pennystocksnow.com/stock-promo-feed"/>
   <meta property="og:image" content="https://pennystocksnow.com/og-stock-promo-feed.png"/>
   <meta property="og:locale" content="en_US"/>
 
@@ -798,17 +796,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 6px;
-      margin: 0 -6px;
+      padding: 8px 0;
       border-bottom: 1px solid var(--border-light);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.15s;
     }
-
-    .sidebar-row:hover { background: var(--accent-light); }
-    .sidebar-row.active-firm { background: var(--accent-light); border-color: var(--accent-border); }
-    .sidebar-row.active-firm .sidebar-row-label { color: var(--accent); }
 
     .sidebar-row:last-child { border-bottom: none; }
 
@@ -986,9 +976,9 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">52</span></button>
-      <button class="filter-btn" onclick="setFilter('market-making', this)">Market-Making <span class="filter-count">28</span></button>
-      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">24</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">69</span></button>
+      <button class="filter-btn" onclick="setFilter('market-making', this)">Market-Making <span class="filter-count">34</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">35</span></button>
     </div>
   </div>
 </div>
@@ -997,6 +987,7 @@
 <div style="background:#f0fdf4;border-bottom:1px solid #c6f6d5;padding:14px 0;">
   <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
     <p style="margin:0;font-size:13.5px;color:#276749;line-height:1.7;">
+
       👋 <strong>Welcome to PennyStocksNow.com</strong> — your real-time intelligence feed for small-cap stock promotions.
       We track every public filing and disclosure in which a company hires a marketing, investor relations, or market-making firm,
       so you always know which penny stocks are being actively promoted before the crowd does.
@@ -1221,9 +1212,9 @@
     <div class="feed">
       <div class="feed-header">
         <h3></h3>
-        <select class="sort-select" onchange="sortCards(this.value)">
-          <option value="newest">Newest First</option>
-          <option value="oldest">Oldest First</option>
+        <select class="sort-select">
+          <option>Newest First</option>
+          <option>Oldest First</option>
         </select>
       </div>
 
@@ -1932,6 +1923,35 @@
         </div>
       </div>
 
+      <!-- Card 52 - Nexcel Metals -->
+      <div class="card" data-tags="market-making" data-text="nexcel metals venture liquidity providers vlp market making cse tungsten burnt hill new brunswick">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">February 23, 2026</span>
+        </div>
+        <div class="card-title">
+          Nexcel Metals Hires VLP for Market-Making on CSE
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Venture Liquidity Providers Inc. (VLP)</div>
+            <div class="hired-purpose">Market-making services via W.D. Latimer Co. Ltd. · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Nexcel Metals Inc.</strong> has engaged <strong>Venture Liquidity Providers Inc. (VLP)</strong>, through registered broker <strong>W.D. Latimer Co. Ltd.</strong>, to provide market-making services on the CSE. The engagement was announced alongside the hiring of a data specialist to advance its Burnt Hill Tungsten Project in New Brunswick. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">TipRanks</span></div>
+        </div>
+      </div>
+
       <!-- Card 23 - Foremost Clean Energy -->
       <div class="card" data-tags="investor-awareness" data-text="foremost clean energy fat fmst spark newswire digital marketing cse nasdaq uranium">
         <div class="card-top">
@@ -2055,6 +2075,35 @@
         </div>
       </div>
 
+      <!-- Card 53 - Surface Metals -->
+      <div class="card" data-tags="investor-awareness" data-text="surface metals surmf danayi capital investor awareness otcqb mehran bagherzadeh vancouver">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">February 14, 2026</span>
+        </div>
+        <div class="card-title">
+          Surface Metals Engages Danayi Capital for US Investor Awareness
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Danayi Capital Corp.</div>
+            <div class="hired-purpose">Investor awareness services · Fee: <strong>US$150,000 cash</strong> · No securities issued · Arm's length</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Surface Metals Inc.</strong> <span class="ticker" style="font-size:11px;">OTC: SURMF</span> has engaged <strong>Danayi Capital Corp.</strong> (550-800 West Pender Street, Vancouver, BC), owned by <strong>Mehran Bagherzadeh</strong>, to provide investor awareness services. Compensation is <strong>US$150,000 in cash</strong> with no securities issued. The engagement is conducted at arm's length from the company.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Newswire</span></div>
+          <div class="coverage"><span class="pill">Investing News Network</span><span class="pill">Stock Titan</span></div>
+        </div>
+      </div>
+
       <!-- Card 27 - Bahia Metals -->
       <div class="card" data-tags="market-making" data-text="bahia metals bmt icp securities automated market making cse nickel copper brazil">
         <div class="card-top">
@@ -2085,8 +2134,37 @@
         </div>
       </div>
 
+      <!-- Card 54 - Gemdale Gold -->
+      <div class="card" data-tags="market-making" data-text="gemdale gold gemg independent trading group itg market making tsxv new listing gold">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">February 12, 2026</span>
+        </div>
+        <div class="card-title">
+          Gemdale Gold Engages ITG as Market Maker on TSXV
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Market-making services · Subject to regulatory approval · New TSXV listing</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Gemdale Gold Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: GEMG</span> has announced the engagement of <strong>Independent Trading Group (ITG)</strong> as its market maker on the TSX Venture Exchange, subject to regulatory approval. The engagement was announced in connection with the company's new listing on the TSXV. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">WebDisclosure</span><span class="pill">USA Today</span></div>
+        </div>
+      </div>
+
       <!-- Card 28 - Bitzero Holdings -->
-      <div class="card" data-tags="investor-awareness" data-text="bitzero holdings bitz btzrf plutus i2i marketing native ads investor awareness marketing cse otcqb blockchain">
+      <div class="card" data-tags="investor-awareness" data-text="bitzero holdings bitz btzrf plutus i2i native ads investor awareness marketing cse otcqb blockchain">
         <div class="card-top">
           <div class="card-tags">
             <span class="tag tag-promo">📣 Marketing Firm Hired</span>
@@ -2113,6 +2191,35 @@
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Newswire</span></div>
           <div class="coverage"><span class="pill">Newswire.ca</span><span class="pill">Globe and Mail</span></div>
+        </div>
+      </div>
+
+      <!-- Card 55 - Grit Metals -->
+      <div class="card" data-tags="investor-awareness" data-text="grit metals euemf plutus invest consulting gmbh investor awareness marketing european otcqb germany">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">February 10, 2026</span>
+        </div>
+        <div class="card-title">
+          Grit Metals Engages Plutus Invest for European Investor Awareness
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Plutus Invest &amp; Consulting GmbH</div>
+            <div class="hired-purpose">Investor awareness &amp; marketing services · Fee: <strong>€100,000–€250,000</strong> · Bremen, Germany</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Grit Metals Inc.</strong> <span class="ticker" style="font-size:11px;">OTC: EUEMF</span> has engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> (Bremen, Germany) to provide investor awareness and marketing services. Compensation ranges from <strong>€100,000 to €250,000</strong>, targeting European investors. The campaign aims to expand Grit Metals' visibility in the European market for its mineral exploration activities.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Newswire</span></div>
+          <div class="coverage"><span class="pill">Globe and Mail</span><span class="pill">Investing News Network</span><span class="pill">Stock Titan</span></div>
         </div>
       </div>
 
@@ -2240,6 +2347,35 @@
         </div>
       </div>
 
+      <!-- Card 56 - Masivo Silver -->
+      <div class="card" data-tags="investor-awareness" data-text="masivo silver senergy communications capital digital investor outreach marketing cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 31, 2026</span>
+        </div>
+        <div class="card-title">
+          Masivo Silver Hires Senergy for Targeted Digital Investor Outreach
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Senergy Communications Capital Inc.</div>
+            <div class="hired-purpose">Targeted digital investor outreach · Vancouver-based marketing firm · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Masivo Silver Corp.</strong> has engaged <strong>Senergy Communications Capital Inc.</strong>, a Vancouver-based marketing firm specializing in publicly listed exploration companies, to provide targeted digital investor outreach services. The engagement is designed to expand Masivo Silver's capital markets visibility. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Newswire</span></div>
+          <div class="coverage"><span class="pill">TipRanks</span></div>
+        </div>
+      </div>
+
       <!-- Card 33 - CopperCorp Resources -->
       <div class="card" data-tags="investor-awareness" data-text="coppercorp resources cper cpcpf capital analytica marketing capital markets advisory tsxv otcqb copper">
         <div class="card-top">
@@ -2298,6 +2434,64 @@
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
           <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 57 - Inspiration Energy -->
+      <div class="card" data-tags="investor-awareness" data-text="inspiration energy insp ispnf plutus invest consulting gmbh investor awareness marketing cse otc germany rottenstone">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 28, 2026</span>
+        </div>
+        <div class="card-title">
+          Inspiration Energy Re-Engages Plutus Invest for Investor Marketing
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Plutus Invest &amp; Consulting GmbH</div>
+            <div class="hired-purpose">Re-engagement for investor awareness &amp; marketing · Bremen, Germany · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Inspiration Energy Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: INSP</span> <span class="ticker" style="font-size:11px;">OTC: ISPNF</span> has re-engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> (Bremen, Germany) to provide marketing and investor awareness services, announced ahead of planned drilling at the company's Rottenstone uranium project. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>IRW Press</span></div>
+          <div class="coverage"><span class="pill">TipRanks</span><span class="pill">irw-press.com</span></div>
+        </div>
+      </div>
+
+      <!-- Card 58 - Total Metals Corp -->
+      <div class="card" data-tags="investor-awareness" data-text="total metals corp i2i marketing group investor awareness electrolode project red lake ontario critical minerals">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 29, 2026</span>
+        </div>
+        <div class="card-title">
+          Total Metals Corp. Engages i2i Marketing for Investor Awareness
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">i2i Marketing Group LLC</div>
+            <div class="hired-purpose">Investor awareness &amp; direct response campaign · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Total Metals Corp.</strong> has engaged <strong>i2i Marketing Group LLC</strong>, a marketing firm specializing in direct response, experiential, and investor-awareness campaigns, to support its ongoing exploration program at the Critical Minerals Electrolode Project in Red Lake, Ontario. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TheNewswire</span></div>
+          <div class="coverage"><span class="pill">TheNewswire</span><span class="pill">TradingView</span></div>
         </div>
       </div>
 
@@ -2392,6 +2586,93 @@
         </div>
       </div>
 
+      <!-- Card 59 - Grit Metals (Market-Making / ITG) -->
+      <div class="card" data-tags="market-making" data-text="grit metals fin euemf independent trading group itg market making tsxv liquidity">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 22, 2026</span>
+        </div>
+        <div class="card-title">
+          Grit Metals Engages Independent Trading Group as Market Maker
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group Inc. (ITG)</div>
+            <div class="hired-purpose">Market-making services per TSXV policies · Toronto-based CIRO dealer · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Grit Metals Corp.</strong> <span class="ticker" style="font-size:11px;">OTC: EUEMF</span> has engaged <strong>Independent Trading Group Inc. (ITG)</strong>, a Toronto-based CIRO dealer-member specializing in market making and liquidity provision, to provide market-making services in accordance with TSX Venture Exchange policies. ITG will trade shares on the exchange to maintain a fair and orderly market. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Newsfile Corp.</span></div>
+          <div class="coverage"><span class="pill">Newsfile</span><span class="pill">TipRanks</span></div>
+        </div>
+      </div>
+
+      <!-- Card 60 - Miata Metals -->
+      <div class="card" data-tags="investor-awareness" data-text="miata metals connect 4 marketing digital investor awareness otcqx capital markets">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 22, 2026</span>
+        </div>
+        <div class="card-title">
+          Miata Metals Upgrades to OTCQX and Hires Connect 4 Marketing
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Connect 4 Marketing</div>
+            <div class="hired-purpose">Digital investor awareness campaign · Fee: <strong>C$100,000</strong> · 1-year term</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Miata Metals Corp.</strong> announced its upgrade to the OTCQX Best Market alongside the engagement of <strong>Connect 4 Marketing</strong> for a year-long, <strong>C$100,000</strong> digital investor-awareness campaign aimed at expanding its capital markets profile. The campaign is designed to increase the company's visibility among retail and institutional investors in North American markets.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Newswire</span></div>
+          <div class="coverage"><span class="pill">TipRanks</span></div>
+        </div>
+      </div>
+
+      <!-- Card 61 - Graphite One -->
+      <div class="card" data-tags="market-making" data-text="graphite one gph gphof icp securities automated market making tsxv otcqx graphite">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 21, 2026</span>
+        </div>
+        <div class="card-title">
+          Graphite One Engages ICP Securities for Automated Market-Making
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making via ICP Premium™ · TSXV listing · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Graphite One Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: GPH</span> <span class="ticker" style="font-size:11px;">OTCQX: GPHOF</span> — ranked #8 on the 2026 OTCQX Best 50 — has engaged <strong>ICP Securities Inc.</strong> to provide automated market-making services using the ICP Premium™ algorithm on the TSX Venture Exchange. The engagement aims to enhance share liquidity and quote quality. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+          <div class="coverage"><span class="pill">Investing News Network</span><span class="pill">Globe and Mail</span><span class="pill">TipRanks</span></div>
+        </div>
+      </div>
+
       <!-- Card 38 - Birchtree Investments -->
       <div class="card" data-tags="investor-awareness" data-text="birchtree investments brch spark newswire financial publishing digital marketing tsx">
         <div class="card-top">
@@ -2419,6 +2700,122 @@
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSX Filing</span></div>
           <div class="coverage"><span class="pill">Newsfile</span></div>
+        </div>
+      </div>
+
+      <!-- Card 62 - GMV Minerals -->
+      <div class="card" data-tags="investor-awareness" data-text="gmv minerals gmv gmvmf machai capital digital marketing investor outreach tsxv otcqb">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 19, 2026</span>
+        </div>
+        <div class="card-title">
+          GMV Minerals Hires Machai Capital for Digital Investor Outreach
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Machai Capital Inc.</div>
+            <div class="hired-purpose">Data-driven digital investor awareness · Fee not disclosed · Stock options also granted</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>GMV Minerals Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: GMV</span> <span class="ticker" style="font-size:11px;">OTCQB: GMVMF</span> has engaged <strong>Machai Capital Inc.</strong>, a data-driven investor awareness and digital marketing firm, to drive digital investor outreach. In addition to the marketing mandate, GMV also granted new stock options as part of the announcement. Payment terms for the Machai Capital engagement were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Newswire</span></div>
+          <div class="coverage"><span class="pill">TipRanks</span><span class="pill">sharewise</span></div>
+        </div>
+      </div>
+
+      <!-- Card 63 - Pan Global Resources -->
+      <div class="card" data-tags="market-making" data-text="pan global resources icp securities automated market making liquidity tsxv copper">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 17, 2026</span>
+        </div>
+        <div class="card-title">
+          Pan Global Resources Hires ICP Securities to Boost Share Liquidity
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">ICP Securities Inc.</div>
+            <div class="hired-purpose">Automated market-making services · Toronto-based dealer · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Pan Global Resources Inc.</strong> has engaged <strong>ICP Securities Inc.</strong>, a Toronto-based dealer specializing in automated market making, to provide share liquidity services. The engagement aims to improve trading conditions and quote quality for Pan Global's shares. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Market Filing</span></div>
+          <div class="coverage"><span class="pill">Globe and Mail</span><span class="pill">TipRanks</span></div>
+        </div>
+      </div>
+
+      <!-- Card 64 - MAX Power Mining -->
+      <div class="card" data-tags="investor-awareness" data-text="max power mining native ads investor awareness promotional services hydrogen drilling discovery cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 16, 2026</span>
+        </div>
+        <div class="card-title">
+          MAX Power Mining Engages Native Ads for Investor Awareness
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Native Ads Inc.</div>
+            <div class="hired-purpose">Investor awareness &amp; promotional services · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>MAX Power Mining Corp.</strong> has entered into a service agreement with <strong>Native Ads Inc.</strong> to provide investor awareness and promotional services. The announcement coincided with the company's confirmation of Canada's first natural hydrogen drilling discovery. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Newswire</span></div>
+          <div class="coverage"><span class="pill">Fuel Cells Works</span></div>
+        </div>
+      </div>
+
+      <!-- Card 65 - Optimi Health -->
+      <div class="card" data-tags="investor-awareness" data-text="optimi health opti native ads investor awareness promotional services tsxv mushroom psilocybin">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">January 16, 2026</span>
+        </div>
+        <div class="card-title">
+          Optimi Health Engages Native Ads for Investor Awareness
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Native Ads Inc.</div>
+            <div class="hired-purpose">Investor awareness &amp; promotional services · Subject to regulatory approval · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Optimi Health Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: OPTI</span> has engaged <strong>Native Ads Inc.</strong> to provide investor awareness and promotional services, subject to regulatory approval. The engagement was announced as part of a broader corporate update including equity incentive grants. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Press Release</span></div>
+          <div class="coverage"><span class="pill">BioSpace</span></div>
         </div>
       </div>
 
@@ -2726,6 +3123,35 @@
         </div>
       </div>
 
+      <!-- Card 66 - Tiger Gold -->
+      <div class="card" data-tags="market-making" data-text="tiger gold venture liquidity providers vlp market making frankfurt stock exchange cse">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 6, 2026</span>
+        </div>
+        <div class="card-title">
+          Tiger Gold Engages VLP for Market-Making at Frankfurt Listing
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Venture Liquidity Providers Inc. (VLP)</div>
+            <div class="hired-purpose">Market-making services · Announced at Frankfurt Stock Exchange listing · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Tiger Gold Corp.</strong> has decided to use the services of <strong>Venture Liquidity Providers Inc. (VLP)</strong> to initiate market-making services to aid in the development of its shares. The engagement was announced in connection with the company commencing trading on the Frankfurt Stock Exchange. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>Newsfile Corp.</span></div>
+          <div class="coverage"><span class="pill">Globe and Mail</span></div>
+        </div>
+      </div>
+
       <!-- Card 49 - Trident Resources Corp -->
       <div class="card" data-tags="investor-awareness" data-text="trident resources rock trdtf new era publishing corporate marketing investor awareness tsxv otcqb">
         <div class="card-top">
@@ -2754,6 +3180,35 @@
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / GlobeNewswire</span></div>
           <div class="coverage"><span class="pill">GlobeNewswire</span></div>
+        </div>
+      </div>
+
+      <!-- Card 67 - Temas Resources -->
+      <div class="card" data-tags="market-making" data-text="temas resources tmas independent trading group itg market making cse critical minerals scientific network">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market-Making</span>
+          </div>
+          <span class="card-date">January 4, 2026</span>
+        </div>
+        <div class="card-title">
+          Temas Resources Engages ITG for Market-Making on CSE
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🏢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group Inc. (ITG)</div>
+            <div class="hired-purpose">Market-making services on the CSE · Subject to regulatory approval · Fee not disclosed</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Temas Resources Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: TMAS</span> has engaged <strong>Independent Trading Group Inc. (ITG)</strong> to provide market-making services on the Canadian Securities Exchange, subject to regulatory approval. The announcement was made alongside news of the company joining a scientific research consortium and broadening its strategic positioning. Payment terms were not publicly disclosed.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing</span></div>
+          <div class="coverage"><span class="pill">Junior Mining Network</span><span class="pill">WebDisclosure</span></div>
         </div>
       </div>
 
@@ -2825,45 +3280,59 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Top Firms Hired (2026 YTD)</div>
-        <div class="sidebar-row" data-firm="independent trading group" onclick="filterByFirm(this)">
+        <div class="sidebar-row">
           <div>
             <div class="sidebar-row-label">Independent Trading Group</div>
             <div class="sidebar-row-sub">Market-Making · TSXV/CSE</div>
           </div>
-          <span class="sidebar-count">11</span>
+          <span class="sidebar-count">14</span>
         </div>
-        <div class="sidebar-row" data-firm="icp securities" onclick="filterByFirm(this)">
+        <div class="sidebar-row">
           <div>
             <div class="sidebar-row-label">ICP Securities Inc.</div>
             <div class="sidebar-row-sub">Market-Making · TSXV/CSE/TSX</div>
           </div>
-          <span class="sidebar-count">10</span>
+          <span class="sidebar-count">12</span>
         </div>
-        <div class="sidebar-row" data-firm="venture liquidity providers" onclick="filterByFirm(this)">
+        <div class="sidebar-row">
           <div>
             <div class="sidebar-row-label">Venture Liquidity Providers</div>
             <div class="sidebar-row-sub">Market-Making · CSE</div>
           </div>
-          <span class="sidebar-count">5</span>
+          <span class="sidebar-count">7</span>
         </div>
-        <div class="sidebar-row" data-firm="i2i marketing" onclick="filterByFirm(this)">
+        <div class="sidebar-row">
           <div>
             <div class="sidebar-row-label">i2i Marketing Group</div>
             <div class="sidebar-row-sub">Investor Awareness</div>
           </div>
-          <span class="sidebar-count">4</span>
+          <span class="sidebar-count">5</span>
         </div>
-        <div class="sidebar-row" data-firm="spark newswire" onclick="filterByFirm(this)">
+        <div class="sidebar-row">
           <div>
             <div class="sidebar-row-label">Spark Newswire</div>
             <div class="sidebar-row-sub">Investor Awareness</div>
           </div>
           <span class="sidebar-count">4</span>
         </div>
-        <div class="sidebar-row" data-firm="senergy communications" onclick="filterByFirm(this)">
+        <div class="sidebar-row">
+          <div>
+            <div class="sidebar-row-label">Native Ads Inc.</div>
+            <div class="sidebar-row-sub">Investor Awareness</div>
+          </div>
+          <span class="sidebar-count">4</span>
+        </div>
+        <div class="sidebar-row">
           <div>
             <div class="sidebar-row-label">Senergy Communications</div>
             <div class="sidebar-row-sub">Marketing / IR</div>
+          </div>
+          <span class="sidebar-count">4</span>
+        </div>
+        <div class="sidebar-row">
+          <div>
+            <div class="sidebar-row-label">Plutus Invest &amp; Consulting</div>
+            <div class="sidebar-row-sub">Investor Awareness · Germany</div>
           </div>
           <span class="sidebar-count">3</span>
         </div>
@@ -2938,7 +3407,7 @@
       </div>
 
       <div class="disclaimer">
-        <strong>Disclaimer:</strong> Alerts on this page are sourced from SEC filings, TSXV and CSE disclosures, and other public regulatory filings. PennyStocksNow.com does not endorse any company or security. Always do your own due diligence before investing.
+        <strong>Disclaimer:</strong> Alerts on this page are sourced from SEC filings, CSE disclosures, and other public regulatory filings. PennyStocksNow.com does not endorse any company or security. Always do your own due diligence before investing.
       </div>
 
     </aside>
@@ -2997,77 +3466,28 @@
   }
 
   // PROMO ALERTS FILTER
-  let activeFilter = 'all';
-
-  function applyFilters() {
-    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  function filterCards() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
     document.querySelectorAll('.card').forEach(card => {
       const text = card.getAttribute('data-text') || '';
-      const tags = card.getAttribute('data-tags') || '';
-      const matchesSearch = q.length === 0 || text.includes(q);
-      const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
-      card.classList.toggle('hidden', !(matchesSearch && matchesFilter));
+      card.classList.toggle('hidden', q.length > 0 && !text.includes(q));
     });
   }
 
-  function filterCards() {
-    applyFilters();
-  }
+  let activeFilter = 'all';
 
   function setFilter(filter, btn) {
     activeFilter = filter;
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    // Clear any active firm selection when user clicks a category filter
-    document.querySelectorAll('.sidebar-row').forEach(r => r.classList.remove('active-firm'));
-    applyFilters();
-  }
-
-  function filterByFirm(row) {
-    const firm = row.getAttribute('data-firm');
-    const isActive = row.classList.contains('active-firm');
-
-    // Clear all active-firm highlights
-    document.querySelectorAll('.sidebar-row').forEach(r => r.classList.remove('active-firm'));
-
-    if (isActive) {
-      // Clicking the same firm again clears the filter
-      document.getElementById('searchInput').value = '';
-    } else {
-      // Set search to firm name and highlight the row
-      document.getElementById('searchInput').value = firm;
-      row.classList.add('active-firm');
-    }
-
-    // Reset category filter to "All" so all firm results show
-    activeFilter = 'all';
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector('.filter-btn').classList.add('active');
-
-    // Scroll to top of feed
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    applyFilters();
-  }
-
-  // Store the original card order on first load
-  let originalCardOrder = null;
-
-  function sortCards(order) {
-    const feed = document.querySelector('#promo-alerts .feed');
-    const cards = Array.from(feed.querySelectorAll('.card'));
-    if (cards.length === 0) return;
-
-    // Save original order the first time
-    if (!originalCardOrder) {
-      originalCardOrder = cards.map(c => c);
-    }
-
-    const sorted = order === 'oldest'
-      ? [...originalCardOrder].reverse()
-      : [...originalCardOrder];
-
-    sorted.forEach(card => feed.appendChild(card));
+    document.querySelectorAll('.card').forEach(card => {
+      const tags = card.getAttribute('data-tags') || '';
+      if (filter === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.toggle('hidden', !tags.includes(filter));
+      }
+    });
   }
 
   // TOP MOVERS — SWITCH VIEW
