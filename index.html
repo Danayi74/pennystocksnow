@@ -798,9 +798,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 0;
+      padding: 8px 6px;
+      margin: 0 -6px;
       border-bottom: 1px solid var(--border-light);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s;
     }
+
+    .sidebar-row:hover { background: var(--accent-light); }
+    .sidebar-row.active-firm { background: var(--accent-light); border-color: var(--accent-border); }
+    .sidebar-row.active-firm .sidebar-row-label { color: var(--accent); }
 
     .sidebar-row:last-child { border-bottom: none; }
 
@@ -2817,42 +2825,42 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Top Firms Hired (2026 YTD)</div>
-        <div class="sidebar-row">
+        <div class="sidebar-row" data-firm="icp securities" onclick="filterByFirm(this)">
           <div>
             <div class="sidebar-row-label">ICP Securities Inc.</div>
             <div class="sidebar-row-sub">Market-Making · TSXV/CSE/TSX</div>
           </div>
           <span class="sidebar-count">10</span>
         </div>
-        <div class="sidebar-row">
+        <div class="sidebar-row" data-firm="independent trading group" onclick="filterByFirm(this)">
           <div>
             <div class="sidebar-row-label">Independent Trading Group</div>
             <div class="sidebar-row-sub">Market-Making · TSXV/CSE</div>
           </div>
           <span class="sidebar-count">9</span>
         </div>
-        <div class="sidebar-row">
+        <div class="sidebar-row" data-firm="venture liquidity providers" onclick="filterByFirm(this)">
           <div>
             <div class="sidebar-row-label">Venture Liquidity Providers</div>
             <div class="sidebar-row-sub">Market-Making · CSE</div>
           </div>
           <span class="sidebar-count">6</span>
         </div>
-        <div class="sidebar-row">
+        <div class="sidebar-row" data-firm="spark newswire" onclick="filterByFirm(this)">
           <div>
             <div class="sidebar-row-label">Spark Newswire</div>
             <div class="sidebar-row-sub">Investor Awareness</div>
           </div>
           <span class="sidebar-count">4</span>
         </div>
-        <div class="sidebar-row">
+        <div class="sidebar-row" data-firm="senergy communications" onclick="filterByFirm(this)">
           <div>
             <div class="sidebar-row-label">Senergy Communications</div>
             <div class="sidebar-row-sub">Marketing / IR</div>
           </div>
           <span class="sidebar-count">4</span>
         </div>
-        <div class="sidebar-row">
+        <div class="sidebar-row" data-firm="i2i marketing" onclick="filterByFirm(this)">
           <div>
             <div class="sidebar-row-label">i2i Marketing Group</div>
             <div class="sidebar-row-sub">Investor Awareness</div>
@@ -2989,28 +2997,57 @@
   }
 
   // PROMO ALERTS FILTER
-  function filterCards() {
-    const q = document.getElementById('searchInput').value.toLowerCase();
+  let activeFilter = 'all';
+
+  function applyFilters() {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
     document.querySelectorAll('.card').forEach(card => {
       const text = card.getAttribute('data-text') || '';
-      card.classList.toggle('hidden', q.length > 0 && !text.includes(q));
+      const tags = card.getAttribute('data-tags') || '';
+      const matchesSearch = q.length === 0 || text.includes(q);
+      const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+      card.classList.toggle('hidden', !(matchesSearch && matchesFilter));
     });
   }
 
-  let activeFilter = 'all';
+  function filterCards() {
+    applyFilters();
+  }
 
   function setFilter(filter, btn) {
     activeFilter = filter;
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    document.querySelectorAll('.card').forEach(card => {
-      const tags = card.getAttribute('data-tags') || '';
-      if (filter === 'all') {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.toggle('hidden', !tags.includes(filter));
-      }
-    });
+    // Clear any active firm selection when user clicks a category filter
+    document.querySelectorAll('.sidebar-row').forEach(r => r.classList.remove('active-firm'));
+    applyFilters();
+  }
+
+  function filterByFirm(row) {
+    const firm = row.getAttribute('data-firm');
+    const isActive = row.classList.contains('active-firm');
+
+    // Clear all active-firm highlights
+    document.querySelectorAll('.sidebar-row').forEach(r => r.classList.remove('active-firm'));
+
+    if (isActive) {
+      // Clicking the same firm again clears the filter
+      document.getElementById('searchInput').value = '';
+    } else {
+      // Set search to firm name and highlight the row
+      document.getElementById('searchInput').value = firm;
+      row.classList.add('active-firm');
+    }
+
+    // Reset category filter to "All" so all firm results show
+    activeFilter = 'all';
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.filter-btn').classList.add('active');
+
+    // Scroll to top of feed
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    applyFilters();
   }
 
   // TOP MOVERS — SWITCH VIEW
