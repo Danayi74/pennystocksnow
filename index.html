@@ -1214,7 +1214,7 @@
     <div class="feed">
       <div class="feed-header">
         <h3></h3>
-        <select class="sort-select">
+        <select class="sort-select" onchange="sortCards(this.value === 'Oldest First' ? 'oldest' : 'newest')">
           <option>Newest First</option>
           <option>Oldest First</option>
         </select>
