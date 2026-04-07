@@ -3433,23 +3433,23 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Recent Matches</div>
-        <div class="alert-item">
+        <div class="alert-item" onclick="scrollToMatch('icg')" style="cursor:pointer;">
           <div class="alert-item-title">ICG Silver &amp; Gold hires Plutus Invest &amp; Consulting</div>
           <div class="alert-item-meta">ICG <span></span> Apr 7 <span></span> Investor Awareness</div>
         </div>
-        <div class="alert-item">
+        <div class="alert-item" onclick="scrollToMatch('rzlv')" style="cursor:pointer;">
           <div class="alert-item-title">Rezolve AI hires Outside The Box Capital</div>
           <div class="alert-item-meta">RZLV <span></span> Apr 7 <span></span> Investor Awareness</div>
         </div>
-        <div class="alert-item">
+        <div class="alert-item" onclick="scrollToMatch('auxx')" style="cursor:pointer;">
           <div class="alert-item-title">Gold X2 Mining hires Native Ads Inc.</div>
           <div class="alert-item-meta">AUXX <span></span> Apr 7 <span></span> Investor Awareness</div>
         </div>
-        <div class="alert-item">
+        <div class="alert-item" onclick="scrollToMatch('nue')" style="cursor:pointer;">
           <div class="alert-item-title">NU E Power Corp. retains Venture Liquidity Providers</div>
           <div class="alert-item-meta">NUE / NUEPF <span></span> Apr 4 <span></span> Market-Making</div>
         </div>
-        <div class="alert-item">
+        <div class="alert-item" onclick="scrollToMatch('blst')" style="cursor:pointer;">
           <div class="alert-item-title">Blast Resources hires Echo Elite &amp; Spark Newswire</div>
           <div class="alert-item-meta">BLST / BLSRF <span></span> Apr 3 <span></span> Investor Awareness</div>
         </div>
@@ -3610,6 +3610,27 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     applyFilters();
+  }
+
+  // RECENT MATCHES — click to scroll to matching card
+  function scrollToMatch(ticker) {
+    const t = ticker.toLowerCase().trim();
+    const cards = document.querySelectorAll('#promo-alerts .feed .card');
+    for (const card of cards) {
+      const text = (card.getAttribute('data-text') || '').toLowerCase();
+      if (text.includes(t)) {
+        // Clear any active filters first so the card is visible
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        const allBtn = document.querySelector('.filter-btn');
+        if (allBtn) allBtn.classList.add('active');
+        card.style.display = '';
+        cards.forEach(c => c.style.display = '');
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.style.outline = '3px solid var(--accent)';
+        setTimeout(() => card.style.outline = '', 2000);
+        return;
+      }
+    }
   }
 
   // Store the original card order on first load
