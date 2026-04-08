@@ -4426,7 +4426,8 @@
     const cards = document.querySelectorAll('#promo-alerts .feed .card');
     for (const card of cards) {
       const text = (card.getAttribute('data-text') || '').toLowerCase();
-      if (text.includes(t)) {
+      const words = text.split(/\s+/);
+      if (words.includes(t)) {
         // Clear any active filters first so the card is visible
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         const allBtn = document.querySelector('.filter-btn');
