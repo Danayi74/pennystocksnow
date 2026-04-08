@@ -1007,13 +1007,36 @@
 
     /* Responsive */
     @media (max-width: 900px) {
+      body { overflow-x: hidden; }
       .main-layout {
         grid-template-columns: 1fr;
+        padding: 0 12px;
+        margin: 12px auto;
+        gap: 12px;
       }
       .sidebar { display: none !important; }
       .filter-btns { display: none !important; }
-      .search-inner { justify-content: center; }
+      .search-inner { justify-content: center; padding: 0 12px; }
       .search-wrap { max-width: 80%; width: 80%; }
+      .card { padding: 14px 14px; margin-bottom: 10px; }
+      .card-title { font-size: 14px; }
+      .card-body { font-size: 12.5px; }
+      .hired-box { padding: 9px 12px; gap: 10px; }
+      .hired-firm { font-size: 13px; }
+      .hired-purpose { font-size: 11px; }
+      .ticker { font-size: 10px; padding: 1px 5px; }
+      .card-top { gap: 6px; }
+      .tag { font-size: 10px !important; padding: 2px 7px !important; }
+      .feed-header { padding: 0; }
+      .feed-header h3 { font-size: 14px; }
+      .month-divider h4 { font-size: 13px; }
+      .nav-inner { padding: 0 12px; height: 48px; }
+      .brand { font-size: 16px; }
+      .tagline { font-size: 10px; }
+      .logo-icon { font-size: 20px; }
+      #welcome-banner { padding: 10px 0; }
+      #welcome-banner p { font-size: 12px !important; padding: 0 12px !important; }
+      #welcome-banner div { padding: 0 12px !important; }
     }
   </style>
 </head>
