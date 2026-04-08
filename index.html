@@ -4445,6 +4445,11 @@
       const divider = document.getElementById(monthId);
       link.style.display = (divider && divider.style.display === 'none') ? 'none' : '';
     });
+    // On mobile, hide welcome banner when searching
+    const welcomeBanner = document.getElementById('welcome-banner');
+    if (welcomeBanner && window.innerWidth <= 900) {
+      welcomeBanner.style.display = q.length > 0 ? 'none' : '';
+    }
     // Show "No results found" message when nothing matches
     const feed = document.querySelector('#promo-alerts .feed');
     let noResults = feed.querySelector('.no-results');
@@ -4527,6 +4532,8 @@
     cards.forEach(c => c.classList.remove('hidden'));
     document.querySelectorAll('.month-divider').forEach(d => d.style.display = '');
     document.querySelectorAll('.month-nav a').forEach(a => a.style.display = '');
+    const wb = document.getElementById('welcome-banner');
+    if (wb) wb.style.display = '';
 
     // Find and scroll to the matching card
     for (const card of cards) {
