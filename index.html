@@ -4439,20 +4439,27 @@
     scrollToCards();
   }
 
-  // RECENT MATCHES — click to scroll to matching card
+  // RECENT MATCHES & TICKERS TO WATCH — click to scroll to matching card
   function scrollToMatch(ticker) {
     const t = ticker.toLowerCase().trim();
+
+    // Reset all filters so every card is visible
+    activeFilter = 'all';
+    document.getElementById('searchInput').value = '';
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    const allBtn = document.querySelector('.filter-btn');
+    if (allBtn) allBtn.classList.add('active');
+    document.querySelectorAll('.sidebar-row').forEach(r => r.classList.remove('active-firm'));
+
+    // Remove hidden class from all cards
     const cards = document.querySelectorAll('#promo-alerts .feed .card');
+    cards.forEach(c => c.classList.remove('hidden'));
+
+    // Find and scroll to the matching card
     for (const card of cards) {
       const text = (card.getAttribute('data-text') || '').toLowerCase();
       const words = text.split(/\s+/);
       if (words.includes(t)) {
-        // Clear any active filters first so the card is visible
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        const allBtn = document.querySelector('.filter-btn');
-        if (allBtn) allBtn.classList.add('active');
-        card.style.display = '';
-        cards.forEach(c => c.style.display = '');
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
         card.style.outline = '3px solid var(--accent)';
         setTimeout(() => card.style.outline = '', 2000);
