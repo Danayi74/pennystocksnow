@@ -94,14 +94,18 @@
       line-height: 1.6;
     }
 
+    /* ── STICKY TOP WRAPPER ── */
+    .sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
     /* ── NAV ── */
     nav {
       background: #fff;
       border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
 
     .nav-inner {
@@ -1011,6 +1015,9 @@
 </head>
 <body>
 
+<!-- STICKY TOP WRAPPER -->
+<div class="sticky-top">
+
 <!-- NAV -->
 <header>
 <nav aria-label="Main navigation">
@@ -1059,6 +1066,8 @@
     </p>
   </div>
 </div>
+
+</div><!-- END STICKY TOP WRAPPER -->
 
 <!-- TOP MOVERS TAB -->
 <div id="top-movers" class="tab-content">
