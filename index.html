@@ -4343,21 +4343,17 @@
   }
 
   // Store the original card order on first load
-  let originalCardOrder = null;
-
   function sortCards(order) {
     const feed = document.querySelector('#promo-alerts .feed');
     const cards = Array.from(feed.querySelectorAll('.card'));
     if (cards.length === 0) return;
 
-    // Save original order the first time
-    if (!originalCardOrder) {
-      originalCardOrder = cards.map(c => c);
-    }
-
-    const sorted = order === 'oldest'
-      ? [...originalCardOrder].reverse()
-      : [...originalCardOrder];
+    // Parse the date from each card's card-date element
+    const sorted = cards.sort((a, b) => {
+      const dateA = new Date(a.querySelector('.card-date')?.textContent.trim() || '');
+      const dateB = new Date(b.querySelector('.card-date')?.textContent.trim() || '');
+      return order === 'oldest' ? dateA - dateB : dateB - dateA;
+    });
 
     sorted.forEach(card => feed.appendChild(card));
   }
