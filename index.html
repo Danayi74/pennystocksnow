@@ -933,6 +933,55 @@
       color: var(--text-muted);
     }
 
+    /* ── MONTH NAV ── */
+    .month-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .month-nav a {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .month-nav a:hover {
+      background: var(--accent-light);
+      border-color: var(--accent-border);
+      color: var(--accent);
+    }
+
+    .month-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0 16px;
+      scroll-margin-top: 120px;
+    }
+
+    .month-divider h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .month-divider .line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
     .disclaimer {
       background: #fffbeb;
       border: 1px solid #fde68a;
@@ -4343,19 +4392,80 @@
   }
 
   // Store the original card order on first load
-  function sortCards(order) {
+  const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function getCardDate(card) {
+    return new Date(card.querySelector('.card-date')?.textContent.trim() || '');
+  }
+
+  function getCardMonth(card) {
+    const d = getCardDate(card);
+    return isNaN(d) ? null : d.getMonth();
+  }
+
+  function buildMonthGroups(order) {
     const feed = document.querySelector('#promo-alerts .feed');
     const cards = Array.from(feed.querySelectorAll('.card'));
     if (cards.length === 0) return;
 
-    // Parse the date from each card's card-date element
-    const sorted = cards.sort((a, b) => {
-      const dateA = new Date(a.querySelector('.card-date')?.textContent.trim() || '');
-      const dateB = new Date(b.querySelector('.card-date')?.textContent.trim() || '');
+    // Remove existing month dividers and month nav
+    feed.querySelectorAll('.month-divider').forEach(el => el.remove());
+    const existingNav = feed.querySelector('.month-nav');
+    if (existingNav) existingNav.remove();
+
+    // Sort cards by date
+    cards.sort((a, b) => {
+      const dateA = getCardDate(a);
+      const dateB = getCardDate(b);
       return order === 'oldest' ? dateA - dateB : dateB - dateA;
     });
 
-    sorted.forEach(card => feed.appendChild(card));
+    // Re-append sorted cards
+    cards.forEach(card => feed.appendChild(card));
+
+    // Determine unique months in display order
+    const seenMonths = [];
+    cards.forEach(card => {
+      const m = getCardMonth(card);
+      if (m !== null && !seenMonths.includes(m)) seenMonths.push(m);
+    });
+
+    // Build month nav
+    const nav = document.createElement('div');
+    nav.className = 'month-nav';
+    seenMonths.forEach(m => {
+      const a = document.createElement('a');
+      a.textContent = MONTH_NAMES[m];
+      a.href = '#month-' + m;
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.getElementById('month-' + m);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      nav.appendChild(a);
+    });
+
+    // Insert nav after feed-header
+    const feedHeader = feed.querySelector('.feed-header');
+    if (feedHeader) feedHeader.after(nav);
+
+    // Insert month dividers before the first card of each month
+    let lastMonth = null;
+    cards.forEach(card => {
+      const m = getCardMonth(card);
+      if (m !== null && m !== lastMonth) {
+        const divider = document.createElement('div');
+        divider.className = 'month-divider';
+        divider.id = 'month-' + m;
+        divider.innerHTML = '<h4>' + MONTH_NAMES[m] + ' 2026</h4><div class="line"></div>';
+        card.parentNode.insertBefore(divider, card);
+        lastMonth = m;
+      }
+    });
+  }
+
+  function sortCards(order) {
+    buildMonthGroups(order);
   }
 
   // TOP MOVERS — SWITCH VIEW
@@ -4533,6 +4643,9 @@
   }
 
 
+
+  // Build month groups on initial load (newest first)
+  buildMonthGroups('newest');
 
 </script>
 
