@@ -1009,8 +1009,8 @@
     @media (max-width: 900px) {
       /* === Global overflow prevention (iOS Safari: use 100% not 100vw) === */
       *, *::before, *::after { box-sizing: border-box; }
-      html { overflow-x: hidden; width: 100%; }
-      body { overflow-x: hidden; width: 100%; max-width: 100%; }
+      html { overflow-x: clip; width: 100%; }
+      body { overflow-x: clip; width: 100%; max-width: 100%; }
       .main-layout {
         grid-template-columns: 1fr;
         padding: 0 12px;
@@ -1062,10 +1062,10 @@
       .brand { font-size: 16px; }
       .tagline { font-size: 10px; }
       .logo-icon { font-size: 20px; }
-      .sticky-top { width: 100%; max-width: 100%; overflow: hidden; }
-      .search-bar { padding: 8px 0 !important; width: 100%; max-width: 100%; overflow: hidden; }
-      header { width: 100%; max-width: 100%; overflow: hidden; }
-      nav { width: 100%; max-width: 100%; overflow: hidden; }
+      .sticky-top { width: 100%; max-width: 100%; position: sticky !important; top: 0 !important; z-index: 200 !important; }
+      .search-bar { padding: 8px 0 !important; width: 100%; max-width: 100%; }
+      header { width: 100%; max-width: 100%; }
+      nav { width: 100%; max-width: 100%; }
       #welcome-banner { padding: 10px 0; width: 100%; max-width: 100%; overflow: hidden; }
       #welcome-banner p { font-size: 12px !important; padding: 0 12px !important; }
       #welcome-banner div { padding: 0 12px !important; max-width: 100%; }
