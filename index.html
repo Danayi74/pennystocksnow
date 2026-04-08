@@ -1015,7 +1015,7 @@
 </head>
 <body>
 
-<!-- STICKY TOP WRAPPER -->
+<!-- STICKY TOP WRAPPER (nav + search bar only) -->
 <div class="sticky-top">
 
 <!-- NAV -->
@@ -1041,8 +1041,6 @@
 </nav>
 </header>
 
-<main>
-
 <div class="search-bar active" style="background:var(--nav-bg);border-bottom:1px solid var(--border);padding:8px 0;">
   <div class="search-inner">
     <div class="search-wrap">
@@ -1057,8 +1055,12 @@
   </div>
 </div>
 
+</div><!-- END STICKY TOP WRAPPER -->
+
+<main>
+
 <!-- WELCOME BANNER -->
-<div style="background:#f0fdf4;border-bottom:1px solid #c6f6d5;padding:14px 0;">
+<div id="welcome-banner" style="background:#f0fdf4;border-bottom:1px solid #c6f6d5;padding:14px 0;">
   <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
     <p style="margin:0;font-size:13.5px;color:#276749;line-height:1.7;">
 
@@ -1066,8 +1068,6 @@
     </p>
   </div>
 </div>
-
-</div><!-- END STICKY TOP WRAPPER -->
 
 <!-- TOP MOVERS TAB -->
 <div id="top-movers" class="tab-content">
@@ -4375,6 +4375,15 @@
     }
   }
 
+  // Scroll cards area to just below sticky header
+  function scrollToCards() {
+    const el = document.getElementById('promo-alerts');
+    if (!el) return;
+    const stickyH = document.querySelector('.sticky-top')?.offsetHeight || 0;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - stickyH;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
   // PROMO ALERTS FILTER
   let activeFilter = 'all';
 
@@ -4391,6 +4400,7 @@
 
   function filterCards() {
     applyFilters();
+    scrollToCards();
   }
 
   function setFilter(filter, btn) {
@@ -4400,6 +4410,7 @@
     // Clear any active firm selection when user clicks a category filter
     document.querySelectorAll('.sidebar-row').forEach(r => r.classList.remove('active-firm'));
     applyFilters();
+    scrollToCards();
   }
 
   function filterByFirm(row) {
@@ -4423,10 +4434,8 @@
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     document.querySelector('.filter-btn').classList.add('active');
 
-    // Scroll to top of feed
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
     applyFilters();
+    scrollToCards();
   }
 
   // RECENT MATCHES — click to scroll to matching card
