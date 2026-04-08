@@ -791,10 +791,13 @@
 
     .sidebar-row:last-child { border-bottom: none; }
 
+    .sidebar-row:hover .sidebar-row-label { color: var(--accent); }
+
     .sidebar-row-label {
       font-size: 13px;
       color: var(--text-primary);
       font-weight: 500;
+      transition: color 0.15s;
     }
 
     .sidebar-row-sub {
