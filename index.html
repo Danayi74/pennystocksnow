@@ -1007,26 +1007,44 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      body { overflow-x: hidden; }
+      /* === Global overflow prevention === */
+      html { overflow-x: hidden; }
+      body { overflow-x: hidden; max-width: 100vw; }
       .main-layout {
         grid-template-columns: 1fr;
         padding: 0 12px;
         margin: 12px auto;
         gap: 12px;
+        max-width: 100vw;
+        overflow-x: hidden;
+        box-sizing: border-box;
       }
       .sidebar { display: none !important; }
       .filter-btns { display: none !important; }
       .search-inner { justify-content: center; padding: 0 12px; }
       .search-wrap { max-width: 80%; width: 80%; }
-      .card { padding: 14px 14px; margin-bottom: 10px; }
-      .card-title { font-size: 14px; }
-      .card-body { font-size: 12.5px; }
-      .hired-box { padding: 9px 12px; gap: 10px; }
-      .hired-firm { font-size: 13px; }
-      .hired-purpose { font-size: 11px; }
-      .ticker { font-size: 10px; padding: 1px 5px; }
-      .card-top { gap: 6px; }
-      .tag { font-size: 10px !important; padding: 2px 7px !important; }
+      /* === Feed & cards: 100% fit === */
+      .feed { max-width: 100%; overflow: hidden; box-sizing: border-box; }
+      #promo-alerts { max-width: 100%; overflow-x: hidden; }
+      .card {
+        padding: 14px 14px;
+        margin-bottom: 10px;
+        max-width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+      .card-title { font-size: 14px; word-break: break-word; overflow-wrap: break-word; }
+      .card-body { font-size: 12.5px; word-break: break-word; overflow-wrap: break-word; }
+      .hired-box { padding: 9px 12px; gap: 10px; max-width: 100%; overflow: hidden; box-sizing: border-box; }
+      .hired-firm { font-size: 13px; word-break: break-word; overflow-wrap: break-word; }
+      .hired-purpose { font-size: 11px; word-break: break-word; overflow-wrap: break-word; }
+      .ticker { font-size: 10px; padding: 1px 5px; white-space: normal; }
+      .card-top { gap: 6px; flex-wrap: wrap; max-width: 100%; }
+      .tag { font-size: 10px !important; padding: 2px 7px !important; white-space: nowrap; }
+      .card-footer { flex-wrap: wrap; gap: 4px; max-width: 100%; }
+      .source-footer { word-break: break-word; overflow-wrap: break-word; font-size: 10px; }
       .feed-header { padding: 0; }
       .feed-header h3 { font-size: 14px; }
       .month-divider h4 { font-size: 13px; }
@@ -1034,9 +1052,12 @@
       .brand { font-size: 16px; }
       .tagline { font-size: 10px; }
       .logo-icon { font-size: 20px; }
+      .sticky-top { max-width: 100vw; overflow: hidden; }
       #welcome-banner { padding: 10px 0; }
       #welcome-banner p { font-size: 12px !important; padding: 0 12px !important; }
       #welcome-banner div { padding: 0 12px !important; }
+      /* === No results message fit === */
+      #no-results-msg { max-width: 100%; box-sizing: border-box; word-break: break-word; }
     }
   </style>
 </head>
