@@ -1036,16 +1036,19 @@
         word-break: break-word;
         overflow-wrap: break-word;
       }
-      .card-top { gap: 6px; flex-wrap: wrap; max-width: 100%; overflow: hidden; }
-      .card-date { white-space: normal !important; }
-      .card-title { font-size: 14px; word-break: break-word; overflow-wrap: break-word; max-width: 100%; }
-      .card-body { font-size: 12.5px; word-break: break-word; overflow-wrap: break-word; }
+      .card-top { gap: 6px; flex-wrap: wrap; max-width: 100%; overflow: hidden; min-width: 0; }
+      .card-tags { min-width: 0; max-width: 100%; }
+      .card-date { white-space: normal !important; min-width: 0; }
+      .card-title { font-size: 14px !important; word-break: break-word; overflow-wrap: break-word; max-width: 100%; }
+      .card-body { font-size: 12.5px; word-break: break-word; overflow-wrap: break-word; max-width: 100%; }
       .hired-box { padding: 9px 12px; gap: 10px; width: 100%; max-width: 100%; overflow: hidden; }
-      .hired-firm { font-size: 13px; word-break: break-word; overflow-wrap: break-word; }
-      .hired-purpose { font-size: 11px; word-break: break-word; overflow-wrap: break-word; }
-      .ticker { font-size: 9px; padding: 1px 4px; white-space: normal !important; display: inline; }
+      .hired-details { min-width: 0; max-width: 100%; }
+      .hired-firm { font-size: 13px; word-break: break-word; overflow-wrap: break-word; min-width: 0; }
+      .hired-purpose { font-size: 11px; word-break: break-word; overflow-wrap: break-word; min-width: 0; }
+      .ticker { font-size: 9px !important; padding: 1px 4px !important; white-space: normal !important; display: inline !important; }
       .tag { font-size: 10px !important; padding: 2px 7px !important; }
       .card-footer { flex-wrap: wrap; gap: 4px; max-width: 100%; overflow: hidden; }
+      .alert-kw { flex-wrap: wrap; min-width: 0; word-break: break-word; font-size: 10px; }
       .source-footer { word-break: break-word; overflow-wrap: break-word; font-size: 10px; }
       /* === Tables (Top Movers): prevent overflow === */
       table { width: 100%; table-layout: fixed; }
@@ -1360,7 +1363,7 @@
         <div class="card-title">
           Wedgemount Resources Engages Machai Capital &amp; Grants Stock Options
           <span class="ticker">CSE: WDGY</span>
-         <span class="ticker" style="font-size:11px;">OTC: WDGRF</span></div>
+         <span class="ticker">OTC: WDGRF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📣</div>
           <div class="hired-details">
@@ -1370,7 +1373,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Wedgemount Resources Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: WDGY</span> <span class="ticker" style="font-size:11px;">OTC: WDGRF</span> has announced the engagement of <strong>Machai Capital Inc.</strong> for digital marketing and investor awareness services, along with a grant of stock options. Machai and its principal Suneal Sandhu currently own 3,098,000 common shares of the company. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Wedgemount Resources Corp.</strong> <span class="ticker">CSE: WDGY</span> <span class="ticker">OTC: WDGRF</span> has announced the engagement of <strong>Machai Capital Inc.</strong> for digital marketing and investor awareness services, along with a grant of stock options. Machai and its principal Suneal Sandhu currently own 3,098,000 common shares of the company. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -1389,7 +1392,7 @@
         <div class="card-title">
           Tactical Resources Hires Independent Trading Group to Boost Share Liquidity
           <span class="ticker">TSXV: RARE</span>
-         <span class="ticker" style="font-size:11px;">OTC: USREF</span></div>
+         <span class="ticker">OTC: USREF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📈</div>
           <div class="hired-details">
@@ -1399,7 +1402,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Tactical Resources Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: RARE</span> <span class="ticker" style="font-size:11px;">OTC: USREF</span> has appointed Toronto-based <strong>Independent Trading Group (ITG)</strong> as its market maker on the TSX Venture Exchange and other venues to improve share liquidity. Tactical Resources is an exploration and development company focused on rare earth elements at its flagship Peak project in El Paso, Texas. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Tactical Resources Corp.</strong> <span class="ticker">TSXV: RARE</span> <span class="ticker">OTC: USREF</span> has appointed Toronto-based <strong>Independent Trading Group (ITG)</strong> as its market maker on the TSX Venture Exchange and other venues to improve share liquidity. Tactical Resources is an exploration and development company focused on rare earth elements at its flagship Peak project in El Paso, Texas. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1418,7 +1421,7 @@
         <div class="card-title">
           Abitibi Metals Renews Native Ads Agreement for 12-Month Awareness Campaign
           <span class="ticker">CSE: AMQ</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: AMQFF</span></div>
+         <span class="ticker">OTCQB: AMQFF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📣</div>
           <div class="hired-details">
@@ -1428,7 +1431,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Abitibi Metals Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: AMQ</span> <span class="ticker" style="font-size:11px;">OTCQB: AMQFF</span> has renewed its agreement with <strong>Native Ads Inc.</strong> for an additional <strong>12 months</strong> with a budget of up to <strong>US$200,000</strong>. The company retains the option to renew or extend. Neither Native Ads nor any of its principals have any interest in the company or its securities. Abitibi Metals is advancing the B26 polymetallic deposit in Quebec.
+          <strong>Abitibi Metals Corp.</strong> <span class="ticker">CSE: AMQ</span> <span class="ticker">OTCQB: AMQFF</span> has renewed its agreement with <strong>Native Ads Inc.</strong> for an additional <strong>12 months</strong> with a budget of up to <strong>US$200,000</strong>. The company retains the option to renew or extend. Neither Native Ads nor any of its principals have any interest in the company or its securities. Abitibi Metals is advancing the B26 polymetallic deposit in Quebec.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -1447,7 +1450,7 @@
         <div class="card-title">
           Gemdale Gold Engages Investing News Network for Awareness Campaign
           <span class="ticker">TSXV: GEMG</span>
-         <span class="ticker" style="font-size:11px;">OTC: GDGIF</span></div>
+         <span class="ticker">OTC: GDGIF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📣</div>
           <div class="hired-details">
@@ -1457,7 +1460,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Gemdale Gold Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: GEMG</span> <span class="ticker" style="font-size:11px;">OTC: GDGIF</span> has entered into an agreement with <strong>Dig Media Inc.</strong>, doing business as <strong>Investing News Network (INN)</strong>, for an advertising and investor awareness campaign. The 6-month campaign runs from <strong>April 25, 2026 to October 25, 2026</strong>, with a total cost of approximately <strong>$24,100</strong> plus applicable taxes, to be paid in cash. INN is a Vancouver-based private company providing independent investor news since 2007.
+          <strong>Gemdale Gold Inc.</strong> <span class="ticker">TSXV: GEMG</span> <span class="ticker">OTC: GDGIF</span> has entered into an agreement with <strong>Dig Media Inc.</strong>, doing business as <strong>Investing News Network (INN)</strong>, for an advertising and investor awareness campaign. The 6-month campaign runs from <strong>April 25, 2026 to October 25, 2026</strong>, with a total cost of approximately <strong>$24,100</strong> plus applicable taxes, to be paid in cash. INN is a Vancouver-based private company providing independent investor news since 2007.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1494,7 +1497,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Everkind Inc.</strong> (via <strong>AF2 Capital Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: AF.P</span>) has engaged two firms for marketing and investor awareness. The <strong>i2i Marketing Group LLC</strong> agreement, dated January 9, 2026, provides for marketing and investor awareness services at a minimum of <strong>US$50,000 per month</strong> up to an annual maximum of <strong>US$2,000,000</strong>, for up to <strong>24 months</strong> commencing March 2026. The <strong>Altura Media Co Inc.</strong> agreement, dated January 3, 2026, provides for digital marketing services at <strong>$25,000 per month</strong> up to a maximum of <strong>$3,000,000</strong> over <strong>24 months</strong>. AF2 Capital is completing a qualifying transaction to amalgamate with Everkind and will be renamed <strong>"Everkind Corp."</strong> pending shareholder approval on <strong>April 13, 2026</strong>.
+          <strong>Everkind Inc.</strong> (via <strong>AF2 Capital Corp.</strong> <span class="ticker">TSXV: AF.P</span>) has engaged two firms for marketing and investor awareness. The <strong>i2i Marketing Group LLC</strong> agreement, dated January 9, 2026, provides for marketing and investor awareness services at a minimum of <strong>US$50,000 per month</strong> up to an annual maximum of <strong>US$2,000,000</strong>, for up to <strong>24 months</strong> commencing March 2026. The <strong>Altura Media Co Inc.</strong> agreement, dated January 3, 2026, provides for digital marketing services at <strong>$25,000 per month</strong> up to a maximum of <strong>$3,000,000</strong> over <strong>24 months</strong>. AF2 Capital is completing a qualifying transaction to amalgamate with Everkind and will be renamed <strong>"Everkind Corp."</strong> pending shareholder approval on <strong>April 13, 2026</strong>.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1513,7 +1516,7 @@
         <div class="card-title">
           Kalo Gold Enters into Multi-Firm Investor Relations &amp; Marketing Agreements
           <span class="ticker">TSXV: KALO</span>
-         <span class="ticker" style="font-size:11px;">OTC: KLGDF</span></div>
+         <span class="ticker">OTC: KLGDF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📣</div>
           <div class="hired-details">
@@ -1539,7 +1542,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Kalo Gold Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: KALO</span> <span class="ticker" style="font-size:11px;">OTC: KLGDF</span> has entered into three investor relations and marketing agreements. <strong>Fairfax Partners Inc.</strong> of Vancouver will provide IR management, digital marketing and communications for <strong>CAD$5,000/month</strong> plus a <strong>CAD$250,000 marketing budget</strong> over 12 months (effective April 8, 2026). <strong>GOLDINVEST Consulting GmbH</strong> of Hamburg will publicize Kalo across its European network including GOLDINVEST.de for <strong>CAD$60,000</strong> over 12 months (effective April 8, 2026). <strong>NAI Interactive Ltd.</strong> of Vancouver will translate and distribute materials to its Chinese-language network for a one-time fee of <strong>CAD$13,500</strong> over 12 months (effective February 7, 2026).
+          <strong>Kalo Gold Corp.</strong> <span class="ticker">TSXV: KALO</span> <span class="ticker">OTC: KLGDF</span> has entered into three investor relations and marketing agreements. <strong>Fairfax Partners Inc.</strong> of Vancouver will provide IR management, digital marketing and communications for <strong>CAD$5,000/month</strong> plus a <strong>CAD$250,000 marketing budget</strong> over 12 months (effective April 8, 2026). <strong>GOLDINVEST Consulting GmbH</strong> of Hamburg will publicize Kalo across its European network including GOLDINVEST.de for <strong>CAD$60,000</strong> over 12 months (effective April 8, 2026). <strong>NAI Interactive Ltd.</strong> of Vancouver will translate and distribute materials to its Chinese-language network for a one-time fee of <strong>CAD$13,500</strong> over 12 months (effective February 7, 2026).
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1568,7 +1571,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>ICG Silver &amp; Gold Ltd.</strong> <span class="ticker" style="font-size:11px;">CSE: ICG</span> has engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> for European digital awareness and marketing services. The company has agreed to allocate <strong>€100,000 over 12 months</strong> to Plutus's digital marketing program for agreed media services intended to drive investor visibility. Plutus does not own or control any securities of the Company. ICG began trading on the CSE on March 31, 2026, and is advancing the Tuscarora silver-gold district in Nevada.
+          <strong>ICG Silver &amp; Gold Ltd.</strong> <span class="ticker">CSE: ICG</span> has engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> for European digital awareness and marketing services. The company has agreed to allocate <strong>€100,000 over 12 months</strong> to Plutus's digital marketing program for agreed media services intended to drive investor visibility. Plutus does not own or control any securities of the Company. ICG began trading on the CSE on March 31, 2026, and is advancing the Tuscarora silver-gold district in Nevada.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -1597,7 +1600,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Rezolve AI PLC</strong> <span class="ticker" style="font-size:11px;">NASDAQ: RZLV</span> is being advertised by <strong>Outside The Box Capital Inc.</strong> through its digital advertising and investor awareness network. Rezolve AI is a publicly traded AI company featuring a proprietary Large Language Model designed for the retail sector, guiding to $350 million in 2026 revenue with a target of $500 million ARR exit rate. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Rezolve AI PLC</strong> <span class="ticker">NASDAQ: RZLV</span> is being advertised by <strong>Outside The Box Capital Inc.</strong> through its digital advertising and investor awareness network. Rezolve AI is a publicly traded AI company featuring a proprietary Large Language Model designed for the retail sector, guiding to $350 million in 2026 revenue with a target of $500 million ARR exit rate. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>Public Disclosure</span></div>
@@ -1627,7 +1630,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Gold X2 Mining Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: AUXX</span> <span class="ticker" style="font-size:11px;">OTC: GSHRF</span> has engaged <strong>Native Ads Inc.</strong>, a Vancouver and New York-based full-service advertising agency, to provide strategic digital media, marketing and data analytic services commencing April 6, 2026. The company will make a total upfront payment of <strong>US$250,000</strong> to Native Ads for services covering a term of <strong>24 months</strong>, or until the retainer has been depleted. The agreement may be terminated at any time upon <strong>thirty days' written notice</strong>.
+          <strong>Gold X2 Mining Inc.</strong> <span class="ticker">TSXV: AUXX</span> <span class="ticker">OTC: GSHRF</span> has engaged <strong>Native Ads Inc.</strong>, a Vancouver and New York-based full-service advertising agency, to provide strategic digital media, marketing and data analytic services commencing April 6, 2026. The company will make a total upfront payment of <strong>US$250,000</strong> to Native Ads for services covering a term of <strong>24 months</strong>, or until the retainer has been depleted. The agreement may be terminated at any time upon <strong>thirty days' written notice</strong>.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1657,7 +1660,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Syntholene Energy Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: ESAF</span> <span class="ticker" style="font-size:11px;">OTC: SYNTF</span> has entered into an advisory agreement with <strong>DS Market Solutions Inc.</strong> (DSMS), an independent provider of equity trading advisory and liquidity services based in Mississauga, Ontario, to provide market liquidity services. The agreement commenced <strong>February 3, 2026</strong> at a monthly fee of <strong>$10,000</strong> (plus applicable taxes), continuing month-to-month with <strong>30 days' notice</strong> to terminate. Separately, the company has engaged <strong>Emerging Markets Consulting, LLC</strong> (EMC), a Florida-based investor relations and communications firm, for corporate communications and marketing support. The EMC agreement has a <strong>6-month</strong> term commencing April 1, 2026, for a total fee of <strong>US$150,000</strong> payable upfront.
+          <strong>Syntholene Energy Corp.</strong> <span class="ticker">TSXV: ESAF</span> <span class="ticker">OTC: SYNTF</span> has entered into an advisory agreement with <strong>DS Market Solutions Inc.</strong> (DSMS), an independent provider of equity trading advisory and liquidity services based in Mississauga, Ontario, to provide market liquidity services. The agreement commenced <strong>February 3, 2026</strong> at a monthly fee of <strong>$10,000</strong> (plus applicable taxes), continuing month-to-month with <strong>30 days' notice</strong> to terminate. Separately, the company has engaged <strong>Emerging Markets Consulting, LLC</strong> (EMC), a Florida-based investor relations and communications firm, for corporate communications and marketing support. The EMC agreement has a <strong>6-month</strong> term commencing April 1, 2026, for a total fee of <strong>US$150,000</strong> payable upfront.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1687,7 +1690,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>LibertyStream Infrastructure Partners Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: LIB</span> <span class="ticker" style="font-size:11px;">OTC: VLTLF</span> has engaged <strong>i2i Marketing Group LLC</strong> of Key West, Florida to provide marketing and investor awareness services including content development, campaign management and media distribution. The engagement provides for an initial minimum fee of <strong>US$300,000</strong>, paid from general corporate funds, continuing on a <strong>month-to-month</strong> basis. The hire is part of LibertyStream's <strong>U.S. Investor Awareness Initiative</strong> to broaden visibility among U.S. investors as the company advances its lithium carbonate production and <strong>Texas re-domiciliation</strong>.
+          <strong>LibertyStream Infrastructure Partners Inc.</strong> <span class="ticker">TSXV: LIB</span> <span class="ticker">OTC: VLTLF</span> has engaged <strong>i2i Marketing Group LLC</strong> of Key West, Florida to provide marketing and investor awareness services including content development, campaign management and media distribution. The engagement provides for an initial minimum fee of <strong>US$300,000</strong>, paid from general corporate funds, continuing on a <strong>month-to-month</strong> basis. The hire is part of LibertyStream's <strong>U.S. Investor Awareness Initiative</strong> to broaden visibility among U.S. investors as the company advances its lithium carbonate production and <strong>Texas re-domiciliation</strong>.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1717,7 +1720,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>F4 Uranium Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: FFU</span> <span class="ticker" style="font-size:11px;">OTC: FFUCF</span> has engaged <strong>Connect 4 Marketing</strong> ("Connect4") to provide comprehensive digital marketing services including content creation (videos, ad creatives, landing pages), influencer management, newsletter coordination, and targeted advertising campaigns in both <strong>English and German</strong> markets. The agreement has a <strong>2-month</strong> term at a cost of <strong>CAD$150,000</strong>, pending <strong>TSX Venture Exchange approval</strong>. F4 Uranium is focused on high-grade uranium exploration in the <strong>Athabasca Basin</strong>, with summer drilling planned at Murphy Lake, Todd Lake and Wales Lake projects.
+          <strong>F4 Uranium Corp.</strong> <span class="ticker">TSXV: FFU</span> <span class="ticker">OTC: FFUCF</span> has engaged <strong>Connect 4 Marketing</strong> ("Connect4") to provide comprehensive digital marketing services including content creation (videos, ad creatives, landing pages), influencer management, newsletter coordination, and targeted advertising campaigns in both <strong>English and German</strong> markets. The agreement has a <strong>2-month</strong> term at a cost of <strong>CAD$150,000</strong>, pending <strong>TSX Venture Exchange approval</strong>. F4 Uranium is focused on high-grade uranium exploration in the <strong>Athabasca Basin</strong>, with summer drilling planned at Murphy Lake, Todd Lake and Wales Lake projects.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1747,7 +1750,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>FendX Technologies Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: FNDX</span> <span class="ticker" style="font-size:11px;">OTC: FDXTF</span> has renewed its agreement with <strong>Outside The Box Capital Inc.</strong> ("OTB") with a third renewal dated <strong>March 30, 2026</strong>, extending the original agreement to <strong>June 30, 2026</strong> for no additional cost with a fee reduction of <strong>$28,080</strong> (inclusive of taxes). OTB provides social media, digital and influencer-based marketing, content creation and distribution across Reddit, Discord, Telegram, X (formerly Twitter), and StockTwits, and other investor communication services. FendX is developing <strong>nanotechnology-based surface protection coatings</strong> to reduce the spread of harmful pathogens.
+          <strong>FendX Technologies Inc.</strong> <span class="ticker">CSE: FNDX</span> <span class="ticker">OTC: FDXTF</span> has renewed its agreement with <strong>Outside The Box Capital Inc.</strong> ("OTB") with a third renewal dated <strong>March 30, 2026</strong>, extending the original agreement to <strong>June 30, 2026</strong> for no additional cost with a fee reduction of <strong>$28,080</strong> (inclusive of taxes). OTB provides social media, digital and influencer-based marketing, content creation and distribution across Reddit, Discord, Telegram, X (formerly Twitter), and StockTwits, and other investor communication services. FendX is developing <strong>nanotechnology-based surface protection coatings</strong> to reduce the spread of harmful pathogens.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -1765,7 +1768,7 @@
         </div>
         <div class="card-title">
           Global Power Solutions Hires Machai Capital for Digital Marketing
-         <span class="ticker" style="font-size:11px;">TSXV: PWER</span></div>
+         <span class="ticker">TSXV: PWER</span></div>
         <div class="hired-box">
           <div class="hired-icon">🌟</div>
           <div class="hired-details">
@@ -1775,7 +1778,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Global Power Solutions</strong> <span class="ticker" style="font-size:11px;">TSXV: PWER</span> has entered into a <strong>2-month</strong> digital marketing agreement with <strong>Machai Capital Inc.</strong> for a total fee of <strong>$50,000</strong> to bolster its market visibility. The engagement coincided with the company joining the Canada Data Centres alliance as it advances its data centre infrastructure business.
+          <strong>Global Power Solutions</strong> <span class="ticker">TSXV: PWER</span> has entered into a <strong>2-month</strong> digital marketing agreement with <strong>Machai Capital Inc.</strong> for a total fee of <strong>$50,000</strong> to bolster its market visibility. The engagement coincided with the company joining the Canada Data Centres alliance as it advances its data centre infrastructure business.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -1813,7 +1816,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Planet Ventures Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: PXI</span> <span class="ticker" style="font-size:11px;">OTC: PNXPF</span> has engaged award-winning public relations firm <strong>PRmediaNow Inc.</strong> at <strong>$6,000 per month</strong> for a <strong>6-month term</strong>, and <strong>Investor Brand Network (IBN)</strong> at <strong>USD$25,000 per quarter</strong> for a <strong>1-year term</strong> to enhance public visibility and media exposure. The company, which focuses on strategic technology investments, is seeking to broaden its investor audience through targeted PR and branding campaigns.
+          <strong>Planet Ventures Inc.</strong> <span class="ticker">CSE: PXI</span> <span class="ticker">OTC: PNXPF</span> has engaged award-winning public relations firm <strong>PRmediaNow Inc.</strong> at <strong>$6,000 per month</strong> for a <strong>6-month term</strong>, and <strong>Investor Brand Network (IBN)</strong> at <strong>USD$25,000 per quarter</strong> for a <strong>1-year term</strong> to enhance public visibility and media exposure. The company, which focuses on strategic technology investments, is seeking to broaden its investor audience through targeted PR and branding campaigns.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -1831,7 +1834,7 @@
         </div>
         <div class="card-title">
           Canadian Uranium Engages Capital Analytica for 6-Month IR Campaign
-         <span class="ticker" style="font-size:11px;">CSE: CANU</span> <span class="ticker" style="font-size:11px;">OTC: CANUF</span></div>
+         <span class="ticker">CSE: CANU</span> <span class="ticker">OTC: CANUF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📢</div>
           <div class="hired-details">
@@ -1841,7 +1844,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Canadian Uranium Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: CANU</span> <span class="ticker" style="font-size:11px;">OTC: CANUF</span> has engaged <strong>Capital Analytica</strong> of Nanaimo, BC to provide social media services, capital markets consultation, and investor sentiment and engagement reporting. The engagement has an initial <strong>6-month</strong> term at a cost of <strong>$150,000</strong> plus <strong>150,000 stock options</strong> exercisable at $0.75 per share. Capital Analytica specializes in marketing within the mining and metals sector.
+          <strong>Canadian Uranium Corp.</strong> <span class="ticker">CSE: CANU</span> <span class="ticker">OTC: CANUF</span> has engaged <strong>Capital Analytica</strong> of Nanaimo, BC to provide social media services, capital markets consultation, and investor sentiment and engagement reporting. The engagement has an initial <strong>6-month</strong> term at a cost of <strong>$150,000</strong> plus <strong>150,000 stock options</strong> exercisable at $0.75 per share. Capital Analytica specializes in marketing within the mining and metals sector.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1859,7 +1862,7 @@
         </div>
         <div class="card-title">
           Predictiv AI Launches AGORACOM Program &amp; Retains VLP for Market Making
-         <span class="ticker" style="font-size:11px;">TSXV: PAI</span> <span class="ticker" style="font-size:11px;">OTC: INOTF</span></div>
+         <span class="ticker">TSXV: PAI</span> <span class="ticker">OTC: INOTF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📊</div>
           <div class="hired-details">
@@ -1877,7 +1880,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Predictiv AI Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: PAI</span> <span class="ticker" style="font-size:11px;">OTC: INOTF</span> has launched an <strong>AGORACOM Marketing Program</strong>, compensating AGORACOM with <strong>$100,000 payable in common shares</strong>, and engaged <strong>Venture Liquidity Providers Inc.</strong> (VLP) to provide market making services aimed at improving share liquidity. The dual engagement combines investor-facing marketing with active liquidity support on the exchange.
+          <strong>Predictiv AI Inc.</strong> <span class="ticker">TSXV: PAI</span> <span class="ticker">OTC: INOTF</span> has launched an <strong>AGORACOM Marketing Program</strong>, compensating AGORACOM with <strong>$100,000 payable in common shares</strong>, and engaged <strong>Venture Liquidity Providers Inc.</strong> (VLP) to provide market making services aimed at improving share liquidity. The dual engagement combines investor-facing marketing with active liquidity support on the exchange.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1895,7 +1898,7 @@
         </div>
         <div class="card-title">
           Noveris Health Sciences Retains Fairfax Partners for IR &amp; Marketing
-         <span class="ticker" style="font-size:11px;">CSE: NVRS</span> <span class="ticker" style="font-size:11px;">OTC: MYCOF</span></div>
+         <span class="ticker">CSE: NVRS</span> <span class="ticker">OTC: MYCOF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📣</div>
           <div class="hired-details">
@@ -1905,7 +1908,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Noveris Health Sciences</strong> <span class="ticker" style="font-size:11px;">CSE: NVRS</span> <span class="ticker" style="font-size:11px;">OTC: MYCOF</span> has retained Vancouver-based <strong>Fairfax Partners Inc.</strong> for a <strong>3-month</strong> investor relations and digital marketing engagement with a fee cap of <strong>C$150,000</strong>. The company also launched an investor website alongside this engagement to improve its capital markets presence.
+          <strong>Noveris Health Sciences</strong> <span class="ticker">CSE: NVRS</span> <span class="ticker">OTC: MYCOF</span> has retained Vancouver-based <strong>Fairfax Partners Inc.</strong> for a <strong>3-month</strong> investor relations and digital marketing engagement with a fee cap of <strong>C$150,000</strong>. The company also launched an investor website alongside this engagement to improve its capital markets presence.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -1923,7 +1926,7 @@
         </div>
         <div class="card-title">
           CanCambria Hires Digitonic for North American Investor Campaign
-         <span class="ticker" style="font-size:11px;">TSXV: CCEC</span> <span class="ticker" style="font-size:11px;">OTCQB: CCEYF</span></div>
+         <span class="ticker">TSXV: CCEC</span> <span class="ticker">OTCQB: CCEYF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🎯</div>
           <div class="hired-details">
@@ -1933,7 +1936,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>CanCambria</strong> <span class="ticker" style="font-size:11px;">TSXV: CCEC</span> <span class="ticker" style="font-size:11px;">OTCQB: CCEYF</span> has hired <strong>Digitonic</strong> for a <strong>3-month</strong> marketing and investor relations campaign at a cost of <strong>US$30,000</strong>, targeting North American investors. Digitonic specializes in digital investor outreach and awareness for micro-cap and small-cap companies.
+          <strong>CanCambria</strong> <span class="ticker">TSXV: CCEC</span> <span class="ticker">OTCQB: CCEYF</span> has hired <strong>Digitonic</strong> for a <strong>3-month</strong> marketing and investor relations campaign at a cost of <strong>US$30,000</strong>, targeting North American investors. Digitonic specializes in digital investor outreach and awareness for micro-cap and small-cap companies.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1951,7 +1954,7 @@
         </div>
         <div class="card-title">
           Domestic Metals Engages Machai Capital for Investor Awareness
-         <span class="ticker" style="font-size:11px;">TSXV: DMCU</span> <span class="ticker" style="font-size:11px;">OTC: DMCUF</span></div>
+         <span class="ticker">TSXV: DMCU</span> <span class="ticker">OTC: DMCUF</span></div>
         <div class="hired-box">
           <div class="hired-icon">💡</div>
           <div class="hired-details">
@@ -1961,7 +1964,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Domestic Metals</strong> <span class="ticker" style="font-size:11px;">TSXV: DMCU</span> <span class="ticker" style="font-size:11px;">OTC: DMCUF</span> has entered into a <strong>2-month</strong> agreement with <strong>Machai Capital Inc.</strong> for a fee of <strong>CAD$300,000</strong> to provide investor awareness and marketing services. The company is advancing high-grade copper-gold-silver exploration projects in North America and seeks to bolster its market visibility.
+          <strong>Domestic Metals</strong> <span class="ticker">TSXV: DMCU</span> <span class="ticker">OTC: DMCUF</span> has entered into a <strong>2-month</strong> agreement with <strong>Machai Capital Inc.</strong> for a fee of <strong>CAD$300,000</strong> to provide investor awareness and marketing services. The company is advancing high-grade copper-gold-silver exploration projects in North America and seeks to bolster its market visibility.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -1980,7 +1983,7 @@
         <div class="card-title">
           Hydaway Digital Engages RMK Marketing for Digital Campaign
           <span class="ticker">TSXV: HIDE</span>
-         <span class="ticker" style="font-size:11px;">OTC: HIDDF</span></div>
+         <span class="ticker">OTC: HIDDF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🚀</div>
           <div class="hired-details">
@@ -1990,7 +1993,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Hydaway Digital Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: HIDE</span> <span class="ticker" style="font-size:11px;">OTC: HIDDF</span> has engaged Mississauga-based <strong>RMK Marketing Inc.</strong> to provide digital marketing services focused on Google advertising for a fee of <strong>C$150,000</strong> over a <strong>4-month term</strong>. The engagement aims to boost online visibility and investor awareness through targeted search engine marketing.
+          <strong>Hydaway Digital Corp.</strong> <span class="ticker">TSXV: HIDE</span> <span class="ticker">OTC: HIDDF</span> has engaged Mississauga-based <strong>RMK Marketing Inc.</strong> to provide digital marketing services focused on Google advertising for a fee of <strong>C$150,000</strong> over a <strong>4-month term</strong>. The engagement aims to boost online visibility and investor awareness through targeted search engine marketing.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2020,7 +2023,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Aegis Critical Energy Defence Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: QESS</span> <span class="ticker" style="font-size:11px;">OTC: QESSF</span> has signed a marketing services agreement with Ontario-based <strong>Outside The Box Capital Inc.</strong> for <strong>$250,000</strong> to expand investor awareness and market reach through digital community engagement services.
+          <strong>Aegis Critical Energy Defence Corp.</strong> <span class="ticker">CSE: QESS</span> <span class="ticker">OTC: QESSF</span> has signed a marketing services agreement with Ontario-based <strong>Outside The Box Capital Inc.</strong> for <strong>$250,000</strong> to expand investor awareness and market reach through digital community engagement services.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -2038,7 +2041,7 @@
         </div>
         <div class="card-title">
           Grit Metals Hires Plutus Invest &amp; Independent Trading Group
-         <span class="ticker" style="font-size:11px;">TSXV: FIN</span></div>
+         <span class="ticker">TSXV: FIN</span></div>
         <div class="hired-box">
           <div class="hired-icon">💹</div>
           <div class="hired-details">
@@ -2056,7 +2059,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Grit Metals</strong> <span class="ticker" style="font-size:11px;">TSXV: FIN</span> has engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> to provide marketing and investor awareness services valued between <strong>€100,000–€250,000</strong>, and <strong>Independent Trading Group Inc.</strong> (ITG) as market maker to provide continuous bid-ask liquidity.
+          <strong>Grit Metals</strong> <span class="ticker">TSXV: FIN</span> has engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> to provide marketing and investor awareness services valued between <strong>€100,000–€250,000</strong>, and <strong>Independent Trading Group Inc.</strong> (ITG) as market maker to provide continuous bid-ask liquidity.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2074,7 +2077,7 @@
         </div>
         <div class="card-title">
           Moon River Moly Engages Independent Trading Group as Market Maker
-         <span class="ticker" style="font-size:11px;">TSXV: MOO</span> <span class="ticker" style="font-size:11px;">OTCQB: MRIVF</span></div>
+         <span class="ticker">TSXV: MOO</span> <span class="ticker">OTCQB: MRIVF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🔄</div>
           <div class="hired-details">
@@ -2084,7 +2087,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Moon River Moly</strong> <span class="ticker" style="font-size:11px;">TSXV: MOO</span> <span class="ticker" style="font-size:11px;">OTCQB: MRIVF</span> has engaged <strong>Independent Trading Group Inc.</strong> (ITG) to act as market maker and provide liquidity services for its shares at <strong>CAD$6,500 per month</strong> on a <strong>monthly renewable</strong> basis. The Davidson Mine PEA report was also recently filed. ITG provides continuous bid-ask quotes to improve trading liquidity.
+          <strong>Moon River Moly</strong> <span class="ticker">TSXV: MOO</span> <span class="ticker">OTCQB: MRIVF</span> has engaged <strong>Independent Trading Group Inc.</strong> (ITG) to act as market maker and provide liquidity services for its shares at <strong>CAD$6,500 per month</strong> on a <strong>monthly renewable</strong> basis. The Davidson Mine PEA report was also recently filed. ITG provides continuous bid-ask quotes to improve trading liquidity.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2114,7 +2117,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Fortune Bay Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: FOR</span> <span class="ticker" style="font-size:11px;">OTC: FTBYF</span> has engaged <strong>Machai Capital Inc.</strong> for a <strong>3-month</strong> digital marketing campaign at a cost of <strong>$400,000</strong> plus <strong>175,000 stock options</strong> exercisable at $0.90 per share to expand investor awareness and market visibility for the company's mining exploration projects.
+          <strong>Fortune Bay Corp.</strong> <span class="ticker">TSXV: FOR</span> <span class="ticker">OTC: FTBYF</span> has engaged <strong>Machai Capital Inc.</strong> for a <strong>3-month</strong> digital marketing campaign at a cost of <strong>$400,000</strong> plus <strong>175,000 stock options</strong> exercisable at $0.90 per share to expand investor awareness and market visibility for the company's mining exploration projects.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2132,7 +2135,7 @@
         </div>
         <div class="card-title">
           Integrated Quantum Technologies Renews Native Ads for Marketing
-         <span class="ticker" style="font-size:11px;">CSE: ICS</span> <span class="ticker" style="font-size:11px;">OTC: IGCRF</span></div>
+         <span class="ticker">CSE: ICS</span> <span class="ticker">OTC: IGCRF</span></div>
         <div class="hired-box">
           <div class="hired-icon">✨</div>
           <div class="hired-details">
@@ -2142,7 +2145,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Integrated Quantum Technologies</strong> <span class="ticker" style="font-size:11px;">CSE: ICS</span> <span class="ticker" style="font-size:11px;">OTC: IGCRF</span> has renewed its digital marketing engagement with <strong>Native Ads Inc.</strong> for an initial <strong>6-month</strong> term at a cost of <strong>$175,000</strong>. The renewal continues the company's investor awareness strategy through digital channels.
+          <strong>Integrated Quantum Technologies</strong> <span class="ticker">CSE: ICS</span> <span class="ticker">OTC: IGCRF</span> has renewed its digital marketing engagement with <strong>Native Ads Inc.</strong> for an initial <strong>6-month</strong> term at a cost of <strong>$175,000</strong>. The renewal continues the company's investor awareness strategy through digital channels.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -2161,7 +2164,7 @@
         <div class="card-title">
           FutureGen Industries Retains Venture Liquidity Providers
           <span class="ticker">TSXV: LITT</span>
-         <span class="ticker" style="font-size:11px;">OTC: RMANF</span></div>
+         <span class="ticker">OTC: RMANF</span></div>
         <div class="hired-box">
           <div class="hired-icon">⚡</div>
           <div class="hired-details">
@@ -2171,7 +2174,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>FutureGen Industries Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: LITT</span> <span class="ticker" style="font-size:11px;">OTC: RMANF</span> has retained <strong>Venture Liquidity Providers Inc.</strong> (VLP) for market making services at a fee of <strong>CAD$5,000 per month</strong> for a <strong>3-month</strong> term. VLP will provide continuous liquidity support for the company's shares on the TSXV.
+          <strong>FutureGen Industries Corp.</strong> <span class="ticker">TSXV: LITT</span> <span class="ticker">OTC: RMANF</span> has retained <strong>Venture Liquidity Providers Inc.</strong> (VLP) for market making services at a fee of <strong>CAD$5,000 per month</strong> for a <strong>3-month</strong> term. VLP will provide continuous liquidity support for the company's shares on the TSXV.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2189,7 +2192,7 @@
         </div>
         <div class="card-title">
           Argenta Silver Engages ICP Securities for Market Making
-         <span class="ticker" style="font-size:11px;">TSXV: AGAG</span> <span class="ticker" style="font-size:11px;">OTCQX: AGAGF</span></div>
+         <span class="ticker">TSXV: AGAG</span> <span class="ticker">OTCQX: AGAGF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🏛️</div>
           <div class="hired-details">
@@ -2199,7 +2202,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Argenta Silver</strong> <span class="ticker" style="font-size:11px;">TSXV: AGAG</span> <span class="ticker" style="font-size:11px;">OTCQX: AGAGF</span> has engaged <strong>ICP Securities Inc.</strong> to provide automated market making services at <strong>C$7,500 per month</strong> for an <strong>initial 4-month term</strong>, enhancing share liquidity through algorithmic trading. Argenta also upsized its drill program to 25,000 metres and initiated metallurgical and key technical studies.
+          <strong>Argenta Silver</strong> <span class="ticker">TSXV: AGAG</span> <span class="ticker">OTCQX: AGAGF</span> has engaged <strong>ICP Securities Inc.</strong> to provide automated market making services at <strong>C$7,500 per month</strong> for an <strong>initial 4-month term</strong>, enhancing share liquidity through algorithmic trading. Argenta also upsized its drill program to 25,000 metres and initiated metallurgical and key technical studies.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2218,7 +2221,7 @@
         <div class="card-title">
           Casa Minerals Engages Independent Trading Group as Market Maker
           <span class="ticker">TSXV: CASA</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: CASXF</span></div>
+         <span class="ticker">OTCQB: CASXF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📈</div>
           <div class="hired-details">
@@ -2228,7 +2231,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Casa Minerals Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: CASA</span> <span class="ticker" style="font-size:11px;">OTCQB: CASXF</span> has retained <strong>Independent Trading Group (ITG)</strong> to act as a market maker for its shares on the TSX Venture Exchange and other trading platforms. ITG is a Toronto-based CIRO dealer-member specializing in market making services for publicly listed companies. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Casa Minerals Inc.</strong> <span class="ticker">TSXV: CASA</span> <span class="ticker">OTCQB: CASXF</span> has retained <strong>Independent Trading Group (ITG)</strong> to act as a market maker for its shares on the TSX Venture Exchange and other trading platforms. ITG is a Toronto-based CIRO dealer-member specializing in market making services for publicly listed companies. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2258,7 +2261,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Li-FT Power Ltd.</strong> <span class="ticker" style="font-size:11px;">CSE: LIFT</span> <span class="ticker" style="font-size:11px;">OTCQX: LIFFF</span> has engaged <strong>Venture Liquidity Providers Inc.</strong> to initiate market making services, subject to regulatory approval. Li-FT Power is a lithium pegmatite explorer with its flagship Yellowknife Lithium Project in the NWT, Canada. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Li-FT Power Ltd.</strong> <span class="ticker">CSE: LIFT</span> <span class="ticker">OTCQX: LIFFF</span> has engaged <strong>Venture Liquidity Providers Inc.</strong> to initiate market making services, subject to regulatory approval. Li-FT Power is a lithium pegmatite explorer with its flagship Yellowknife Lithium Project in the NWT, Canada. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -2288,7 +2291,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Azarga Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: AZR</span> <span class="ticker" style="font-size:11px;">OTC: EUUNF</span> has retained <strong>Capital Analytica</strong> for marketing services. The company will pay <strong>CAD$150,000 over a 6-month term</strong>, plus grant <strong>300,000 stock options</strong> as additional compensation. The engagement covers investor outreach, content creation, and digital marketing activities.
+          <strong>Azarga Metals Corp.</strong> <span class="ticker">TSXV: AZR</span> <span class="ticker">OTC: EUUNF</span> has retained <strong>Capital Analytica</strong> for marketing services. The company will pay <strong>CAD$150,000 over a 6-month term</strong>, plus grant <strong>300,000 stock options</strong> as additional compensation. The engagement covers investor outreach, content creation, and digital marketing activities.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -2306,7 +2309,7 @@
         </div>
         <div class="card-title">
           Masivo Silver Hires Senergy for Targeted Digital Investor Outreach
-         <span class="ticker" style="font-size:11px;">TSXV: MASS</span> <span class="ticker" style="font-size:11px;">OTC: GNYPF</span></div>
+         <span class="ticker">TSXV: MASS</span> <span class="ticker">OTC: GNYPF</span></div>
         <div class="hired-box">
           <div class="hired-icon">💎</div>
           <div class="hired-details">
@@ -2316,7 +2319,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Masivo Silver Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: MASS</span> <span class="ticker" style="font-size:11px;">OTC: GNYPF</span> has engaged <strong>Senergy Communications Capital Inc.</strong>, a Vancouver-based marketing firm specializing in publicly listed exploration companies, to provide targeted digital investor outreach services. The engagement is designed to expand Masivo Silver's capital markets visibility. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Masivo Silver Corp.</strong> <span class="ticker">TSXV: MASS</span> <span class="ticker">OTC: GNYPF</span> has engaged <strong>Senergy Communications Capital Inc.</strong>, a Vancouver-based marketing firm specializing in publicly listed exploration companies, to provide targeted digital investor outreach services. The engagement is designed to expand Masivo Silver's capital markets visibility. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2348,7 +2351,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>CopperCorp Resources Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: CPER</span> <span class="ticker" style="font-size:11px;">OTCQB: CPCPF</span> has engaged <strong>Capital Analytica</strong> for marketing and capital markets advisory services. Total fee: <strong>USD$150,000</strong> paid in two tranches — <strong>USD$75,000 upon signing</strong> and <strong>USD$75,000 by April 27, 2026</strong> — over a <strong>6-month term</strong>. CopperCorp is a copper exploration company.
+          <strong>CopperCorp Resources Inc.</strong> <span class="ticker">TSXV: CPER</span> <span class="ticker">OTCQB: CPCPF</span> has engaged <strong>Capital Analytica</strong> for marketing and capital markets advisory services. Total fee: <strong>USD$150,000</strong> paid in two tranches — <strong>USD$75,000 upon signing</strong> and <strong>USD$75,000 by April 27, 2026</strong> — over a <strong>6-month term</strong>. CopperCorp is a copper exploration company.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -2367,7 +2370,7 @@
         <div class="card-title">
           Upside Gold Corp. Retains Departures Capital for 3-Month Campaign
           <span class="ticker">CSE: UG</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: UGODF</span></div>
+         <span class="ticker">OTCQB: UGODF</span></div>
         <div class="hired-box">
           <div class="hired-icon">💡</div>
           <div class="hired-details">
@@ -2377,7 +2380,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Upside Gold Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: UG</span> <span class="ticker" style="font-size:11px;">OTCQB: UGODF</span> has retained <strong>Departures Capital Inc.</strong> to provide digital marketing services for a total budget of <strong>$45,000</strong> over a <strong>3-month term</strong>. The campaign is designed to increase visibility among retail investors.
+          <strong>Upside Gold Corp.</strong> <span class="ticker">CSE: UG</span> <span class="ticker">OTCQB: UGODF</span> has retained <strong>Departures Capital Inc.</strong> to provide digital marketing services for a total budget of <strong>$45,000</strong> over a <strong>3-month term</strong>. The campaign is designed to increase visibility among retail investors.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -2409,7 +2412,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Argo Corporation</strong> <span class="ticker" style="font-size:11px;">TSXV: ARGH</span> <span class="ticker" style="font-size:11px;">OTCQX: ARGHF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market making services. ITG will work to improve liquidity and correct temporary supply-demand imbalances in the company's shares. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Argo Corporation</strong> <span class="ticker">TSXV: ARGH</span> <span class="ticker">OTCQX: ARGHF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market making services. ITG will work to improve liquidity and correct temporary supply-demand imbalances in the company's shares. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -2427,7 +2430,7 @@
         </div>
         <div class="card-title">
           Total Metals Corp. Engages i2i Marketing for Investor Awareness
-         <span class="ticker" style="font-size:11px;">TSXV: TT</span> <span class="ticker" style="font-size:11px;">OTCQB: TTTMF</span></div>
+         <span class="ticker">TSXV: TT</span> <span class="ticker">OTCQB: TTTMF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🔔</div>
           <div class="hired-details">
@@ -2437,7 +2440,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Total Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: TT</span> <span class="ticker" style="font-size:11px;">OTCQB: TTTMF</span> has engaged <strong>i2i Marketing Group LLC</strong>, a marketing firm specializing in direct response, experiential, and investor-awareness campaigns, for <strong>US$250,000</strong> under an initial <strong>1-month</strong> agreement (extendable at <strong>US$250,000/month</strong>) to support its ongoing exploration program at the Critical Minerals Electrolode Project in Red Lake, Ontario.
+          <strong>Total Metals Corp.</strong> <span class="ticker">TSXV: TT</span> <span class="ticker">OTCQB: TTTMF</span> has engaged <strong>i2i Marketing Group LLC</strong>, a marketing firm specializing in direct response, experiential, and investor-awareness campaigns, for <strong>US$250,000</strong> under an initial <strong>1-month</strong> agreement (extendable at <strong>US$250,000/month</strong>) to support its ongoing exploration program at the Critical Minerals Electrolode Project in Red Lake, Ontario.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2456,7 +2459,7 @@
         <div class="card-title">
           Battery X Metals Hires bullVestor &amp; i2i Marketing
           <span class="ticker">CSE: BATX</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: BATXF</span></div>
+         <span class="ticker">OTCQB: BATXF</span></div>
         <div class="hired-box">
           <div class="hired-icon">✨</div>
           <div class="hired-details">
@@ -2474,7 +2477,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Battery X Metals Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: BATX</span> <span class="ticker" style="font-size:11px;">OTCQB: BATXF</span> has engaged <strong>i2i Marketing Group LLC</strong> for marketing and investor awareness services at a cost of <strong>US$300,000</strong> over a <strong>3-month term</strong>, and <strong>bullVestor Medien GmbH</strong> for European investor awareness at a cost of <strong>€165,000</strong> for a <strong>1-month initial term</strong>. The company focuses on battery metal exploration projects.
+          <strong>Battery X Metals Inc.</strong> <span class="ticker">CSE: BATX</span> <span class="ticker">OTCQB: BATXF</span> has engaged <strong>i2i Marketing Group LLC</strong> for marketing and investor awareness services at a cost of <strong>US$300,000</strong> over a <strong>3-month term</strong>, and <strong>bullVestor Medien GmbH</strong> for European investor awareness at a cost of <strong>€165,000</strong> for a <strong>1-month initial term</strong>. The company focuses on battery metal exploration projects.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -2493,7 +2496,7 @@
         <div class="card-title">
           Medaro Mining Extends Digital Marketing with Senergy Communications
           <span class="ticker">TSXV: MEDA</span>
-         <span class="ticker" style="font-size:11px;">OTC: MEDAF</span></div>
+         <span class="ticker">OTC: MEDAF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🌟</div>
           <div class="hired-details">
@@ -2503,7 +2506,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Medaro Mining Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: MEDA</span> <span class="ticker" style="font-size:11px;">OTC: MEDAF</span> has extended its digital marketing services agreement with <strong>Senergy Communications Capital Inc.</strong> for an additional <strong>4-month term</strong>. The extension continues the company's ongoing investor outreach and digital marketing program. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Medaro Mining Inc.</strong> <span class="ticker">TSXV: MEDA</span> <span class="ticker">OTC: MEDAF</span> has extended its digital marketing services agreement with <strong>Senergy Communications Capital Inc.</strong> for an additional <strong>4-month term</strong>. The extension continues the company's ongoing investor outreach and digital marketing program. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -2521,7 +2524,7 @@
         </div>
         <div class="card-title">
           Inspiration Energy Re-Engages Plutus Invest for Investor Marketing
-         <span class="ticker" style="font-size:11px;">CSE: INSP</span> <span class="ticker" style="font-size:11px;">OTC: ISPNF</span></div>
+         <span class="ticker">CSE: INSP</span> <span class="ticker">OTC: ISPNF</span></div>
         <div class="hired-box">
           <div class="hired-icon">💎</div>
           <div class="hired-details">
@@ -2531,7 +2534,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Inspiration Energy Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: INSP</span> <span class="ticker" style="font-size:11px;">OTC: ISPNF</span> has re-engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> (Bremen, Germany) to provide marketing and investor awareness services at a cost of up to <strong>€250,000</strong> over a <strong>1-year term</strong>, announced ahead of planned drilling at the company's Rottenstone uranium project.
+          <strong>Inspiration Energy Corp.</strong> <span class="ticker">CSE: INSP</span> <span class="ticker">OTC: ISPNF</span> has re-engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> (Bremen, Germany) to provide marketing and investor awareness services at a cost of up to <strong>€250,000</strong> over a <strong>1-year term</strong>, announced ahead of planned drilling at the company's Rottenstone uranium project.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -2549,7 +2552,7 @@
         </div>
         <div class="card-title">
           One Bullion Limited Retains Independent Trading Group as Market Maker
-         <span class="ticker" style="font-size:11px;">TSXV: OBUL</span></div>
+         <span class="ticker">TSXV: OBUL</span></div>
         <div class="hired-box">
           <div class="hired-icon">🌐</div>
           <div class="hired-details">
@@ -2559,7 +2562,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>One Bullion Limited</strong> <span class="ticker" style="font-size:11px;">TSXV: OBUL</span> has retained <strong>Independent Trading Group Inc.</strong> (ITG) to act as market maker and provide continuous bid-ask liquidity for its shares on the Canadian Securities Exchange at <strong>CAD$5,500 per month</strong>.
+          <strong>One Bullion Limited</strong> <span class="ticker">TSXV: OBUL</span> has retained <strong>Independent Trading Group Inc.</strong> (ITG) to act as market maker and provide continuous bid-ask liquidity for its shares on the Canadian Securities Exchange at <strong>CAD$5,500 per month</strong>.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -2589,7 +2592,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Homeland Nickel Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: SHL</span> <span class="ticker" style="font-size:11px;">OTC: SRCGF</span> has retained <strong>National Inflation Association (GRA Enterprises LLC)</strong> to provide investor relations and promotional services. The agreement is for a <strong>6-month term</strong> at a cost of <strong>USD$75,000</strong>.
+          <strong>Homeland Nickel Corp.</strong> <span class="ticker">TSXV: SHL</span> <span class="ticker">OTC: SRCGF</span> has retained <strong>National Inflation Association (GRA Enterprises LLC)</strong> to provide investor relations and promotional services. The agreement is for a <strong>6-month term</strong> at a cost of <strong>USD$75,000</strong>.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -2608,7 +2611,7 @@
         <div class="card-title">
           Fredonia Mining Engages ICP Securities for Market Making
           <span class="ticker">TSX: FRED</span>
-         <span class="ticker" style="font-size:11px;">OTC: FREDF</span></div>
+         <span class="ticker">OTC: FREDF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📊</div>
           <div class="hired-details">
@@ -2618,7 +2621,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Fredonia Mining Inc.</strong> <span class="ticker" style="font-size:11px;">TSX: FRED</span> <span class="ticker" style="font-size:11px;">OTC: FREDF</span> has engaged <strong>ICP Securities Inc.</strong> to provide automated market making services using the ICP Premium™ algorithm. The engagement is aimed at improving share liquidity and quote health. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Fredonia Mining Inc.</strong> <span class="ticker">TSX: FRED</span> <span class="ticker">OTC: FREDF</span> has engaged <strong>ICP Securities Inc.</strong> to provide automated market making services using the ICP Premium™ algorithm. The engagement is aimed at improving share liquidity and quote health. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSX Filing</span></div>
@@ -2637,7 +2640,7 @@
         <div class="card-title">
           Medaro Mining Engages Senergy Communications for Digital Marketing
           <span class="ticker">TSXV: MEDA</span>
-         <span class="ticker" style="font-size:11px;">OTC: MEDAF</span></div>
+         <span class="ticker">OTC: MEDAF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📢</div>
           <div class="hired-details">
@@ -2647,7 +2650,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Medaro Mining Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: MEDA</span> <span class="ticker" style="font-size:11px;">OTC: MEDAF</span> initially engaged <strong>Senergy Communications Capital Inc.</strong> for digital marketing services at a cost of <strong>CAD$50,000</strong> (plus GST) over a <strong>1-month</strong> initial term (see also: March 28 extension). The company focuses on lithium mineral exploration in Canada.
+          <strong>Medaro Mining Inc.</strong> <span class="ticker">TSXV: MEDA</span> <span class="ticker">OTC: MEDAF</span> initially engaged <strong>Senergy Communications Capital Inc.</strong> for digital marketing services at a cost of <strong>CAD$50,000</strong> (plus GST) over a <strong>1-month</strong> initial term (see also: March 28 extension). The company focuses on lithium mineral exploration in Canada.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -2666,7 +2669,7 @@
         <div class="card-title">
           Metalsource Mining Amends Market Making Agreement with ITG
           <span class="ticker">CSE: MSM</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: SFRIF</span></div>
+         <span class="ticker">OTCQB: SFRIF</span></div>
         <div class="hired-box">
           <div class="hired-icon">💹</div>
           <div class="hired-details">
@@ -2676,7 +2679,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Metalsource Mining Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: MSM</span> <span class="ticker" style="font-size:11px;">OTCQB: SFRIF</span> announced an amendment to its existing market making agreement with <strong>Independent Trading Group (ITG)</strong>. The amended terms continue ITG's mandate to provide liquidity and market making services on the CSE. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Metalsource Mining Inc.</strong> <span class="ticker">CSE: MSM</span> <span class="ticker">OTCQB: SFRIF</span> announced an amendment to its existing market making agreement with <strong>Independent Trading Group (ITG)</strong>. The amended terms continue ITG's mandate to provide liquidity and market making services on the CSE. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -2695,7 +2698,7 @@
         <div class="card-title">
           Torr Metals Engages ICP Securities for Market Making
           <span class="ticker">TSXV: TMET</span>
-         <span class="ticker" style="font-size:11px;">OTC: TMTIF</span></div>
+         <span class="ticker">OTC: TMTIF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🔄</div>
           <div class="hired-details">
@@ -2705,7 +2708,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Torr Metals Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: TMET</span> <span class="ticker" style="font-size:11px;">OTC: TMTIF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services, effective February 23, 2026. Fee: <strong>C$7,500 per month plus applicable taxes</strong>. The agreement is for an <strong>initial 4-month term</strong>, renewing monthly unless either party provides 30 days' written notice.
+          <strong>Torr Metals Inc.</strong> <span class="ticker">TSXV: TMET</span> <span class="ticker">OTC: TMTIF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services, effective February 23, 2026. Fee: <strong>C$7,500 per month plus applicable taxes</strong>. The agreement is for an <strong>initial 4-month term</strong>, renewing monthly unless either party provides 30 days' written notice.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -2723,7 +2726,7 @@
         </div>
         <div class="card-title">
           Nexcel Metals Hires VLP for Market Making on CSE
-         <span class="ticker" style="font-size:11px;">CSE: NEXX</span> <span class="ticker" style="font-size:11px;">OTC: NXXCF</span></div>
+         <span class="ticker">CSE: NEXX</span> <span class="ticker">OTC: NXXCF</span></div>
         <div class="hired-box">
           <div class="hired-icon">⚡</div>
           <div class="hired-details">
@@ -2733,7 +2736,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Nexcel Metals Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: NEXX</span> <span class="ticker" style="font-size:11px;">OTC: NXXCF</span> has engaged <strong>Venture Liquidity Providers Inc. (VLP)</strong>, through registered broker <strong>W.D. Latimer Co. Ltd.</strong>, to provide market making services on the CSE. The engagement was announced alongside the hiring of a data specialist to advance its Burnt Hill Tungsten Project in New Brunswick. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Nexcel Metals Inc.</strong> <span class="ticker">CSE: NEXX</span> <span class="ticker">OTC: NXXCF</span> has engaged <strong>Venture Liquidity Providers Inc. (VLP)</strong>, through registered broker <strong>W.D. Latimer Co. Ltd.</strong>, to provide market making services on the CSE. The engagement was announced alongside the hiring of a data specialist to advance its Burnt Hill Tungsten Project in New Brunswick. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -2763,7 +2766,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Domestic Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: DMCU</span> <span class="ticker" style="font-size:11px;">OTCQB: DMCUF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services effective January 23, 2026. Fee: <strong>C$7,500 per month plus applicable taxes</strong> for an <strong>initial 4-month term</strong>, renewing monthly thereafter. No stock options or performance-based compensation.
+          <strong>Domestic Metals Corp.</strong> <span class="ticker">TSXV: DMCU</span> <span class="ticker">OTCQB: DMCUF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services effective January 23, 2026. Fee: <strong>C$7,500 per month plus applicable taxes</strong> for an <strong>initial 4-month term</strong>, renewing monthly thereafter. No stock options or performance-based compensation.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2793,7 +2796,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Integral Metals Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: INTG</span> <span class="ticker" style="font-size:11px;">OTC Pink: ITGLF</span> has retained <strong>Rumble Strip Media Inc.</strong> to conduct a marketing campaign for approximately <strong>45 days</strong>. The campaign is intended to raise the company's profile among retail investors. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Integral Metals Corp.</strong> <span class="ticker">CSE: INTG</span> <span class="ticker">OTC Pink: ITGLF</span> has retained <strong>Rumble Strip Media Inc.</strong> to conduct a marketing campaign for approximately <strong>45 days</strong>. The campaign is intended to raise the company's profile among retail investors. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -2811,7 +2814,7 @@
         </div>
         <div class="card-title">
           Grit Metals Engages Independent Trading Group as Market Maker
-         <span class="ticker" style="font-size:11px;">TSXV: FIN</span> <span class="ticker" style="font-size:11px;">OTC: EUEMF</span></div>
+         <span class="ticker">TSXV: FIN</span> <span class="ticker">OTC: EUEMF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📈</div>
           <div class="hired-details">
@@ -2821,7 +2824,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Grit Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: FIN</span> <span class="ticker" style="font-size:11px;">OTC: EUEMF</span> has engaged <strong>Independent Trading Group (ITG)</strong>, a Toronto-based CIRO dealer-member specializing in market making and liquidity provision, to provide market making services in accordance with TSX Venture Exchange policies. ITG will trade shares on the exchange to maintain a fair and orderly market. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Grit Metals Corp.</strong> <span class="ticker">TSXV: FIN</span> <span class="ticker">OTC: EUEMF</span> has engaged <strong>Independent Trading Group (ITG)</strong>, a Toronto-based CIRO dealer-member specializing in market making and liquidity provision, to provide market making services in accordance with TSX Venture Exchange policies. ITG will trade shares on the exchange to maintain a fair and orderly market. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2839,7 +2842,7 @@
         </div>
         <div class="card-title">
           Miata Metals Upgrades to OTCQX and Hires Connect 4 Marketing
-         <span class="ticker" style="font-size:11px;">CSE: MMET</span> <span class="ticker" style="font-size:11px;">OTCQX: MMETF</span></div>
+         <span class="ticker">CSE: MMET</span> <span class="ticker">OTCQX: MMETF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🎯</div>
           <div class="hired-details">
@@ -2849,7 +2852,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Miata Metals Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: MMET</span> <span class="ticker" style="font-size:11px;">OTCQX: MMETF</span> announced its upgrade to the OTCQX Best Market alongside the engagement of <strong>Connect 4 Marketing</strong> for a year-long, <strong>C$100,000</strong> digital investor-awareness campaign aimed at expanding its capital markets profile. The campaign is designed to increase the company's visibility among retail and institutional investors in North American markets.
+          <strong>Miata Metals Corp.</strong> <span class="ticker">CSE: MMET</span> <span class="ticker">OTCQX: MMETF</span> announced its upgrade to the OTCQX Best Market alongside the engagement of <strong>Connect 4 Marketing</strong> for a year-long, <strong>C$100,000</strong> digital investor-awareness campaign aimed at expanding its capital markets profile. The campaign is designed to increase the company's visibility among retail and institutional investors in North American markets.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -2879,7 +2882,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>UberDoc Health Technologies Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: APPT</span> <span class="ticker" style="font-size:11px;">OTC: ESVNF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market making services. ITG will work to enhance share liquidity through regulatory-compliant market making activities. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>UberDoc Health Technologies Corp.</strong> <span class="ticker">CSE: APPT</span> <span class="ticker">OTC: ESVNF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market making services. ITG will work to enhance share liquidity through regulatory-compliant market making activities. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -2909,7 +2912,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Foremost Clean Energy Ltd.</strong> <span class="ticker" style="font-size:11px;">CSE: FAT</span> <span class="ticker" style="font-size:11px;">NASDAQ: FMST</span> has extended its digital marketing campaign with <strong>Spark Newswire</strong>. The uranium and lithium explorer continues its investor outreach program in the Athabasca Basin region. <strong>Payment terms for the extension were not publicly disclosed.</strong>
+          <strong>Foremost Clean Energy Ltd.</strong> <span class="ticker">CSE: FAT</span> <span class="ticker">NASDAQ: FMST</span> has extended its digital marketing campaign with <strong>Spark Newswire</strong>. The uranium and lithium explorer continues its investor outreach program in the Athabasca Basin region. <strong>Payment terms for the extension were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -2927,7 +2930,7 @@
         </div>
         <div class="card-title">
           Graphite One Engages ICP Securities for Automated Market Making
-         <span class="ticker" style="font-size:11px;">TSXV: GPH</span> <span class="ticker" style="font-size:11px;">OTCQX: GPHOF</span></div>
+         <span class="ticker">TSXV: GPH</span> <span class="ticker">OTCQX: GPHOF</span></div>
         <div class="hired-box">
           <div class="hired-icon">💰</div>
           <div class="hired-details">
@@ -2937,7 +2940,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Graphite One Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: GPH</span> <span class="ticker" style="font-size:11px;">OTCQX: GPHOF</span> — ranked #8 on the 2026 OTCQX Best 50 — has engaged <strong>ICP Securities Inc.</strong> to provide automated market making services using the ICP Premium™ algorithm on the TSX Venture Exchange. The engagement aims to enhance share liquidity and quote quality. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Graphite One Inc.</strong> <span class="ticker">TSXV: GPH</span> <span class="ticker">OTCQX: GPHOF</span> — ranked #8 on the 2026 OTCQX Best 50 — has engaged <strong>ICP Securities Inc.</strong> to provide automated market making services using the ICP Premium™ algorithm on the TSX Venture Exchange. The engagement aims to enhance share liquidity and quote quality. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -2956,7 +2959,7 @@
         <div class="card-title">
           Atomic Minerals Retains Emerging Markets Consulting for IR Services
           <span class="ticker">TSXV: ATOM</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: ATMMF</span></div>
+         <span class="ticker">OTCQB: ATMMF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🚀</div>
           <div class="hired-details">
@@ -2966,7 +2969,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Atomic Minerals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: ATOM</span> <span class="ticker" style="font-size:11px;">OTCQB: ATMMF</span> has retained <strong>Emerging Markets Consulting LLC</strong> to provide investor relations, advertising, and marketing services for <strong>C$150,000</strong> over a <strong>6-month term</strong>. The engagement is designed to broaden the company's investor base.
+          <strong>Atomic Minerals Corp.</strong> <span class="ticker">TSXV: ATOM</span> <span class="ticker">OTCQB: ATMMF</span> has retained <strong>Emerging Markets Consulting LLC</strong> to provide investor relations, advertising, and marketing services for <strong>C$150,000</strong> over a <strong>6-month term</strong>. The engagement is designed to broaden the company's investor base.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -2995,7 +2998,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Birchtree Investments Ltd.</strong> <span class="ticker" style="font-size:11px;">TSX: BRCH</span> has engaged <strong>Spark Newswire</strong> to provide financial publishing and digital marketing services for <strong>CAD$250,000</strong> over a <strong>2-month term</strong>. The campaign is designed to broaden awareness among the retail investment community.
+          <strong>Birchtree Investments Ltd.</strong> <span class="ticker">TSX: BRCH</span> has engaged <strong>Spark Newswire</strong> to provide financial publishing and digital marketing services for <strong>CAD$250,000</strong> over a <strong>2-month term</strong>. The campaign is designed to broaden awareness among the retail investment community.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSX Filing</span></div>
@@ -3025,7 +3028,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Avanti Gold Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: AGC</span> <span class="ticker" style="font-size:11px;">OTCQB: AVTGF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services using the ICP Premium™ algorithm, effective March 18, 2026. The company will pay <strong>C$7,500 per month plus applicable taxes</strong> for an <strong>initial 4-month term</strong>, renewing monthly thereafter.
+          <strong>Avanti Gold Corp.</strong> <span class="ticker">CSE: AGC</span> <span class="ticker">OTCQB: AVTGF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services using the ICP Premium™ algorithm, effective March 18, 2026. The company will pay <strong>C$7,500 per month plus applicable taxes</strong> for an <strong>initial 4-month term</strong>, renewing monthly thereafter.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -3055,7 +3058,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Graphene Manufacturing Group Ltd.</strong> <span class="ticker" style="font-size:11px;">TSXV: GMG</span> <span class="ticker" style="font-size:11px;">OTCQX: GMGMF</span> has engaged <strong>i2i Marketing Group LLC</strong> (Key West, Florida) to provide marketing and investor awareness services with an initial budget of <strong>US$300,000</strong>. GMG is a graphene and battery technology company.
+          <strong>Graphene Manufacturing Group Ltd.</strong> <span class="ticker">TSXV: GMG</span> <span class="ticker">OTCQX: GMGMF</span> has engaged <strong>i2i Marketing Group LLC</strong> (Key West, Florida) to provide marketing and investor awareness services with an initial budget of <strong>US$300,000</strong>. GMG is a graphene and battery technology company.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3093,7 +3096,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Lithium Africa Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: LAF</span> has engaged <strong>Independent Trading Group (ITG)</strong> for market making services and <strong>Spark Newswire</strong> for investor awareness activities at <strong>US$50,000 per month</strong>. The dual-prong engagement covers both liquidity improvement and investor outreach.
+          <strong>Lithium Africa Corp.</strong> <span class="ticker">TSXV: LAF</span> has engaged <strong>Independent Trading Group (ITG)</strong> for market making services and <strong>Spark Newswire</strong> for investor awareness activities at <strong>US$50,000 per month</strong>. The dual-prong engagement covers both liquidity improvement and investor outreach.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3123,7 +3126,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Humanoid Global Holdings Corp.</strong> (formerly New Wave Esports) <span class="ticker" style="font-size:11px;">CSE: ROBO</span> <span class="ticker" style="font-size:11px;">OTC: RBOHF</span> has retained <strong>Investor Insights Systems Inc.</strong> to provide comprehensive digital marketing and advertising services for <strong>USD$250,000</strong> over a term from <strong>February 17 to May 15, 2026</strong>, focused on visibility in the humanoid robotics and AI sector.
+          <strong>Humanoid Global Holdings Corp.</strong> (formerly New Wave Esports) <span class="ticker">CSE: ROBO</span> <span class="ticker">OTC: RBOHF</span> has retained <strong>Investor Insights Systems Inc.</strong> to provide comprehensive digital marketing and advertising services for <strong>USD$250,000</strong> over a term from <strong>February 17 to May 15, 2026</strong>, focused on visibility in the humanoid robotics and AI sector.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -3141,7 +3144,7 @@
         </div>
         <div class="card-title">
           GMV Minerals Hires Machai Capital for Digital Investor Outreach
-         <span class="ticker" style="font-size:11px;">TSXV: GMV</span> <span class="ticker" style="font-size:11px;">OTCQB: GMVMF</span></div>
+         <span class="ticker">TSXV: GMV</span> <span class="ticker">OTCQB: GMVMF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🌟</div>
           <div class="hired-details">
@@ -3151,7 +3154,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>GMV Minerals Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: GMV</span> <span class="ticker" style="font-size:11px;">OTCQB: GMVMF</span> has engaged <strong>Machai Capital Inc.</strong>, a data-driven investor awareness and digital marketing firm, for <strong>C$300,000</strong> (plus GST) to drive digital investor outreach. GMV also granted <strong>300,000 stock options</strong> exercisable at $0.25 per share.
+          <strong>GMV Minerals Inc.</strong> <span class="ticker">TSXV: GMV</span> <span class="ticker">OTCQB: GMVMF</span> has engaged <strong>Machai Capital Inc.</strong>, a data-driven investor awareness and digital marketing firm, for <strong>C$300,000</strong> (plus GST) to drive digital investor outreach. GMV also granted <strong>300,000 stock options</strong> exercisable at $0.25 per share.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -3170,7 +3173,7 @@
         <div class="card-title">
           Advanced Gold Exploration Engages Venture Liquidity Providers
           <span class="ticker">CSE: AUEX</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: AUHIF</span></div>
+         <span class="ticker">OTCQB: AUHIF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📊</div>
           <div class="hired-details">
@@ -3180,7 +3183,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Advanced Gold Exploration Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: AUEX</span> <span class="ticker" style="font-size:11px;">OTCQB: AUHIF</span> has retained <strong>Venture Liquidity Providers Inc. (VLP)</strong> to provide market making services, subject to regulatory approval. The engagement is designed to improve share liquidity on the CSE. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Advanced Gold Exploration Inc.</strong> <span class="ticker">CSE: AUEX</span> <span class="ticker">OTCQB: AUHIF</span> has retained <strong>Venture Liquidity Providers Inc. (VLP)</strong> to provide market making services, subject to regulatory approval. The engagement is designed to improve share liquidity on the CSE. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -3209,7 +3212,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>EagleOne Metals Corporation</strong> <span class="ticker" style="font-size:11px;">CSE: EAGL</span> has retained <strong>Venture Liquidity Providers Inc. (VLP)</strong> to initiate market making services at <strong>$5,000 per month</strong> for an <strong>initial 3-month term</strong>, subject to regulatory approval. EagleOne is a mineral exploration company focused on gold and uranium projects in Canada.
+          <strong>EagleOne Metals Corporation</strong> <span class="ticker">CSE: EAGL</span> has retained <strong>Venture Liquidity Providers Inc. (VLP)</strong> to initiate market making services at <strong>$5,000 per month</strong> for an <strong>initial 3-month term</strong>, subject to regulatory approval. EagleOne is a mineral exploration company focused on gold and uranium projects in Canada.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -3227,7 +3230,7 @@
         </div>
         <div class="card-title">
           Pan Global Resources Hires ICP Securities to Boost Share Liquidity
-         <span class="ticker" style="font-size:11px;">TSXV: PGZ</span> <span class="ticker" style="font-size:11px;">OTCQB: PGZFF</span></div>
+         <span class="ticker">TSXV: PGZ</span> <span class="ticker">OTCQB: PGZFF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🔄</div>
           <div class="hired-details">
@@ -3237,7 +3240,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Pan Global Resources Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: PGZ</span> <span class="ticker" style="font-size:11px;">OTCQB: PGZFF</span> has engaged <strong>ICP Securities Inc.</strong>, a Toronto-based dealer specializing in automated market making, to provide share liquidity services. The engagement aims to improve trading conditions and quote quality for Pan Global's shares. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Pan Global Resources Inc.</strong> <span class="ticker">TSXV: PGZ</span> <span class="ticker">OTCQB: PGZFF</span> has engaged <strong>ICP Securities Inc.</strong>, a Toronto-based dealer specializing in automated market making, to provide share liquidity services. The engagement aims to improve trading conditions and quote quality for Pan Global's shares. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -3256,7 +3259,7 @@
         <div class="card-title">
           Crossroads Gold Engages ICP Securities for Market Making
           <span class="ticker">TSXV: CRG</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: CRGCF</span></div>
+         <span class="ticker">OTCQB: CRGCF</span></div>
         <div class="hired-box">
           <div class="hired-icon">⚡</div>
           <div class="hired-details">
@@ -3266,7 +3269,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Crossroads Gold Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: CRG</span> <span class="ticker" style="font-size:11px;">OTCQB: CRGCF</span> has engaged <strong>ICP Securities Inc.</strong> to provide automated market making services using the ICP Premium™ algorithm. The engagement aims to improve share liquidity on the TSX Venture Exchange. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Crossroads Gold Corp.</strong> <span class="ticker">TSXV: CRG</span> <span class="ticker">OTCQB: CRGCF</span> has engaged <strong>ICP Securities Inc.</strong> to provide automated market making services using the ICP Premium™ algorithm. The engagement aims to improve share liquidity on the TSX Venture Exchange. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3284,7 +3287,7 @@
         </div>
         <div class="card-title">
           MAX Power Mining Engages Native Ads for Investor Awareness
-         <span class="ticker" style="font-size:11px;">CSE: MAXX</span> <span class="ticker" style="font-size:11px;">OTC: MAXXF</span></div>
+         <span class="ticker">CSE: MAXX</span> <span class="ticker">OTC: MAXXF</span></div>
         <div class="hired-box">
           <div class="hired-icon">💎</div>
           <div class="hired-details">
@@ -3294,7 +3297,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>MAX Power Mining Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: MAXX</span> <span class="ticker" style="font-size:11px;">OTC: MAXXF</span> has entered into a service agreement with <strong>Native Ads Inc.</strong> to provide investor awareness and promotional services with an aggregate campaign budget of <strong>US$165,000</strong> over an estimated <strong>6-month</strong> period. The announcement coincided with the company's confirmation of Canada's first natural hydrogen drilling discovery.
+          <strong>MAX Power Mining Corp.</strong> <span class="ticker">CSE: MAXX</span> <span class="ticker">OTC: MAXXF</span> has entered into a service agreement with <strong>Native Ads Inc.</strong> to provide investor awareness and promotional services with an aggregate campaign budget of <strong>US$165,000</strong> over an estimated <strong>6-month</strong> period. The announcement coincided with the company's confirmation of Canada's first natural hydrogen drilling discovery.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -3312,7 +3315,7 @@
         </div>
         <div class="card-title">
           Optimi Health Engages Native Ads for Investor Awareness
-         <span class="ticker" style="font-size:11px;">TSXV: OPTI</span> <span class="ticker" style="font-size:11px;">OTC: OPTHF</span></div>
+         <span class="ticker">TSXV: OPTI</span> <span class="ticker">OTC: OPTHF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📢</div>
           <div class="hired-details">
@@ -3322,7 +3325,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Optimi Health Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: OPTI</span> <span class="ticker" style="font-size:11px;">OTC: OPTHF</span> has engaged <strong>Native Ads Inc.</strong> to provide investor awareness and promotional services with an approved budget of up to <strong>US$350,000</strong> over a term of up to <strong>24 months</strong>, subject to regulatory approval. The engagement was announced as part of a broader corporate update including equity incentive grants.
+          <strong>Optimi Health Corp.</strong> <span class="ticker">TSXV: OPTI</span> <span class="ticker">OTC: OPTHF</span> has engaged <strong>Native Ads Inc.</strong> to provide investor awareness and promotional services with an approved budget of up to <strong>US$350,000</strong> over a term of up to <strong>24 months</strong>, subject to regulatory approval. The engagement was announced as part of a broader corporate update including equity incentive grants.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -3341,7 +3344,7 @@
         <div class="card-title">
           Q-Gold Resources Engages ICP Securities for Market Making
           <span class="ticker">TSX: QGR</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: QGLDF</span></div>
+         <span class="ticker">OTCQB: QGLDF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🏛️</div>
           <div class="hired-details">
@@ -3351,7 +3354,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Q-Gold Resources Corp.</strong> <span class="ticker" style="font-size:11px;">TSX: QGR</span> <span class="ticker" style="font-size:11px;">OTCQB: QGLDF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services utilizing the ICP Premium™ algorithm. The engagement aims to improve share liquidity and quote quality. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Q-Gold Resources Corp.</strong> <span class="ticker">TSX: QGR</span> <span class="ticker">OTCQB: QGLDF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services utilizing the ICP Premium™ algorithm. The engagement aims to improve share liquidity and quote quality. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSX Filing</span></div>
@@ -3370,7 +3373,7 @@
         <div class="card-title">
           Stuhini Exploration Engages Independent Trading Group
           <span class="ticker">TSX: STU</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: STXPF</span></div>
+         <span class="ticker">OTCQB: STXPF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📈</div>
           <div class="hired-details">
@@ -3380,7 +3383,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Stuhini Exploration Ltd.</strong> <span class="ticker" style="font-size:11px;">TSX: STU</span> <span class="ticker" style="font-size:11px;">OTCQB: STXPF</span> has engaged <strong>Independent Trading Group (ITG)</strong> for market making services. ITG will work to maintain orderly trading and improve share liquidity. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Stuhini Exploration Ltd.</strong> <span class="ticker">TSX: STU</span> <span class="ticker">OTCQB: STXPF</span> has engaged <strong>Independent Trading Group (ITG)</strong> for market making services. ITG will work to maintain orderly trading and improve share liquidity. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSX Filing</span></div>
@@ -3410,7 +3413,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Mink Ventures Corporation</strong> <span class="ticker" style="font-size:11px;">TSXV: MINK</span> <span class="ticker" style="font-size:11px;">OTC: MNKVF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market making services on a <strong>monthly renewable basis</strong>. ITG will manage liquidity and correct temporary supply-demand imbalances in the company's shares. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Mink Ventures Corporation</strong> <span class="ticker">TSXV: MINK</span> <span class="ticker">OTC: MNKVF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market making services on a <strong>monthly renewable basis</strong>. ITG will manage liquidity and correct temporary supply-demand imbalances in the company's shares. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3428,7 +3431,7 @@
         </div>
         <div class="card-title">
           Surface Metals Engages Danayi Capital for US Investor Awareness
-         <span class="ticker" style="font-size:11px;">CSE: SUR</span> <span class="ticker" style="font-size:11px;">OTC: SURMF</span></div>
+         <span class="ticker">CSE: SUR</span> <span class="ticker">OTC: SURMF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📣</div>
           <div class="hired-details">
@@ -3438,7 +3441,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Surface Metals Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: SUR</span> <span class="ticker" style="font-size:11px;">OTC: SURMF</span> has engaged <strong>Danayi Capital Corp.</strong> (550-800 West Pender Street, Vancouver, BC), owned by <strong>Mehran Bagherzadeh</strong>, to provide investor awareness services. Compensation is <strong>US$150,000 in cash</strong> with no securities issued. The engagement is conducted at arm's length from the company.
+          <strong>Surface Metals Inc.</strong> <span class="ticker">CSE: SUR</span> <span class="ticker">OTC: SURMF</span> has engaged <strong>Danayi Capital Corp.</strong> (550-800 West Pender Street, Vancouver, BC), owned by <strong>Mehran Bagherzadeh</strong>, to provide investor awareness services. Compensation is <strong>US$150,000 in cash</strong> with no securities issued. The engagement is conducted at arm's length from the company.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -3457,7 +3460,7 @@
         <div class="card-title">
           Eastport Critical Metals Retains ITG for Market Making
           <span class="ticker">TSXV: EVI</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: EVIIF</span></div>
+         <span class="ticker">OTCQB: EVIIF</span></div>
         <div class="hired-box">
           <div class="hired-icon">💰</div>
           <div class="hired-details">
@@ -3467,7 +3470,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Eastport Critical Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: EVI</span> <span class="ticker" style="font-size:11px;">OTCQB: EVIIF</span> has retained <strong>Independent Trading Group (ITG)</strong> to provide market making services in compliance with TSXV policies. The engagement is designed to improve share liquidity. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Eastport Critical Metals Corp.</strong> <span class="ticker">TSXV: EVI</span> <span class="ticker">OTCQB: EVIIF</span> has retained <strong>Independent Trading Group (ITG)</strong> to provide market making services in compliance with TSXV policies. The engagement is designed to improve share liquidity. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3486,7 +3489,7 @@
         <div class="card-title">
           Greenridge Exploration Hires RMK Marketing for 6-Month Campaign
           <span class="ticker">CSE: GXP</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: GXPLF</span></div>
+         <span class="ticker">OTCQB: GXPLF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🎯</div>
           <div class="hired-details">
@@ -3496,7 +3499,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Greenridge Exploration Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: GXP</span> <span class="ticker" style="font-size:11px;">OTCQB: GXPLF</span> has retained <strong>RMK Marketing Inc.</strong> for an online investor campaign spanning a <strong>6-month term</strong> at a cost of <strong>CDN$250,000</strong>, with an option to increase the advertising budget up to <strong>CDN$500,000</strong>. The campaign is designed to increase digital visibility and reach retail investors.
+          <strong>Greenridge Exploration Inc.</strong> <span class="ticker">CSE: GXP</span> <span class="ticker">OTCQB: GXPLF</span> has retained <strong>RMK Marketing Inc.</strong> for an online investor campaign spanning a <strong>6-month term</strong> at a cost of <strong>CDN$250,000</strong>, with an option to increase the advertising budget up to <strong>CDN$500,000</strong>. The campaign is designed to increase digital visibility and reach retail investors.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -3525,7 +3528,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Bahia Metals Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: BMT</span> engaged <strong>ICP Securities Inc.</strong> on the same day its shares commenced trading on the CSE following a $5.75M IPO. Fee: <strong>C$7,500 per month plus applicable taxes</strong> for a <strong>3-month initial term</strong>, renewing monthly thereafter. The company is advancing the Mangueiros nickel-copper-cobalt project in northeast Brazil.
+          <strong>Bahia Metals Corp.</strong> <span class="ticker">CSE: BMT</span> engaged <strong>ICP Securities Inc.</strong> on the same day its shares commenced trading on the CSE following a $5.75M IPO. Fee: <strong>C$7,500 per month plus applicable taxes</strong> for a <strong>3-month initial term</strong>, renewing monthly thereafter. The company is advancing the Mangueiros nickel-copper-cobalt project in northeast Brazil.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -3543,7 +3546,7 @@
         </div>
         <div class="card-title">
           Gemdale Gold Engages ITG as Market Maker on TSXV
-         <span class="ticker" style="font-size:11px;">TSXV: GEMG</span> <span class="ticker" style="font-size:11px;">OTC: GDGIF</span></div>
+         <span class="ticker">TSXV: GEMG</span> <span class="ticker">OTC: GDGIF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🏦</div>
           <div class="hired-details">
@@ -3553,7 +3556,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Gemdale Gold Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: GEMG</span> <span class="ticker" style="font-size:11px;">OTC: GDGIF</span> has announced the engagement of <strong>Independent Trading Group (ITG)</strong> as its market maker on the TSX Venture Exchange at <strong>CAD$5,500 per month</strong> on a <strong>monthly renewable</strong> basis. The engagement was announced in connection with the company's new listing on the TSXV.
+          <strong>Gemdale Gold Inc.</strong> <span class="ticker">TSXV: GEMG</span> <span class="ticker">OTC: GDGIF</span> has announced the engagement of <strong>Independent Trading Group (ITG)</strong> as its market maker on the TSX Venture Exchange at <strong>CAD$5,500 per month</strong> on a <strong>monthly renewable</strong> basis. The engagement was announced in connection with the company's new listing on the TSXV.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3583,7 +3586,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Copper Quest Exploration Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: CQX</span> <span class="ticker" style="font-size:11px;">OTCQB: IMIMF</span> has retained <strong>i2i Marketing Group LLC</strong> to provide corporate marketing and investor awareness services for <strong>US$300,000</strong> over an initial <strong>6-month term</strong>.
+          <strong>Copper Quest Exploration Inc.</strong> <span class="ticker">CSE: CQX</span> <span class="ticker">OTCQB: IMIMF</span> has retained <strong>i2i Marketing Group LLC</strong> to provide corporate marketing and investor awareness services for <strong>US$300,000</strong> over an initial <strong>6-month term</strong>.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -3602,7 +3605,7 @@
         <div class="card-title">
           Blue Lagoon Resources Hires Hillside Consulting for Digital Marketing
           <span class="ticker">CSE: BLLG</span>
-         <span class="ticker" style="font-size:11px;">OTC: BLAGF</span></div>
+         <span class="ticker">OTC: BLAGF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🚀</div>
           <div class="hired-details">
@@ -3612,7 +3615,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Blue Lagoon Resources Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: BLLG</span> <span class="ticker" style="font-size:11px;">OTC: BLAGF</span> has retained <strong>Hillside Consulting and Media Inc.</strong> for a corporate awareness digital marketing campaign at a cost of <strong>$200,000</strong> (plus applicable taxes) over a <strong>6-month term</strong>. Blue Lagoon is a gold and silver exploration company in British Columbia.
+          <strong>Blue Lagoon Resources Inc.</strong> <span class="ticker">CSE: BLLG</span> <span class="ticker">OTC: BLAGF</span> has retained <strong>Hillside Consulting and Media Inc.</strong> for a corporate awareness digital marketing campaign at a cost of <strong>$200,000</strong> (plus applicable taxes) over a <strong>6-month term</strong>. Blue Lagoon is a gold and silver exploration company in British Columbia.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -3642,7 +3645,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Kirkstone Metals Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: KSM</span> <span class="ticker" style="font-size:11px;">OTCQB: KSMCF</span> has retained <strong>Capitaliz Marketing</strong> for investor awareness and digital marketing services. The company will pay <strong>USD$150,000 for an initial 3-month term</strong>. Services include digital content creation, social media management, and targeted investor outreach campaigns.
+          <strong>Kirkstone Metals Corp.</strong> <span class="ticker">TSXV: KSM</span> <span class="ticker">OTCQB: KSMCF</span> has retained <strong>Capitaliz Marketing</strong> for investor awareness and digital marketing services. The company will pay <strong>USD$150,000 for an initial 3-month term</strong>. Services include digital content creation, social media management, and targeted investor outreach campaigns.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3661,7 +3664,7 @@
         <div class="card-title">
           Orex Minerals Engages ICP Securities for Automated Market Making
           <span class="ticker">TSX: REX</span>
-         <span class="ticker" style="font-size:11px;">OTC: ORMNF</span></div>
+         <span class="ticker">OTC: ORMNF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📊</div>
           <div class="hired-details">
@@ -3671,7 +3674,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Orex Minerals Inc.</strong> <span class="ticker" style="font-size:11px;">TSX: REX</span> <span class="ticker" style="font-size:11px;">OTC: ORMNF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services, utilizing the proprietary ICP Premium™ algorithm to improve liquidity and quote health. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Orex Minerals Inc.</strong> <span class="ticker">TSX: REX</span> <span class="ticker">OTC: ORMNF</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making services, utilizing the proprietary ICP Premium™ algorithm to improve liquidity and quote health. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSX Filing</span></div>
@@ -3717,7 +3720,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Bitzero Holdings Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: BITZ.U</span> <span class="ticker" style="font-size:11px;">OTCQB: BTZRF</span> announced a three-firm IR engagement: <strong>Plutus Invest &amp; Consulting GmbH</strong> (Bremen, Germany) for European investor awareness at <strong>€100,000</strong> over <strong>12 months</strong>, <strong>Native Ads Inc.</strong> (renewal) at <strong>US$75,000</strong>, and <strong>i2i Marketing Group LLC</strong> (contract renewal). The campaign targets investors in both North American and European markets. Bitzero operates sustainable blockchain and HPC data centres.
+          <strong>Bitzero Holdings Inc.</strong> <span class="ticker">CSE: BITZ.U</span> <span class="ticker">OTCQB: BTZRF</span> announced a three-firm IR engagement: <strong>Plutus Invest &amp; Consulting GmbH</strong> (Bremen, Germany) for European investor awareness at <strong>€100,000</strong> over <strong>12 months</strong>, <strong>Native Ads Inc.</strong> (renewal) at <strong>US$75,000</strong>, and <strong>i2i Marketing Group LLC</strong> (contract renewal). The campaign targets investors in both North American and European markets. Bitzero operates sustainable blockchain and HPC data centres.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -3735,7 +3738,7 @@
         </div>
         <div class="card-title">
           Grit Metals Engages Plutus Invest for European Investor Awareness
-         <span class="ticker" style="font-size:11px;">TSXV: FIN</span> <span class="ticker" style="font-size:11px;">OTC: EUEMF</span></div>
+         <span class="ticker">TSXV: FIN</span> <span class="ticker">OTC: EUEMF</span></div>
         <div class="hired-box">
           <div class="hired-icon">✨</div>
           <div class="hired-details">
@@ -3745,7 +3748,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Grit Metals Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: FIN</span> <span class="ticker" style="font-size:11px;">OTC: EUEMF</span> has engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> (Bremen, Germany) to provide investor awareness and marketing services. Compensation ranges from <strong>€100,000 to €250,000</strong>, targeting European investors. The campaign aims to expand Grit Metals' visibility in the European market for its mineral exploration activities.
+          <strong>Grit Metals Inc.</strong> <span class="ticker">TSXV: FIN</span> <span class="ticker">OTC: EUEMF</span> has engaged <strong>Plutus Invest &amp; Consulting GmbH</strong> (Bremen, Germany) to provide investor awareness and marketing services. Compensation ranges from <strong>€100,000 to €250,000</strong>, targeting European investors. The campaign aims to expand Grit Metals' visibility in the European market for its mineral exploration activities.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -3775,7 +3778,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Alset AI Ventures Inc.</strong> <span class="ticker" style="font-size:11px;">CVE: GPUS</span> <span class="ticker" style="font-size:11px;">OTCQB: GPUSF</span> has engaged <strong>Outside The Box Capital Inc.</strong> (Ontario) for investor awareness and marketing services. Total compensation: <strong>$150,000 cash</strong> (25% on execution, then two quarterly payments of $56,250) plus <strong>1,000,000 incentive stock options</strong> at $0.055/share for 2 years. Agreement effective January 9, 2026 for an <strong>initial 2-month term</strong>.
+          <strong>Alset AI Ventures Inc.</strong> <span class="ticker">CVE: GPUS</span> <span class="ticker">OTCQB: GPUSF</span> has engaged <strong>Outside The Box Capital Inc.</strong> (Ontario) for investor awareness and marketing services. Total compensation: <strong>$150,000 cash</strong> (25% on execution, then two quarterly payments of $56,250) plus <strong>1,000,000 incentive stock options</strong> at $0.055/share for 2 years. Agreement effective January 9, 2026 for an <strong>initial 2-month term</strong>.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -3805,7 +3808,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>LIR Life Sciences Corp.</strong> <span class="ticker" style="font-size:11px;">CVE: SKNY</span> <span class="ticker" style="font-size:11px;">OTCQB: BBCMF</span> has retained <strong>Fairfax Partners Inc.</strong> (Vancouver, BC) for a digital marketing and investor relations initiative. Total fee: <strong>USD$150,000</strong> for a <strong>3-month term</strong>. LIR Life Sciences is a life sciences company focused on healthcare and biotech applications.
+          <strong>LIR Life Sciences Corp.</strong> <span class="ticker">CVE: SKNY</span> <span class="ticker">OTCQB: BBCMF</span> has retained <strong>Fairfax Partners Inc.</strong> (Vancouver, BC) for a digital marketing and investor relations initiative. Total fee: <strong>USD$150,000</strong> for a <strong>3-month term</strong>. LIR Life Sciences is a life sciences company focused on healthcare and biotech applications.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3824,7 +3827,7 @@
         <div class="card-title">
           Real Luck Group (Luckbox) Engages Native Ads for Digital Campaign
           <span class="ticker">TSXV: LUCK</span>
-         <span class="ticker" style="font-size:11px;">OTCQB: LUKEF</span></div>
+         <span class="ticker">OTCQB: LUKEF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📢</div>
           <div class="hired-details">
@@ -3834,7 +3837,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Real Luck Group Ltd. (Luckbox)</strong> <span class="ticker" style="font-size:11px;">TSXV: LUCK</span> <span class="ticker" style="font-size:11px;">OTCQB: LUKEF</span> has engaged <strong>Native Ads Inc.</strong> for a programmatic digital advertising and investor awareness campaign spanning <strong>6 months</strong>. The campaign is designed to broaden Luckbox's investor base across digital channels. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Real Luck Group Ltd. (Luckbox)</strong> <span class="ticker">TSXV: LUCK</span> <span class="ticker">OTCQB: LUKEF</span> has engaged <strong>Native Ads Inc.</strong> for a programmatic digital advertising and investor awareness campaign spanning <strong>6 months</strong>. The campaign is designed to broaden Luckbox's investor base across digital channels. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3863,7 +3866,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>CanPR Technology Ltd.</strong> <span class="ticker" style="font-size:11px;">TSXV: WPR</span> announced an amendment to its market making agreement with <strong>Independent Trading Group (ITG)</strong>, effective January 8, 2026. The monthly fee was reduced from <strong>C$6,000 to C$2,000 per month</strong>. ITG continues to provide market making services under the amended terms.
+          <strong>CanPR Technology Ltd.</strong> <span class="ticker">TSXV: WPR</span> announced an amendment to its market making agreement with <strong>Independent Trading Group (ITG)</strong>, effective January 8, 2026. The monthly fee was reduced from <strong>C$6,000 to C$2,000 per month</strong>. ITG continues to provide market making services under the amended terms.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3901,7 +3904,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>CanCambria Energy Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: CCEC</span> <span class="ticker" style="font-size:11px;">OTCQB: CCEYF</span> has engaged <strong>Machai Capital Inc.</strong> for a <strong>6-month</strong> market awareness initiative at a cost of <strong>CAD$400,000</strong> (plus GST), and <strong>Euroswiss Capital Partners Inc.</strong> for a <strong>5-month</strong> European awareness campaign at a cost of <strong>CAD$50,000</strong>.
+          <strong>CanCambria Energy Corp.</strong> <span class="ticker">TSXV: CCEC</span> <span class="ticker">OTCQB: CCEYF</span> has engaged <strong>Machai Capital Inc.</strong> for a <strong>6-month</strong> market awareness initiative at a cost of <strong>CAD$400,000</strong> (plus GST), and <strong>Euroswiss Capital Partners Inc.</strong> for a <strong>5-month</strong> European awareness campaign at a cost of <strong>CAD$50,000</strong>.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -3919,7 +3922,7 @@
         </div>
         <div class="card-title">
           Tiger Gold Engages VLP for Market Making at Frankfurt Listing
-         <span class="ticker" style="font-size:11px;">TSXV: TIGR</span> <span class="ticker" style="font-size:11px;">OTCQB: TGRGF</span></div>
+         <span class="ticker">TSXV: TIGR</span> <span class="ticker">OTCQB: TGRGF</span></div>
         <div class="hired-box">
           <div class="hired-icon">🔄</div>
           <div class="hired-details">
@@ -3929,7 +3932,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Tiger Gold Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: TIGR</span> <span class="ticker" style="font-size:11px;">OTCQB: TGRGF</span> has decided to use the services of <strong>Venture Liquidity Providers Inc. (VLP)</strong> to initiate market making services to aid in the development of its shares. The engagement was announced in connection with the company commencing trading on the Frankfurt Stock Exchange. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Tiger Gold Corp.</strong> <span class="ticker">TSXV: TIGR</span> <span class="ticker">OTCQB: TGRGF</span> has decided to use the services of <strong>Venture Liquidity Providers Inc. (VLP)</strong> to initiate market making services to aid in the development of its shares. The engagement was announced in connection with the company commencing trading on the Frankfurt Stock Exchange. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
@@ -3959,7 +3962,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Trident Resources Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: ROCK</span> <span class="ticker" style="font-size:11px;">OTCQB: TRDTF</span> has engaged <strong>New Era Publishing Inc.</strong> (Vancouver, BC) for corporate marketing and investor awareness services. Total compensation: <strong>USD$250,000</strong> — USD$100,000 upon execution plus USD$150,000 upon completion — over a <strong>3-month initial term</strong> with month-to-month renewals thereafter.
+          <strong>Trident Resources Corp.</strong> <span class="ticker">TSXV: ROCK</span> <span class="ticker">OTCQB: TRDTF</span> has engaged <strong>New Era Publishing Inc.</strong> (Vancouver, BC) for corporate marketing and investor awareness services. Total compensation: <strong>USD$250,000</strong> — USD$100,000 upon execution plus USD$150,000 upon completion — over a <strong>3-month initial term</strong> with month-to-month renewals thereafter.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -3989,7 +3992,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Bunker Hill Mining Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: BNKR</span> <span class="ticker" style="font-size:11px;">OTCQB: BHLL</span> has engaged <strong>Independent Trading Group (ITG)</strong> for market making services on the TSXV. Fee: <strong>CAD$6,500 per month</strong>, payable in advance, with an <strong>initial 1-month term</strong> renewing monthly. No shares or options granted as compensation. Bunker Hill is advancing the restart of the historic Bunker Hill Mine in northern Idaho (zinc, lead, silver).
+          <strong>Bunker Hill Mining Corp.</strong> <span class="ticker">TSXV: BNKR</span> <span class="ticker">OTCQB: BHLL</span> has engaged <strong>Independent Trading Group (ITG)</strong> for market making services on the TSXV. Fee: <strong>CAD$6,500 per month</strong>, payable in advance, with an <strong>initial 1-month term</strong> renewing monthly. No shares or options granted as compensation. Bunker Hill is advancing the restart of the historic Bunker Hill Mine in northern Idaho (zinc, lead, silver).
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -4019,7 +4022,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>NU E Power Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: NUE</span> <span class="ticker" style="font-size:11px;">OTC Pink: NUEPF</span> has retained <strong>Venture Liquidity Providers Inc.</strong> to initiate its market making service, subject to regulatory approval. The company has agreed to pay VLP <strong>$5,000 per month for a term of 12 months</strong> (total commitment: $60,000). Market making activities will be conducted through registered broker W.D. Latimer Co. Ltd. in compliance with CSE policies.
+          <strong>NU E Power Corp.</strong> <span class="ticker">CSE: NUE</span> <span class="ticker">OTC Pink: NUEPF</span> has retained <strong>Venture Liquidity Providers Inc.</strong> to initiate its market making service, subject to regulatory approval. The company has agreed to pay VLP <strong>$5,000 per month for a term of 12 months</strong> (total commitment: $60,000). Market making activities will be conducted through registered broker W.D. Latimer Co. Ltd. in compliance with CSE policies.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>SEC / CSE Filing</span></div>
@@ -4037,7 +4040,7 @@
         </div>
         <div class="card-title">
           Temas Resources Engages ITG for Market Making on CSE
-         <span class="ticker" style="font-size:11px;">CSE: TMAS</span> <span class="ticker" style="font-size:11px;">OTCQB: TMASF</span></div>
+         <span class="ticker">CSE: TMAS</span> <span class="ticker">OTCQB: TMASF</span></div>
         <div class="hired-box">
           <div class="hired-icon">📈</div>
           <div class="hired-details">
@@ -4047,7 +4050,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Temas Resources Corp.</strong> <span class="ticker" style="font-size:11px;">CSE: TMAS</span> <span class="ticker" style="font-size:11px;">OTCQB: TMASF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market making services on the Canadian Securities Exchange, subject to regulatory approval. <strong>Payment terms were not publicly disclosed.</strong>
+          <strong>Temas Resources Corp.</strong> <span class="ticker">CSE: TMAS</span> <span class="ticker">OTCQB: TMASF</span> has engaged <strong>Independent Trading Group (ITG)</strong> to provide market making services on the Canadian Securities Exchange, subject to regulatory approval. <strong>Payment terms were not publicly disclosed.</strong>
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -4077,7 +4080,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Blast Resources Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: BLST</span> <span class="ticker" style="font-size:11px;">OTCQB: BLSRF</span> has engaged both <strong>Echo Elite</strong> and <strong>Spark Newswire</strong> for a combined investor awareness campaign totalling <strong>CAD$325,000</strong>. Echo Elite will be paid up to <strong>CAD$200,000 over approximately 10 weeks</strong>, commencing April 7, 2026. Spark Newswire will receive <strong>CAD$125,000 over approximately 2 months</strong>.
+          <strong>Blast Resources Inc.</strong> <span class="ticker">CSE: BLST</span> <span class="ticker">OTCQB: BLSRF</span> has engaged both <strong>Echo Elite</strong> and <strong>Spark Newswire</strong> for a combined investor awareness campaign totalling <strong>CAD$325,000</strong>. Echo Elite will be paid up to <strong>CAD$200,000 over approximately 10 weeks</strong>, commencing April 7, 2026. Spark Newswire will receive <strong>CAD$125,000 over approximately 2 months</strong>.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -4107,7 +4110,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>FutureGen Industries Corp.</strong> <span class="ticker" style="font-size:11px;">TSXV: LITT</span> <span class="ticker" style="font-size:11px;">OTC: RMANF</span> has retained <strong>Venture Liquidity Providers Inc. (VLP)</strong> for market making services. Fee: <strong>CAD$5,000 per month</strong> for a <strong>3-month initial term</strong>, automatically renewing monthly. Conducted through registered broker W.D. Latimer Co. Ltd. FutureGen is a venture capital firm investing in biotech, AI, robotics, and defence companies.
+          <strong>FutureGen Industries Corp.</strong> <span class="ticker">TSXV: LITT</span> <span class="ticker">OTC: RMANF</span> has retained <strong>Venture Liquidity Providers Inc. (VLP)</strong> for market making services. Fee: <strong>CAD$5,000 per month</strong> for a <strong>3-month initial term</strong>, automatically renewing monthly. Conducted through registered broker W.D. Latimer Co. Ltd. FutureGen is a venture capital firm investing in biotech, AI, robotics, and defence companies.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
@@ -4137,7 +4140,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Zentek Ltd.</strong> <span class="ticker" style="font-size:11px;">TSXV: ZEN</span> <span class="ticker" style="font-size:11px;">NASDAQ: ZTEK</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making using the <em>ICP Premium®</em> algorithm. Fee: <strong>C$7,500 per month plus applicable taxes</strong>. Agreement commenced April 1, 2026 with an <strong>initial 4-month term</strong>, renewing monthly thereafter. Disclosed via Form 6-K filing with the SEC.
+          <strong>Zentek Ltd.</strong> <span class="ticker">TSXV: ZEN</span> <span class="ticker">NASDAQ: ZTEK</span> has engaged <strong>ICP Securities Inc.</strong> for automated market making using the <em>ICP Premium®</em> algorithm. Fee: <strong>C$7,500 per month plus applicable taxes</strong>. Agreement commenced April 1, 2026 with an <strong>initial 4-month term</strong>, renewing monthly thereafter. Disclosed via Form 6-K filing with the SEC.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>SEC Filing (Form 6-K)</span></div>
@@ -4167,7 +4170,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>Rock Tech Lithium Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: RCK</span> <span class="ticker" style="font-size:11px;">OTCQB: RCKTF</span> engaged <strong>ICP Securities Inc.</strong> for automated market making services effective December 11, 2025 (reported January 2026). Fee: <strong>C$7,500 per month plus applicable taxes</strong> for an <strong>initial 4-month term</strong>, renewing monthly thereafter. Rock Tech is advancing lithium hydroxide refinery construction in Brandenburg, Germany.
+          <strong>Rock Tech Lithium Inc.</strong> <span class="ticker">TSXV: RCK</span> <span class="ticker">OTCQB: RCKTF</span> engaged <strong>ICP Securities Inc.</strong> for automated market making services effective December 11, 2025 (reported January 2026). Fee: <strong>C$7,500 per month plus applicable taxes</strong> for an <strong>initial 4-month term</strong>, renewing monthly thereafter. Rock Tech is advancing lithium hydroxide refinery construction in Brandenburg, Germany.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
@@ -4197,7 +4200,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>SPARC AI Inc.</strong> <span class="ticker" style="font-size:11px;">CSE: SPAI</span> <span class="ticker" style="font-size:11px;">OTCQB: SPAIF</span> has retained <strong>Senergy Communications Capital Inc.</strong>, a Vancouver-based marketing and shareholder relations firm, to provide marketing and investor awareness services. The agreement is for a <strong>2-month</strong> term at a total cost of <strong>CAD$100,000</strong>, comprising a <strong>$15,000 service fee</strong> and <strong>$85,000 in advertising expenses</strong>. Senergy will design and execute campaigns including corporate branding, social media, and advertising initiatives.
+          <strong>SPARC AI Inc.</strong> <span class="ticker">CSE: SPAI</span> <span class="ticker">OTCQB: SPAIF</span> has retained <strong>Senergy Communications Capital Inc.</strong>, a Vancouver-based marketing and shareholder relations firm, to provide marketing and investor awareness services. The agreement is for a <strong>2-month</strong> term at a total cost of <strong>CAD$100,000</strong>, comprising a <strong>$15,000 service fee</strong> and <strong>$85,000 in advertising expenses</strong>. Senergy will design and execute campaigns including corporate branding, social media, and advertising initiatives.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>CSE Filing</span></div>
@@ -4226,7 +4229,7 @@
           </div>
         </div>
         <div class="card-body">
-          <strong>TenX Protocols Inc.</strong> <span class="ticker" style="font-size:11px;">TSXV: TNX</span> engaged <strong>Independent Trading Group (ITG)</strong> for market making services effective December 31, 2025 / January 1, 2026. Fee: <strong>C$6,500 per month</strong>, with an <strong>initial 1-month term</strong> automatically renewing monthly. ITG will trade shares on the TSXV with the objective of maintaining a fair and orderly market.
+          <strong>TenX Protocols Inc.</strong> <span class="ticker">TSXV: TNX</span> engaged <strong>Independent Trading Group (ITG)</strong> for market making services effective December 31, 2025 / January 1, 2026. Fee: <strong>C$6,500 per month</strong>, with an <strong>initial 1-month term</strong> automatically renewing monthly. ITG will trade shares on the TSXV with the objective of maintaining a fair and orderly market.
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing</span></div>
