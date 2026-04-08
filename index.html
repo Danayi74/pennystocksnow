@@ -856,9 +856,12 @@
       justify-content: space-between;
       padding: 8px 0;
       border-bottom: 1px solid var(--border-light);
+      cursor: pointer;
     }
 
     .watch-row:last-child { border-bottom: none; }
+
+    .watch-row:hover .watch-name { color: var(--accent); transition: color 0.15s; }
 
     .watch-ticker {
       font-family: 'SF Mono', 'Fira Code', monospace;
