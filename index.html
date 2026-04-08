@@ -4400,6 +4400,25 @@
       const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
       card.classList.toggle('hidden', !(matchesSearch && matchesFilter));
     });
+    // Hide month dividers that have no visible cards
+    document.querySelectorAll('.month-divider').forEach(divider => {
+      let hasVisible = false;
+      let el = divider.nextElementSibling;
+      while (el && !el.classList.contains('month-divider')) {
+        if (el.classList.contains('card') && !el.classList.contains('hidden')) {
+          hasVisible = true;
+          break;
+        }
+        el = el.nextElementSibling;
+      }
+      divider.style.display = hasVisible ? '' : 'none';
+    });
+    // Also hide month-nav links for empty months
+    document.querySelectorAll('.month-nav a').forEach(link => {
+      const monthId = link.getAttribute('href')?.replace('#', '');
+      const divider = document.getElementById(monthId);
+      link.style.display = (divider && divider.style.display === 'none') ? 'none' : '';
+    });
   }
 
   function filterCards() {
@@ -4454,9 +4473,11 @@
     if (allBtn) allBtn.classList.add('active');
     document.querySelectorAll('.sidebar-row').forEach(r => r.classList.remove('active-firm'));
 
-    // Remove hidden class from all cards
+    // Remove hidden class from all cards and show all month dividers
     const cards = document.querySelectorAll('#promo-alerts .feed .card');
     cards.forEach(c => c.classList.remove('hidden'));
+    document.querySelectorAll('.month-divider').forEach(d => d.style.display = '');
+    document.querySelectorAll('.month-nav a').forEach(a => a.style.display = '');
 
     // Find and scroll to the matching card
     for (const card of cards) {
