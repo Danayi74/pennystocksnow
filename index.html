@@ -4393,12 +4393,15 @@
 
   function applyFilters() {
     const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    let visibleCount = 0;
     document.querySelectorAll('.card').forEach(card => {
       const text = card.getAttribute('data-text') || '';
       const tags = card.getAttribute('data-tags') || '';
       const matchesSearch = q.length === 0 || text.includes(q);
       const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
-      card.classList.toggle('hidden', !(matchesSearch && matchesFilter));
+      const show = matchesSearch && matchesFilter;
+      card.classList.toggle('hidden', !show);
+      if (show) visibleCount++;
     });
     // Hide month dividers that have no visible cards
     document.querySelectorAll('.month-divider').forEach(divider => {
@@ -4419,6 +4422,30 @@
       const divider = document.getElementById(monthId);
       link.style.display = (divider && divider.style.display === 'none') ? 'none' : '';
     });
+    // Show "No results found" message when nothing matches
+    const feed = document.querySelector('#promo-alerts .feed');
+    let noResults = feed.querySelector('.no-results');
+    if (visibleCount === 0 && q.length > 0) {
+      if (!noResults) {
+        noResults = document.createElement('div');
+        noResults.className = 'no-results';
+        noResults.style.cssText = 'text-align:center;padding:60px 20px;color:#718096;font-size:16px;';
+        noResults.textContent = 'No results found';
+        feed.appendChild(noResults);
+      }
+      noResults.style.display = '';
+      // Hide feed-header and month-nav
+      const fh = feed.querySelector('.feed-header');
+      if (fh) fh.style.display = 'none';
+      const mn = feed.querySelector('.month-nav');
+      if (mn) mn.style.display = 'none';
+    } else {
+      if (noResults) noResults.style.display = 'none';
+      const fh = feed.querySelector('.feed-header');
+      if (fh) fh.style.display = '';
+      const mn = feed.querySelector('.month-nav');
+      if (mn) mn.style.display = '';
+    }
   }
 
   function filterCards() {
