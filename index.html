@@ -910,6 +910,29 @@
       color: var(--text-muted);
     }
 
+    .footer-nav {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      font-size: 13px;
+    }
+
+    .footer-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover {
+      color: var(--accent);
+    }
+
+    .footer-nav .sep {
+      margin: 0 10px;
+      color: var(--text-muted);
+    }
+
     .disclaimer {
       background: #fffbeb;
       border: 1px solid #fde68a;
@@ -4199,6 +4222,15 @@
     <div>
       <div class="footer-brand">PennyStocks<span>Now</span>.com</div>
       <p>© 2026 PennyStocksNow.com · Sourced from SEC, TSXV &amp; CSE filings · For informational purposes only.</p>
+      <div class="footer-nav">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <a href="/about.html">About Us</a>
+        <span class="sep">/</span>
+        <a href="/privacy.html">Privacy Policy</a>
+        <span class="sep">/</span>
+        <a href="/terms.html">Terms &amp; Conditions</a>
+      </div>
     </div>
   </div>
 </footer>
