@@ -4479,13 +4479,17 @@
       const divider = document.getElementById(monthId);
       link.style.display = (divider && divider.style.display === 'none') ? 'none' : '';
     });
-    // Hide welcome banner when searching (desktop and mobile)
+    // Hide welcome banner and month-nav when searching (desktop and mobile)
     const welcomeBanner = document.getElementById('welcome-banner');
     if (welcomeBanner) {
       welcomeBanner.style.display = q.length > 0 ? 'none' : '';
     }
-    // Show "No results found" message when nothing matches
     const feed = document.querySelector('#promo-alerts .feed');
+    const monthNav = feed.querySelector('.month-nav');
+    if (monthNav) {
+      monthNav.style.display = q.length > 0 ? 'none' : '';
+    }
+    // Show "No results found" message when nothing matches
     let noResults = feed.querySelector('.no-results');
     if (visibleCount === 0 && q.length > 0) {
       if (!noResults) {
@@ -4496,17 +4500,13 @@
         feed.appendChild(noResults);
       }
       noResults.style.display = '';
-      // Hide feed-header and month-nav
+      // Hide feed-header
       const fh = feed.querySelector('.feed-header');
       if (fh) fh.style.display = 'none';
-      const mn = feed.querySelector('.month-nav');
-      if (mn) mn.style.display = 'none';
     } else {
       if (noResults) noResults.style.display = 'none';
       const fh = feed.querySelector('.feed-header');
       if (fh) fh.style.display = '';
-      const mn = feed.querySelector('.month-nav');
-      if (mn) mn.style.display = '';
     }
   }
 
