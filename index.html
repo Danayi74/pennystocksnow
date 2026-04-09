@@ -1196,9 +1196,9 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">100</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">99</span></button>
       <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">42</span></button>
-      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">59</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">58</span></button>
     </div>
   </div>
 </div>
@@ -1486,34 +1486,6 @@
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>ACCESS Newswire / Public Disclosure</span></div>
-        </div>
-      </div>
-
-
-      <div class="card" data-tags="investor-awareness" data-text="talent infinity tico rmk marketing nordcore bcsc clarification promotional activities cse">
-        <div class="card-top">
-          <div class="card-tags">
-            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
-            <span class="tag" style="background:#fff5f5;color:#c53030;border:1px solid #feb2b2;">BCSC Review</span>
-          </div>
-          <span class="card-date">April 9, 2026</span>
-        </div>
-        <div class="card-title">
-          Talent Infinity Clarifies Promotional Activities After BCSC Review
-          <span class="ticker">CSE: TICO</span></div>
-        <div class="hired-box">
-          <div class="hired-icon">⚖️</div>
-          <div class="hired-details">
-            <div class="hired-label">Firm Involved</div>
-            <div class="hired-firm">RMK Marketing Inc. (via Nordcore Media LLC)</div>
-            <div class="hired-purpose">Promotional services · ~US$250,000 to Nordcore · BCSC-ordered content removal</div>
-          </div>
-        </div>
-        <div class="card-body">
-          <strong>Talent Infinity Resource Developments Inc.</strong> <span class="ticker">CSE: TICO</span> issued a clarifying news release following a review by the <strong>British Columbia Securities Commission (BCSC)</strong>. The company had engaged <strong>Nordcore Media LLC</strong> for approximately <strong>US$250,000</strong> in promotional services. The BCSC identified promotional articles disseminated through <strong>RMK Marketing Inc.</strong>, a third-party engaged by Nordcore. At the BCSC's request, the company has removed the specified content and ceased further circulation of those materials.
-        </div>
-        <div class="card-footer">
-          <div class="alert-kw">Source: <span>Newsfile / CSE Filing</span></div>
         </div>
       </div>
 
@@ -4544,10 +4516,6 @@
           <div class="alert-item-title">Super Copper engages Emerging Markets Consulting for IR</div>
           <div class="alert-item-meta">Apr 9 <span></span> Investor Awareness</div>
         </div>
-        <div class="alert-item" onclick="scrollToMatch('tico')" style="cursor:pointer;">
-          <div class="alert-item-title">Talent Infinity clarifies promo activities after BCSC review</div>
-          <div class="alert-item-meta">Apr 9 <span></span> BCSC Review</div>
-        </div>
         <div class="alert-item" onclick="scrollToMatch('ktn')" style="cursor:pointer;">
           <div class="alert-item-title">Kootenay Silver enters Gold Standard Media marketing deal</div>
           <div class="alert-item-meta">Apr 9 <span></span> Investor Awareness</div>
@@ -4567,11 +4535,6 @@
         <div class="watch-row" onclick="scrollToMatch('cupr')" style="cursor:pointer;">
           <span class="watch-ticker">CUPR</span>
           <span class="watch-name">Super Copper Corp.</span>
-          <span class="watch-date">Apr 9</span>
-        </div>
-        <div class="watch-row" onclick="scrollToMatch('tico')" style="cursor:pointer;">
-          <span class="watch-ticker">TICO</span>
-          <span class="watch-name">Talent Infinity</span>
           <span class="watch-date">Apr 9</span>
         </div>
         <div class="watch-row" onclick="scrollToMatch('kalo')" style="cursor:pointer;">
@@ -5046,7 +5009,6 @@
     { name: 'Battery X Metals Inc.',        yticker: 'BATX.CN', display: 'BATX',          exchange: 'CSE',           startPrice: 0.050,  currency: 'CAD' },
     { name: 'Super Copper Corp.',           yticker: 'CUPPF',   display: 'CUPR / CUPPF',  exchange: 'CVE / OTC',     startPrice: 0.015,  currency: 'USD' },
     { name: 'Kootenay Silver Inc.',         yticker: 'KOOYF',   display: 'KTN / KOOYF',   exchange: 'TSXV / OTC',    startPrice: 0.40,   currency: 'USD' },
-    { name: 'Talent Infinity Resource',     yticker: 'TICO.CN', display: 'TICO',          exchange: 'CSE',           startPrice: 0.020,  currency: 'CAD' },
   ];
 
   async function loadTopMovers(force) {
