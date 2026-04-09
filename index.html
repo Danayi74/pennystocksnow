@@ -1071,6 +1071,11 @@
       #welcome-banner div { padding: 0 12px !important; max-width: 100%; }
       /* === No results message fit === */
       #no-results-msg { max-width: 100%; word-break: break-word; }
+      #email-capture { padding: 12px 0 !important; }
+      #email-capture > div { padding: 0 12px !important; flex-direction: column; gap: 10px; text-align: center; }
+      #email-capture span { font-size: 12px !important; }
+      #email-capture input { width: 200px !important; font-size: 12px !important; }
+      #email-capture button { font-size: 12px !important; padding: 8px 16px !important; }
     }
   </style>
 </head>
@@ -1127,6 +1132,28 @@
 
       👋 <strong>Welcome to PennyStocksNow.com:</strong> your real-time intelligence feed for small-cap stock promotions! We track every public filing and disclosure in which a company hires a marketing, investor relations, or market making firm, so you always know which penny stocks are being actively promoted before the crowd does. Each alert is sourced directly from SEC, TSXV, and CSE filings: no speculation, no noise, just verified disclosures. Use the search and filter sections to zero in on the alert type that matters most to your trading strategy.
     </p>
+  </div>
+</div>
+
+<!-- EMAIL CAPTURE BAR -->
+<div id="email-capture" style="background:linear-gradient(135deg,#1a202c 0%,#2d3748 100%);border-bottom:2px solid #e53e3e;padding:16px 0;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:20px;">🔔</span>
+      <span style="font-size:14px;font-weight:700;color:#fff;">Get Weekly Promo Alerts</span>
+      <span style="font-size:12.5px;color:#a0aec0;">— New filings delivered to your inbox every Monday.</span>
+    </div>
+    <form id="email-form" onsubmit="handleEmailSubmit(event)" style="display:flex;gap:8px;align-items:center;">
+      <input type="email" id="email-input" required placeholder="Enter your email…"
+        style="padding:8px 14px;border:1px solid #4a5568;border-radius:6px;font-size:13px;background:#2d3748;color:#fff;outline:none;width:240px;"
+        onfocus="this.style.borderColor='#e53e3e'" onblur="this.style.borderColor='#4a5568'"/>
+      <button type="submit"
+        style="padding:8px 20px;background:#e53e3e;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background 0.2s;"
+        onmouseover="this.style.background='#c53030'" onmouseout="this.style.background='#e53e3e'">
+        Subscribe
+      </button>
+    </form>
+    <span id="email-success" style="display:none;font-size:13px;color:#68d391;font-weight:600;">✓ You're in! Check your inbox.</span>
   </div>
 </div>
 
@@ -4507,10 +4534,14 @@
       const divider = document.getElementById(monthId);
       link.style.display = (divider && divider.style.display === 'none') ? 'none' : '';
     });
-    // Hide welcome banner and month-nav when searching (desktop and mobile)
+    // Hide welcome banner, email capture, and month-nav when searching (desktop and mobile)
     const welcomeBanner = document.getElementById('welcome-banner');
     if (welcomeBanner) {
       welcomeBanner.style.display = q.length > 0 ? 'none' : '';
+    }
+    const emailCapture = document.getElementById('email-capture');
+    if (emailCapture) {
+      emailCapture.style.display = q.length > 0 ? 'none' : '';
     }
     const feed = document.querySelector('#promo-alerts .feed');
     const monthNav = feed.querySelector('.month-nav');
@@ -4540,6 +4571,22 @@
 
   function filterCards() {
     applyFilters();
+  }
+
+  function handleEmailSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('email-input').value.trim();
+    if (!email) return;
+    // Store locally (will integrate with email service later)
+    const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
+    if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
+    document.getElementById('email-form').style.display = 'none';
+    document.getElementById('email-success').style.display = 'inline';
+    // Hide after 3 seconds
+    setTimeout(() => {
+      const bar = document.getElementById('email-capture');
+      if (bar) bar.style.display = 'none';
+    }, 3000);
   }
 
   function setFilter(filter, btn) {
@@ -4596,6 +4643,8 @@
     document.querySelectorAll('.month-nav a').forEach(a => a.style.display = '');
     const wb = document.getElementById('welcome-banner');
     if (wb) wb.style.display = '';
+    const ec = document.getElementById('email-capture');
+    if (ec) ec.style.display = '';
 
     // Find and scroll to the matching card
     for (const card of cards) {
