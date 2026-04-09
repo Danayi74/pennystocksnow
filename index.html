@@ -1196,9 +1196,9 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">100</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">101</span></button>
       <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">42</span></button>
-      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">59</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">60</span></button>
     </div>
   </div>
 </div>
@@ -1458,6 +1458,35 @@
           <option>Newest First</option>
           <option>Oldest First</option>
         </select>
+      </div>
+
+
+      <div class="card" data-tags="investor-awareness" data-text="west point gold wpg wpgcf equedia network communications marketing investor awareness tsxv otc mining gold">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">March 23, 2026</span>
+        </div>
+        <div class="card-title">
+          West Point Gold Engages Equedia Network for Communications &amp; Marketing
+          <span class="ticker">TSXV: WPG</span>
+          <span class="ticker">OTC: WPGCF</span></div>
+        <div class="hired-box">
+          <div class="hired-icon">📢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Equedia Network Corp.</div>
+            <div class="hired-purpose">Communications, marketing &amp; advisory services · <strong>CAD$500,000 + taxes</strong> · 12 months</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>West Point Gold Corp.</strong> <span class="ticker">TSXV: WPG</span> <span class="ticker">OTC: WPGCF</span> <span class="ticker">FSE: LRA0</span> has engaged <strong>Equedia Network Corp.</strong>, based in Richmond, BC, to provide communications, marketing and advisory services under a 12-month agreement dated March 9, 2026, for a one-time fee of <strong>CAD$500,000 + applicable taxes</strong>. Equedia specializes in marketing, communications, media engagement and public awareness services within the mining and metals sector. The company will not issue any securities to Equedia as compensation. Equedia (including its directors and officers) does not currently own any securities of the company. Subject to TSXV approval.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
+        </div>
       </div>
 
 
@@ -4541,6 +4570,10 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Recent Matches</div>
+        <div class="alert-item" onclick="scrollToMatch('wpg')" style="cursor:pointer;">
+          <div class="alert-item-title">West Point Gold engages Equedia Network for marketing</div>
+          <div class="alert-item-meta">Mar 23 <span></span> Investor Awareness</div>
+        </div>
         <div class="alert-item" onclick="scrollToMatch('appt')" style="cursor:pointer;">
           <div class="alert-item-title">UberDoc engages Machai Capital for digital marketing</div>
           <div class="alert-item-meta">Apr 9 <span></span> Investor Awareness</div>
@@ -4555,10 +4588,6 @@
         </div>
         <div class="alert-item" onclick="scrollToMatch('amq')" style="cursor:pointer;">
           <div class="alert-item-title">Abitibi Metals renews Native Ads for 12-Month Campaign</div>
-          <div class="alert-item-meta">Apr 7 <span></span> Investor Awareness</div>
-        </div>
-        <div class="alert-item" onclick="scrollToMatch('kalo')" style="cursor:pointer;">
-          <div class="alert-item-title">Kalo Gold enters into Multi-Firm IR &amp; Marketing Agreements</div>
           <div class="alert-item-meta">Apr 7 <span></span> Investor Awareness</div>
         </div>
       </div>
