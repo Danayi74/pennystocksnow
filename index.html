@@ -1196,9 +1196,9 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">99</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">100</span></button>
       <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">42</span></button>
-      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">58</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">59</span></button>
     </div>
   </div>
 </div>
@@ -1458,6 +1458,35 @@
           <option>Newest First</option>
           <option>Oldest First</option>
         </select>
+      </div>
+
+
+      <div class="card" data-tags="investor-awareness" data-text="uberdoc health appt esvnf machai capital digital marketing investor awareness cse otc healthcare">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">April 9, 2026</span>
+        </div>
+        <div class="card-title">
+          UberDoc Engages Machai Capital for Digital Marketing Campaign
+          <span class="ticker">CSE: APPT</span>
+          <span class="ticker">OTC: ESVNF</span></div>
+        <div class="hired-box">
+          <div class="hired-icon">🔔</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Machai Capital Inc.</div>
+            <div class="hired-purpose">Digital marketing &amp; public awareness · <strong>CAD$400,000 + GST</strong> · 3 months</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>UberDoc Health Technologies Corp.</strong> <span class="ticker">CSE: APPT</span> <span class="ticker">OTC: ESVNF</span> has engaged <strong>Machai Capital Inc.</strong> to lead the company's marketing, advertising, and public awareness activities under a 3-month digital media marketing program for <strong>CAD$400,000 + GST</strong>. Services include SEO, SEM, lead generation, social media marketing, email marketing, and brand marketing. Machai and its principal Suneal Sandhu currently hold 571,428 common shares and 285,714 warrants (exercisable at $0.50).
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
+        </div>
       </div>
 
 
@@ -4478,7 +4507,7 @@
             <div class="sidebar-row-label">Machai Capital Inc.</div>
             <div class="sidebar-row-sub">Investor Awareness</div>
           </div>
-          <span class="sidebar-count">6</span>
+          <span class="sidebar-count">7</span>
         </div>
         <div class="sidebar-row" data-firm="plutus invest" onclick="filterByFirm(this)">
           <div>
@@ -4512,6 +4541,10 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Recent Matches</div>
+        <div class="alert-item" onclick="scrollToMatch('appt')" style="cursor:pointer;">
+          <div class="alert-item-title">UberDoc engages Machai Capital for digital marketing</div>
+          <div class="alert-item-meta">Apr 9 <span></span> Investor Awareness</div>
+        </div>
         <div class="alert-item" onclick="scrollToMatch('cupr')" style="cursor:pointer;">
           <div class="alert-item-title">Super Copper engages Emerging Markets Consulting for IR</div>
           <div class="alert-item-meta">Apr 9 <span></span> Investor Awareness</div>
