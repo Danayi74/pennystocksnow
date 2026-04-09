@@ -1196,9 +1196,9 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">105</span></button>
-      <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">42</span></button>
-      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">63</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">107</span></button>
+      <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">43</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">64</span></button>
     </div>
   </div>
 </div>
@@ -1458,6 +1458,52 @@
           <option>Newest First</option>
           <option>Oldest First</option>
         </select>
+      </div>
+
+
+      <div class="card" data-tags="market-making investor-awareness" data-text="salescloser technologies scai bullvestor medien green times consulting generation iacp market making investor awareness marketing tsxv ai software">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag tag-promo">🏦 Market Maker Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market Making</span>
+          </div>
+          <span class="card-date">April 9, 2026</span>
+        </div>
+        <div class="card-title">
+          SalesCloser Technologies Enters into Multi-Firm Marketing &amp; Market Making Agreements
+          <span class="ticker">TSXV: SCAI</span></div>
+        <div class="hired-box">
+          <div class="hired-icon">📣</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">bullVestor Medien GmbH</div>
+            <div class="hired-purpose">Corporate marketing &amp; promotional services (content, keyword optimization, advertising, media distribution) · <strong>€250,000</strong> media deposit · Up to 6 months</div>
+          </div>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔔</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Green Times Consulting</div>
+            <div class="hired-purpose">Strategic &amp; advisory consulting services · <strong>$200,000 + GST</strong> (paid in common shares) · 2 months</div>
+          </div>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">💼</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Generation IACP Inc.</div>
+            <div class="hired-purpose">Market making services (maintaining reasonable market, improving liquidity) · <strong>C$8,500/month</strong> + taxes · 6-month initial term, auto-renewal</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>SalesCloser Technologies Ltd.</strong> <span class="ticker">TSXV: SCAI</span> (formerly G2M Cap Corp), an AI-powered software company, has entered into three service agreements. <strong>bullVestor Medien GmbH</strong>, a German-language investor marketing firm, will provide corporate marketing and promotional services including content creation, keyword optimization, advertising, display campaigns, project management, media distribution, and performance reporting for a non-refundable initial media deposit of <strong>€250,000</strong> for a fixed term of up to 6 months effective upon closing of the Transaction. Agreement dated January 29, 2026. <strong>Green Times Consulting</strong> will provide strategic and advisory consulting services for <strong>$200,000 + GST</strong>, payable in common shares (65% for the month ending April 30, 35% for the month ending May 31, 2026). Agreement dated March 31, 2026. <strong>Generation IACP Inc.</strong> will provide market making services, maintaining a reasonable market and improving liquidity of the company's common shares, for <strong>C$8,500/month</strong> plus applicable taxes on an initial 6-month term with automatic monthly renewals. Agreement dated March 31, 2026. The company commenced trading on TSXV on April 7, 2026.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing</span></div>
+        </div>
       </div>
 
 
@@ -4657,6 +4703,10 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Recent Matches</div>
+        <div class="alert-item" onclick="scrollToMatch('scai')" style="cursor:pointer;">
+          <div class="alert-item-title">SalesCloser Technologies enters Multi-Firm Marketing &amp; Market Making deals</div>
+          <div class="alert-item-meta">Apr 9 <span></span> Marketing / Market Making</div>
+        </div>
         <div class="alert-item" onclick="scrollToMatch('appt')" style="cursor:pointer;">
           <div class="alert-item-title">UberDoc engages Machai Capital for digital marketing</div>
           <div class="alert-item-meta">Apr 9 <span></span> Investor Awareness</div>
@@ -4673,14 +4723,15 @@
           <div class="alert-item-title">Abitibi Metals renews Native Ads for 12-Month Campaign</div>
           <div class="alert-item-meta">Apr 7 <span></span> Investor Awareness</div>
         </div>
-        <div class="alert-item" onclick="scrollToMatch('kalo')" style="cursor:pointer;">
-          <div class="alert-item-title">Kalo Gold enters into Multi-Firm IR &amp; Marketing Agreements</div>
-          <div class="alert-item-meta">Apr 7 <span></span> Investor Awareness</div>
-        </div>
       </div>
 
       <div class="sidebar-card">
         <div class="sidebar-title">Tickers to Watch</div>
+        <div class="watch-row" onclick="scrollToMatch('scai')" style="cursor:pointer;">
+          <span class="watch-ticker">SCAI</span>
+          <span class="watch-name">SalesCloser Technologies Ltd.</span>
+          <span class="watch-date">Apr 9</span>
+        </div>
         <div class="watch-row" onclick="scrollToMatch('kalo')" style="cursor:pointer;">
           <span class="watch-ticker">KALO</span>
           <span class="watch-name">Kalo Gold Corp.</span>
@@ -4701,11 +4752,6 @@
           <span class="watch-name">Lithium Africa Inc.</span>
           <span class="watch-date">Mar 19</span>
         </div>
-        <div class="watch-row" onclick="scrollToMatch('af2')" style="cursor:pointer;">
-          <span class="watch-ticker">AF.P</span>
-          <span class="watch-name">Everkind (AF2 Capital)</span>
-          <span class="watch-date">Mar 12</span>
-        </div>
       </div>
 
       <div class="sidebar-card">
@@ -4716,7 +4762,7 @@
         </div>
         <div class="sidebar-row" data-firm="bullvestor" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">bullVestor Medien GmbH</div><div class="sidebar-row-sub">Investor Awareness</div></div>
-          <span class="sidebar-count">1</span>
+          <span class="sidebar-count">2</span>
         </div>
         <div class="sidebar-row" data-firm="capital analytica" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Capital Analytica</div><div class="sidebar-row-sub">Investor Awareness</div></div>
@@ -4766,12 +4812,20 @@
           <div><div class="sidebar-row-label">Fairfax Partners Inc.</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">3</span>
         </div>
+        <div class="sidebar-row" data-firm="generation iacp" onclick="filterByFirm(this)">
+          <div><div class="sidebar-row-label">Generation IACP Inc.</div><div class="sidebar-row-sub">Market Making</div></div>
+          <span class="sidebar-count">1</span>
+        </div>
         <div class="sidebar-row" data-firm="gold standard media" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Gold Standard Media, LLC</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
         <div class="sidebar-row" data-firm="goldinvest" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">GOLDINVEST Consulting GmbH</div><div class="sidebar-row-sub">Investor Awareness</div></div>
+          <span class="sidebar-count">1</span>
+        </div>
+        <div class="sidebar-row" data-firm="green times consulting" onclick="filterByFirm(this)">
+          <div><div class="sidebar-row-label">Green Times Consulting</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
         <div class="sidebar-row" data-firm="hillside consulting" onclick="filterByFirm(this)">
