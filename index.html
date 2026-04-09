@@ -1077,9 +1077,91 @@
       #email-capture input { width: 200px !important; font-size: 12px !important; }
       #email-capture button { font-size: 12px !important; padding: 8px 16px !important; }
     }
+
+    /* === Email Popup === */
+    .email-popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    .email-popup-overlay.active { display: flex; }
+    .email-popup {
+      background: #fff;
+      border-radius: 12px;
+      padding: 36px 32px;
+      max-width: 440px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      position: relative;
+      animation: popupSlideIn 0.3s ease;
+    }
+    @keyframes popupSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .email-popup-close {
+      position: absolute;
+      top: 12px; right: 16px;
+      background: none; border: none;
+      font-size: 20px; color: #a0aec0;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .email-popup-close:hover { color: #1a202c; }
+    .email-popup-icon { font-size: 36px; margin-bottom: 12px; }
+    .email-popup-title { font-size: 20px; font-weight: 700; color: #1a202c; margin-bottom: 6px; }
+    .email-popup-sub { font-size: 13.5px; color: #4a5568; margin-bottom: 20px; line-height: 1.5; }
+    .email-popup-form { display: flex; gap: 8px; justify-content: center; }
+    .email-popup-form input {
+      padding: 10px 14px;
+      border: 1px solid #cbd5e0;
+      border-radius: 6px;
+      font-size: 13px;
+      background: #fff;
+      color: #1a202c;
+      outline: none;
+      flex: 1;
+      max-width: 260px;
+    }
+    .email-popup-form input:focus { border-color: #e53e3e; }
+    .email-popup-form button {
+      padding: 10px 22px;
+      background: #e53e3e;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .email-popup-form button:hover { background: #c53030; }
+    .email-popup-success { display: none; font-size: 14px; color: #276749; font-weight: 600; margin-top: 16px; }
+    .email-popup-note { font-size: 11px; color: #a0aec0; margin-top: 14px; }
   </style>
 </head>
 <body>
+
+<!-- EMAIL POPUP (triggers after 30 seconds) -->
+<div class="email-popup-overlay" id="email-popup-overlay">
+  <div class="email-popup">
+    <button class="email-popup-close" onclick="closeEmailPopup()">&times;</button>
+    <div class="email-popup-icon">📈</div>
+    <div class="email-popup-title">Stay Ahead of the Market</div>
+    <div class="email-popup-sub">Get our Weekly Sector Analysis Alerts — delivered to your inbox every Monday morning. Know who's hiring, who's paying, and what it means for the market.</div>
+    <form class="email-popup-form" id="email-popup-form" onsubmit="handlePopupSubmit(event)">
+      <input type="email" id="popup-email-input" required placeholder="Enter your email…"/>
+      <button type="submit">Subscribe</button>
+    </form>
+    <div class="email-popup-success" id="popup-success">✓ You're in! Check your inbox Monday morning.</div>
+    <div class="email-popup-note">No spam. Unsubscribe anytime.</div>
+  </div>
+</div>
 
 <!-- STICKY TOP WRAPPER (nav + search bar only) -->
 <div class="sticky-top">
@@ -4588,6 +4670,35 @@
       if (bar) bar.style.display = 'none';
     }, 3000);
   }
+
+  // === Email Popup (30-second delay) ===
+  function openEmailPopup() {
+    document.getElementById('email-popup-overlay').classList.add('active');
+  }
+  function closeEmailPopup() {
+    document.getElementById('email-popup-overlay').classList.remove('active');
+    sessionStorage.setItem('psn_popup_dismissed', '1');
+  }
+  function handlePopupSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('popup-email-input').value.trim();
+    if (!email) return;
+    const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
+    if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
+    document.getElementById('email-popup-form').style.display = 'none';
+    document.getElementById('popup-success').style.display = 'block';
+    setTimeout(() => { closeEmailPopup(); }, 2500);
+  }
+  // Show popup after 30 seconds if not already subscribed or dismissed
+  setTimeout(() => {
+    const dismissed = sessionStorage.getItem('psn_popup_dismissed');
+    const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
+    if (!dismissed && subs.length === 0) { openEmailPopup(); }
+  }, 30000);
+  // Close popup on overlay click
+  document.getElementById('email-popup-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeEmailPopup();
+  });
 
   function setFilter(filter, btn) {
     activeFilter = filter;
