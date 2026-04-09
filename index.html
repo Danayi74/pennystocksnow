@@ -4479,9 +4479,9 @@
       const divider = document.getElementById(monthId);
       link.style.display = (divider && divider.style.display === 'none') ? 'none' : '';
     });
-    // On mobile, hide welcome banner when searching
+    // Hide welcome banner when searching (desktop and mobile)
     const welcomeBanner = document.getElementById('welcome-banner');
-    if (welcomeBanner && window.innerWidth <= 900) {
+    if (welcomeBanner) {
       welcomeBanner.style.display = q.length > 0 ? 'none' : '';
     }
     // Show "No results found" message when nothing matches
