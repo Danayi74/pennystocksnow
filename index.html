@@ -4662,13 +4662,8 @@
     // Store locally (will integrate with email service later)
     const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
     if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
-    document.getElementById('email-form').style.display = 'none';
-    document.getElementById('email-success').style.display = 'inline';
-    // Hide after 3 seconds
-    setTimeout(() => {
-      const bar = document.getElementById('email-capture');
-      if (bar) bar.style.display = 'none';
-    }, 3000);
+    // Redirect to thank you page
+    window.location.href = '/subscribed';
   }
 
   // === Email Popup (30-second delay) ===
@@ -4685,9 +4680,8 @@
     if (!email) return;
     const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
     if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
-    document.getElementById('email-popup-form').style.display = 'none';
-    document.getElementById('popup-success').style.display = 'block';
-    setTimeout(() => { closeEmailPopup(); }, 2500);
+    // Redirect to thank you page
+    window.location.href = '/subscribed';
   }
   // Show popup after 30 seconds if not already subscribed or dismissed
   setTimeout(() => {

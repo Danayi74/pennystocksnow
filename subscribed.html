@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>You're Subscribed! — PennyStocksNow.com</title>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <style>
+    :root {
+      --text-primary: #1a202c;
+      --text-secondary: #4a5568;
+      --text-muted: #718096;
+      --green: #276749;
+      --green-bg: #f0fdf4;
+      --green-border: #c6f6d5;
+      --orange-bg: #fffaf0;
+      --orange-border: #fbd38d;
+      --red: #e53e3e;
+      --border: #e2e8f0;
+      --surface: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f7fafc;
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* Nav */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-icon { font-size: 28px; }
+    .brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+    .brand span { color: var(--red); }
+
+    /* Main content */
+    .container {
+      max-width: 680px;
+      margin: 60px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .success-icon {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    .success-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .success-sub {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    /* Email preview card */
+    .preview-section {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .preview-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .preview-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .preview-header {
+      background: var(--text-primary);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .preview-header-icon { font-size: 20px; }
+    .preview-header-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .preview-header-date {
+      font-size: 12px;
+      color: #a0aec0;
+      margin-left: auto;
+    }
+
+    .preview-body { padding: 20px; }
+
+    .preview-greeting {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .preview-item {
+      background: var(--orange-bg);
+      border: 1px solid var(--orange-border);
+      border-radius: 7px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+    .preview-item-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    .preview-item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .preview-item-detail {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .preview-footer {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* CTA */
+    .back-btn {
+      display: inline-block;
+      padding: 12px 32px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .back-btn:hover { background: #c53030; }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .container { margin: 32px auto; }
+      .success-icon { font-size: 44px; }
+      .success-title { font-size: 24px; }
+      .success-sub { font-size: 14px; }
+      .preview-header { padding: 12px 14px; }
+      .preview-body { padding: 14px; }
+      .preview-item { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">📈</div>
+      <div class="brand">PennyStocks<span>Now</span>.com</div>
+    </a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="success-icon">📣</div>
+  <h1 class="success-title">You're In!</h1>
+  <p class="success-sub">
+    Welcome to the PennyStocksNow community. Your first Weekly Sector Analysis Alert will land in your inbox this coming Monday morning. Here's a preview of what to expect:
+  </p>
+
+  <div class="preview-section">
+    <div class="preview-label">Preview: What Your Monday Email Looks Like</div>
+    <div class="preview-card">
+      <div class="preview-header">
+        <span class="preview-header-icon">📈</span>
+        <span class="preview-header-text">PennyStocksNow — Weekly Sector Analysis</span>
+        <span class="preview-header-date">Monday 9:00 AM</span>
+      </div>
+      <div class="preview-body">
+        <p class="preview-greeting">
+          Good morning — here's your weekly roundup of new promo filings, firm activity, and sector signals from the past 7 days.
+        </p>
+
+        <div class="preview-item">
+          <div class="preview-item-tag">New Filings This Week</div>
+          <div class="preview-item-title">7 New Promo Alerts Added</div>
+          <div class="preview-item-detail">
+            3 Market Making engagements &middot; 4 Investor Awareness campaigns<br/>
+            Top firms active: Independent Trading Group (3), Machai Capital (2)
+          </div>
+        </div>
+
+        <div class="preview-item">
+          <div class="preview-item-tag">Sector Spotlight</div>
+          <div class="preview-item-title">Lithium &amp; Battery Metals Seeing Surge in Promo Activity</div>
+          <div class="preview-item-detail">
+            4 lithium-focused companies hired IR or marketing firms in the past 2 weeks — the highest concentration in any single sector this quarter.
+          </div>
+        </div>
+
+        <div class="preview-item">
+          <div class="preview-item-tag">Firm Watch</div>
+          <div class="preview-item-title">Euroswiss Capital Partners Expands Roster</div>
+          <div class="preview-item-detail">
+            Now retained by 2 TSXV issuers. CAD$10K–50K/month range. Focused on European investor outreach.
+          </div>
+        </div>
+      </div>
+      <div class="preview-footer">
+        You'll receive this every Monday at 9:00 AM &middot; Unsubscribe anytime
+      </div>
+    </div>
+  </div>
+
+  <a href="/" class="back-btn">Browse Latest Alerts</a>
+  <p class="note">Check your spam folder if you don't see our email by Monday.</p>
+</div>
+
+</body>
+</html>
