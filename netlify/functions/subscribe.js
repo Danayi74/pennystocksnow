@@ -83,6 +83,7 @@ exports.handler = async (event) => {
         email,
         reactivate_existing: true,
         send_welcome_email: true,
+        double_opt_override: 'on',
         utm_source: utmSource,
         utm_medium: utmMedium,
         utm_campaign: utmCampaign,
