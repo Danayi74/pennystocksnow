@@ -5110,34 +5110,62 @@
     applyFilters();
   }
 
-  function handleEmailSubmit(e) {
-    e.preventDefault();
-    const email = document.getElementById('email-input').value.trim();
-    if (!email) return;
-    // Store locally (will integrate with email service later)
-    const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
-    if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
-    // Redirect to thank you page
-    window.location.href = '/subscribed';
-  }
+  async function handleEmailSubmit(e) {
+        e.preventDefault();
+        const input = document.getElementById('email-input');
+        const email = input.value.trim();
+        if (!email) return;
+        const btn = document.querySelector('#email-form button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+        try {
+          await psnSubscribe(email);
+          const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
+          if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
+          window.location.href = '/subscribed';
+        } catch (err) {
+          if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+          alert("Sorry, we couldn't subscribe you right now. Please try again in a moment.");
+        }
+      }
 
-  // === Email Popup (30-second delay) ===
-  function openEmailPopup() {
-    document.getElementById('email-popup-overlay').classList.add('active');
-  }
-  function closeEmailPopup() {
-    document.getElementById('email-popup-overlay').classList.remove('active');
-    sessionStorage.setItem('psn_popup_dismissed', '1');
-  }
-  function handlePopupSubmit(e) {
-    e.preventDefault();
-    const email = document.getElementById('popup-email-input').value.trim();
-    if (!email) return;
-    const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
-    if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
-    // Redirect to thank you page
-    window.location.href = '/subscribed';
-  }
+      async function psnSubscribe(email) {
+        const params = new URLSearchParams(window.location.search);
+        const payload = {
+          email,
+          utm_source: params.get('utm_source') || 'pennystocksnow.com',
+          utm_medium: params.get('utm_medium') || 'website',
+          utm_campaign: params.get('utm_campaign') || 'weekly-alerts',
+          referring_site: document.referrer || 'https://www.pennystocksnow.com',
+        };
+        const res = await fetch('/.netlify/functions/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || 'Subscribe failed');
+        }
+        return res.json();
+      }
+
+      async function handlePopupSubmit(e) {
+        e.preventDefault();
+        const input = document.getElementById('popup-email-input');
+        const email = input.value.trim();
+        if (!email) return;
+        const btn = document.querySelector('#email-popup-form button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+        try {
+          await psnSubscribe(email);
+          const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
+          if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
+          window.location.href = '/subscribed';
+        } catch (err) {
+          if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+          alert("Sorry, we couldn't subscribe you right now. Please try again in a moment.");
+        }
+      }
   // Show popup after 30 seconds if not already subscribed or dismissed
   setTimeout(() => {
     const dismissed = sessionStorage.getItem('psn_popup_dismissed');
