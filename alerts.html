@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Weekly Small-Cap Sector Alerts — PennyStocksNow.com</title>
+  <meta name="description" content="Get our free weekly sector analysis of US and Canadian small-cap companies. Delivered every Monday morning. Information only — not investment advice."/>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <!-- Google tag (gtag.js) — Google Ads conversion tracking -->
+  <!-- TODO: Replace AW-XXXXXXXXXX with the Wallstreetlogic Google Ads conversion ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXXXXX');
+  </script>
+
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text-primary: #1a202c;
+      --text-secondary: #4a5568;
+      --text-muted: #718096;
+      --accent: #d92b2b;
+      --accent-hover: #c53030;
+      --accent-light: #fff5f5;
+      --orange-bg: #fffaf0;
+      --orange-border: #fbd38d;
+      --green: #276749;
+      --green-bg: #f0fdf4;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Minimal nav — logo only, no menu to avoid conversion leaks */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-icon { font-size: 28px; }
+    .brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+    .brand span { color: var(--accent); }
+
+    /* Hero */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 24px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    /* Signup card */
+    .signup-card {
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .form-row input[type="email"] {
+      flex: 1;
+      padding: 14px 16px;
+      font-size: 15px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      background: #fff;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .form-row input[type="email"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(217,43,43,0.12);
+    }
+    .form-row button {
+      padding: 14px 22px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .form-row button:hover { background: var(--accent-hover); }
+    .form-row button:disabled { opacity: 0.7; cursor: not-allowed; }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .form-error {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 6px;
+      color: #c53030;
+      font-size: 13px;
+      text-align: center;
+    }
+    .form-error.show { display: block; }
+
+    /* Value bullets */
+    .values {
+      max-width: 760px;
+      margin: 48px auto 0;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .value {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      text-align: left;
+    }
+    .value-icon {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    .value-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .value-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      max-width: 760px;
+      margin: 48px auto 0;
+      padding: 20px 24px;
+      background: var(--orange-bg);
+      border: 1px solid var(--orange-border);
+      border-radius: var(--radius);
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .disclaimer strong { color: var(--text-primary); }
+
+    /* Footer */
+    footer {
+      max-width: 760px;
+      margin: 48px auto 0;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer a:hover { color: var(--accent); }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .hero { padding: 36px 20px 20px; }
+      .hero h1 { font-size: 30px; }
+      .hero-sub { font-size: 15px; }
+      .signup-card { padding: 20px; }
+      .form-row { flex-direction: column; }
+      .values {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">📈</div>
+      <div class="brand">PennyStocks<span>Now</span>.com</div>
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Free Weekly Newsletter</div>
+  <h1>US &amp; Canadian Small-Cap <span>Sector Alerts</span>, Delivered Every Monday</h1>
+  <p class="hero-sub">
+    Curated weekly sector analysis on emerging US (NASDAQ, NYSE, OTC) and Canadian (TSX, TSXV, CSE) small-cap companies. Read by retail investors who want a clearer view of what's moving — before the week begins.
+  </p>
+
+  <div class="signup-card">
+    <form id="alerts-form" novalidate>
+      <div class="form-row">
+        <input type="email" id="alerts-email" placeholder="your@email.com" required autocomplete="email"/>
+        <button type="submit" id="alerts-submit">Get Free Alerts</button>
+      </div>
+      <div class="form-note">Free forever. Unsubscribe with one click. No spam.</div>
+      <div class="form-error" id="alerts-error"></div>
+    </form>
+  </div>
+</section>
+
+<section class="values">
+  <div class="value">
+    <div class="value-icon">📊</div>
+    <div class="value-title">Weekly Sector Analysis</div>
+    <div class="value-desc">One focused email every Monday morning covering the small-cap sectors in motion — energy, mining, biotech, tech.</div>
+  </div>
+  <div class="value">
+    <div class="value-icon">🇺🇸 🇨🇦</div>
+    <div class="value-title">US &amp; Canadian Coverage</div>
+    <div class="value-desc">Small-cap companies listed on NASDAQ, NYSE, OTC, TSX, TSXV, and CSE. No foreign listings.</div>
+  </div>
+  <div class="value">
+    <div class="value-icon">⚡</div>
+    <div class="value-title">Concise &amp; Actionable</div>
+    <div class="value-desc">A clear read in under 5 minutes. Just the names, tickers, catalysts, and context — no fluff.</div>
+  </div>
+</section>
+
+<section class="disclaimer">
+  <strong>Important — Please Read:</strong> PennyStocksNow.com provides educational information and sector commentary only. <strong>This is not investment advice, a recommendation, or a solicitation to buy or sell any security.</strong> Small-cap and penny stocks are speculative, can be highly volatile, and may result in the total loss of capital. You should consult a licensed financial advisor before making any investment decision and only invest money you can afford to lose. Past coverage is not indicative of future results.
+</section>
+
+<footer>
+  <a href="/">Home</a>
+  <a href="/about.html">About</a>
+  <a href="/privacy.html">Privacy</a>
+  <a href="/terms.html">Terms</a>
+  <div style="margin-top: 10px;">© 2026 PennyStocksNow.com</div>
+</footer>
+
+<script>
+  // Capture UTM params so Beehiiv attribution works end-to-end from Google Ads
+  async function psnSubscribe(email) {
+    const params = new URLSearchParams(window.location.search);
+    const payload = {
+      email,
+      utm_source: params.get('utm_source') || 'google-ads',
+      utm_medium: params.get('utm_medium') || 'cpc',
+      utm_campaign: params.get('utm_campaign') || 'alerts-lp',
+      referring_site: document.referrer || 'https://www.pennystocksnow.com/alerts',
+    };
+    const res = await fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data.error || 'Subscribe failed');
+    }
+    return res.json();
+  }
+
+  const form = document.getElementById('alerts-form');
+  const emailInput = document.getElementById('alerts-email');
+  const submitBtn = document.getElementById('alerts-submit');
+  const errorBox = document.getElementById('alerts-error');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.classList.remove('show');
+    const email = (emailInput.value || '').trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorBox.textContent = 'Please enter a valid email address.';
+      errorBox.classList.add('show');
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Subscribing…';
+    try {
+      await psnSubscribe(email);
+      // Google Ads conversion event
+      // TODO: Replace AW-XXXXXXXXXX/XXXXXXXXXXX with the conversion ID/label from Google Ads
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-XXXXXXXXXX/XXXXXXXXXXX',
+          'event_callback': function () { window.location.href = '/subscribed'; }
+        });
+        // Fallback in case the callback doesn't fire within 1s
+        setTimeout(function () { window.location.href = '/subscribed'; }, 1000);
+      } else {
+        window.location.href = '/subscribed';
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Get Free Alerts';
+      errorBox.textContent = err.message || 'Something went wrong. Please try again.';
+      errorBox.classList.add('show');
+    }
+  });
+</script>
+
+</body>
+</html>
