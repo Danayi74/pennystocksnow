@@ -7,14 +7,15 @@
   <meta name="description" content="Get our free weekly sector analysis of US and Canadian small-cap companies. Delivered every Monday morning. Information only — not investment advice."/>
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <!-- Google tag (gtag.js) — Google Ads conversion tracking -->
-  <!-- TODO: Replace AW-XXXXXXXXXX with the Wallstreetlogic Google Ads conversion ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q2BC5Z66N8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'AW-XXXXXXXXXX');
+
+    gtag('config', 'G-Q2BC5Z66N8');
+    gtag('config', 'AW-16831029460');
   </script>
 
   <style>
@@ -378,14 +379,17 @@
     submitBtn.textContent = 'Subscribing…';
     try {
       await psnSubscribe(email);
-      // Google Ads conversion event
-      // TODO: Replace AW-XXXXXXXXXX/XXXXXXXXXXX with the conversion ID/label from Google Ads
+      // Google Ads conversion event — fires on form submit
       if (typeof gtag === 'function') {
         gtag('event', 'conversion', {
-          'send_to': 'AW-XXXXXXXXXX/XXXXXXXXXXX',
-          'event_callback': function () { window.location.href = '/subscribed'; }
+          'send_to': 'AW-16831029460/4b6YCILa9pkcENTB1Nk-',
+          'value': 2.0,
+          'currency': 'CAD',
+          'event_callback': function () {
+            window.location.href = '/subscribed';
+          }
         });
-        // Fallback in case the callback doesn't fire within 1s
+        // fallback in case gtag doesn't fire within 1s
         setTimeout(function () { window.location.href = '/subscribed'; }, 1000);
       } else {
         window.location.href = '/subscribed';
