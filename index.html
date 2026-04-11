@@ -5085,6 +5085,14 @@
         if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
         try {
           await psnSubscribe(email);
+          // Google Ads conversion event — fires on form submit
+          if (typeof gtag === 'function') {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-16831029460/4b6YCILa9pkcENTB1Nk-',
+              'value': 2.0,
+              'currency': 'CAD'
+            });
+          }
           const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
           if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
           window.location.href = '/subscribed';
@@ -5124,6 +5132,14 @@
         if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
         try {
           await psnSubscribe(email);
+          // Google Ads conversion event — fires on form submit
+          if (typeof gtag === 'function') {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-16831029460/4b6YCILa9pkcENTB1Nk-',
+              'value': 2.0,
+              'currency': 'CAD'
+            });
+          }
           const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
           if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
           window.location.href = '/subscribed';
