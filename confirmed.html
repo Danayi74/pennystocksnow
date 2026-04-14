@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- Google Analytics (GA4) + Google Ads conversion tracking -->
+  <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q2BC5Z66N8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -12,18 +12,9 @@
     gtag('js', new Date());
     gtag('config', 'G-Q2BC5Z66N8');
     gtag('config', 'AW-16831029460');
-
-    // Fire the Google Ads "PSN Newsletter Signup" conversion.
-    // This page only loads after the Netlify subscribe function confirms
-    // the email was actually saved, so every fire is a real signup.
-    gtag('event', 'conversion', {
-      'send_to': 'AW-16831029460/4b6YCILa9pkcENTB1Nk-',
-      'value': 2.0,
-      'currency': 'CAD'
-    });
   </script>
 
-  <title>Almost There — PennyStocksNow.com</title>
+  <title>You're In! — PennyStocksNow.com</title>
   <link rel="icon" type="image/png" href="favicon.png"/>
   <style>
     :root {
@@ -38,9 +29,6 @@
       --red: #e53e3e;
       --border: #e2e8f0;
       --surface: #ffffff;
-      --blue: #3182ce;
-      --blue-bg: #ebf8ff;
-      --blue-border: #bee3f8;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -93,6 +81,13 @@
     .icon-wrap {
       font-size: 56px;
       margin-bottom: 20px;
+      animation: pop 0.5s ease-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.3); opacity: 0; }
+      60% { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     .title {
@@ -109,8 +104,8 @@
       margin-bottom: 36px;
     }
 
-    /* Steps card */
-    .steps-card {
+    /* What to expect card */
+    .expect-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -120,93 +115,72 @@
       margin-bottom: 36px;
     }
 
-    .steps-header {
-      background: var(--text-primary);
+    .expect-header {
+      background: var(--green);
       padding: 14px 20px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    .steps-header-icon { font-size: 18px; }
-    .steps-header-text {
+    .expect-header-icon { font-size: 18px; }
+    .expect-header-text {
       font-size: 14px;
       font-weight: 700;
       color: #fff;
     }
 
-    .steps-body {
+    .expect-body {
       padding: 24px 20px;
     }
 
-    .step {
+    .expect-item {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 14px;
+      margin-bottom: 18px;
     }
-    .step:last-child { margin-bottom: 0; }
+    .expect-item:last-child { margin-bottom: 0; }
 
-    .step-number {
+    .expect-icon {
+      font-size: 22px;
       flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 800;
-      color: #fff;
-    }
-    .step-number.active {
-      background: var(--red);
-    }
-    .step-number.done {
-      background: var(--green);
+      margin-top: 1px;
     }
 
-    .step-content {
-      padding-top: 4px;
-    }
-    .step-title {
-      font-size: 15px;
+    .expect-content {}
+    .expect-title {
+      font-size: 14px;
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: 3px;
     }
-    .step-desc {
-      font-size: 13.5px;
+    .expect-desc {
+      font-size: 13px;
       color: var(--text-secondary);
       line-height: 1.5;
     }
-    .step-done {
-      text-decoration: line-through;
-      color: var(--text-muted);
-    }
 
-    /* Inbox animation hint */
-    .inbox-hint {
-      background: var(--blue-bg);
-      border: 1px solid var(--blue-border);
+    /* Success banner */
+    .success-banner {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
       border-radius: 10px;
-      padding: 18px 22px;
+      padding: 16px 22px;
       margin-bottom: 36px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       text-align: left;
     }
-    .inbox-hint-icon {
-      font-size: 32px;
+    .success-banner-icon {
+      font-size: 24px;
       flex-shrink: 0;
     }
-    .inbox-hint-text {
+    .success-banner-text {
       font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .inbox-hint-text strong {
-      color: var(--text-primary);
+      color: var(--green);
+      font-weight: 600;
+      line-height: 1.5;
     }
 
     /* CTA */
@@ -236,9 +210,8 @@
       .icon-wrap { font-size: 44px; }
       .title { font-size: 24px; }
       .subtitle { font-size: 15px; }
-      .steps-body { padding: 18px 14px; }
-      .step { gap: 12px; }
-      .inbox-hint { flex-direction: column; text-align: center; gap: 10px; padding: 16px; }
+      .expect-body { padding: 18px 14px; }
+      .success-banner { flex-direction: column; text-align: center; gap: 8px; }
     }
   </style>
 </head>
@@ -254,51 +227,49 @@
 </nav>
 
 <div class="container">
-  <div class="icon-wrap">📬</div>
-  <h1 class="title">You're Halfway There!</h1>
+  <div class="icon-wrap">🎉</div>
+  <h1 class="title">You're In!</h1>
   <p class="subtitle">
-    We just sent a confirmation email to your inbox. Click the link inside to complete your signup and start receiving alerts.
+    Your email is confirmed and you're officially part of the PennyStocksNow.com community. Here's what happens next.
   </p>
 
-  <div class="steps-card">
-    <div class="steps-header">
-      <div class="steps-header-icon">📋</div>
-      <div class="steps-header-text">Complete Your Signup</div>
+  <div class="success-banner">
+    <div class="success-banner-icon">✅</div>
+    <div class="success-banner-text">Subscription confirmed — you're all set to receive alerts.</div>
+  </div>
+
+  <div class="expect-card">
+    <div class="expect-header">
+      <div class="expect-header-icon">📋</div>
+      <div class="expect-header-text">What to Expect</div>
     </div>
-    <div class="steps-body">
-      <div class="step">
-        <div class="step-number done">✓</div>
-        <div class="step-content">
-          <div class="step-title step-done">Enter your email</div>
-          <div class="step-desc step-done">You've already done this — nice work.</div>
+    <div class="expect-body">
+      <div class="expect-item">
+        <div class="expect-icon">📊</div>
+        <div class="expect-content">
+          <div class="expect-title">Weekly Sector Analysis</div>
+          <div class="expect-desc">Every Monday morning, you'll get a breakdown of sector activity and trending penny stock alerts.</div>
         </div>
       </div>
-      <div class="step">
-        <div class="step-number active">2</div>
-        <div class="step-content">
-          <div class="step-title">Confirm your email</div>
-          <div class="step-desc">Open the email from <strong>Penny Stocks Now</strong> and click the confirmation link.</div>
+      <div class="expect-item">
+        <div class="expect-icon">🚨</div>
+        <div class="expect-content">
+          <div class="expect-title">Real-Time Promo Alerts</div>
+          <div class="expect-desc">When a public company hires a marketing or market-making firm, you'll know about it.</div>
         </div>
       </div>
-      <div class="step">
-        <div class="step-number" style="background:#cbd5e0;color:#718096;">3</div>
-        <div class="step-content">
-          <div class="step-title" style="color:var(--text-muted);">Get your first alert</div>
-          <div class="step-desc">Your Weekly Sector Analysis Alert lands every Monday morning.</div>
+      <div class="expect-item">
+        <div class="expect-icon">🔍</div>
+        <div class="expect-content">
+          <div class="expect-title">Transparency You Can Trust</div>
+          <div class="expect-desc">Every alert is sourced from official exchange filings and public disclosures — no rumors, no hype.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="inbox-hint">
-    <div class="inbox-hint-icon">📧</div>
-    <div class="inbox-hint-text">
-      <strong>Don't see the email?</strong> Check your <strong>spam</strong> or <strong>promotions</strong> folder. The email comes from <strong>Penny Stocks Now</strong> and has the subject line asking you to confirm your subscription.
-    </div>
-  </div>
-
-  <a href="/" class="back-btn">Browse Latest Alerts While You Wait</a>
-  <p class="note">The confirmation link expires in 24 hours. If it expires, just sign up again.</p>
+  <a href="/" class="back-btn">Browse Latest Alerts</a>
+  <p class="note">Add our email to your contacts so alerts never end up in spam.</p>
 </div>
 
 </body>
