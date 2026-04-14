@@ -1197,8 +1197,8 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">116</span></button>
-      <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">45</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">117</span></button>
+      <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">46</span></button>
       <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">73</span></button>
     </div>
   </div>
@@ -1515,6 +1515,34 @@
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-tags="market-making" data-text="uberdoc appt esvnf 4kl0 independent trading group itg market maker marketing agreement cse fse otc healthcare">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">🏦 Market Maker Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market Making</span>
+          </div>
+          <span class="card-date">April 13, 2026</span>
+        </div>
+        <div class="card-title">
+          UberDoc Confirms Marketing Agreement with Independent Trading Group
+          <span class="ticker">OTC: ESVNF</span> <span class="ticker">CSE: APPT</span> <span class="ticker">FSE: 4KL0</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔔</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Independent Trading Group (ITG)</div>
+            <div class="hired-purpose">Market making services · CAD$5,500/month · Monthly auto-renewing</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>UberDoc Health Technologies Corp.</strong> <span class="ticker">OTC: ESVNF</span> <span class="ticker">CSE: APPT</span> <span class="ticker">FSE: 4KL0</span> has confirmed its marketing agreement with <strong>Independent Trading Group (ITG)</strong> (Suite 420, 33 Yonge St., Toronto, Ont.) to provide market making services on the CSE and other Canadian trading venues. Compensation is <strong>CAD$5,500 per month</strong> on a monthly auto-renewing basis. No performance factors, shares, or options are included. ITG and UberDoc are unrelated and unaffiliated entities.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
         </div>
       </div>
 
@@ -4866,7 +4894,7 @@
             <div class="sidebar-row-label">Independent Trading Group</div>
             <div class="sidebar-row-sub">Market Making</div>
           </div>
-          <span class="sidebar-count">18</span>
+          <span class="sidebar-count">19</span>
         </div>
         <div class="sidebar-row" data-firm="icp securities" onclick="filterByFirm(this)">
           <div>
@@ -4943,16 +4971,16 @@
           <div class="alert-item-title">PharmaCorp Rx hires LodeRock Advisors for investor relations</div>
           <div class="alert-item-meta">Apr 14 <span></span> Investor Awareness</div>
         </div>
+        <div class="alert-item" onclick="scrollToMatch('appt')" style="cursor:pointer;">
+          <div class="alert-item-title">UberDoc confirms marketing agreement with ITG</div>
+          <div class="alert-item-meta">Apr 13 <span></span> Market Making</div>
+        </div>
         <div class="alert-item" onclick="scrollToMatch('zau')" style="cursor:pointer;">
           <div class="alert-item-title">Zodiac Gold engages Capital Analytica for marketing services</div>
           <div class="alert-item-meta">Apr 13 <span></span> Investor Awareness</div>
         </div>
         <div class="alert-item" onclick="scrollToMatch('pex')" style="cursor:pointer;">
           <div class="alert-item-title">Pacific Ridge renews Capital Analytica for IR services</div>
-          <div class="alert-item-meta">Apr 13 <span></span> Investor Awareness</div>
-        </div>
-        <div class="alert-item" onclick="scrollToMatch('orng')" style="cursor:pointer;">
-          <div class="alert-item-title">Oregen Energy engages Spark Newswire for marketing</div>
           <div class="alert-item-meta">Apr 13 <span></span> Investor Awareness</div>
         </div>
       </div>
@@ -5078,7 +5106,7 @@
         </div>
         <div class="sidebar-row" data-firm="independent trading group" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Independent Trading Group (ITG)</div><div class="sidebar-row-sub">Market Making</div></div>
-          <span class="sidebar-count">18</span>
+          <span class="sidebar-count">19</span>
         </div>
         <div class="sidebar-row" data-firm="investing news network" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Investing News Network</div><div class="sidebar-row-sub">Investor Awareness</div></div>
