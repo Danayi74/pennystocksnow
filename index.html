@@ -1607,6 +1607,34 @@
       </div>
 
 
+      <div class="card" data-tags="investor-awareness" data-text="pacific ridge pex pexzf irpub digital marketing awareness tsxv otcqb copper gold kliyul rdp british columbia">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">April 13, 2026</span>
+        </div>
+        <div class="card-title">
+          Pacific Ridge Engages IRPub for Digital Marketing Campaign
+          <span class="ticker">TSXV: PEX</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📢</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">IRPub</div>
+            <div class="hired-purpose">Digital marketing awareness campaign · US$100,000 · 3 months (April–June 2026)</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Pacific Ridge Exploration Ltd.</strong> <span class="ticker">TSXV: PEX</span> has entered into a digital marketing agreement with <strong>IRPub</strong>, alongside a concurrent renewal with Capital Analytica. IRPub will run a digital marketing awareness campaign across its network and other online digital-traffic mediums on behalf of the Company. The agreement has a <strong>3-month term</strong> (April–June 2026) and carries total cash consideration of <strong>US$100,000</strong>. The engagement was announced in connection with Pacific Ridge's 2026 drilling plans for its Kliyul and RDP copper-gold projects in British Columbia. The IRPub Agreement is subject to TSX Venture Exchange approval.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
+        </div>
+      </div>
+
       <div class="card" data-tags="investor-awareness" data-text="nicola mining nicm nim global one media digital investor communications marketing nasdaq tsxv gold mining merritt mill british columbia">
         <div class="card-top">
           <div class="card-tags">
@@ -5108,6 +5136,10 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Recent Matches</div>
+        <div class="alert-item" onclick="scrollToMatch('pex')" style="cursor:pointer;">
+          <div class="alert-item-title">Pacific Ridge engages IRPub for digital marketing campaign</div>
+          <div class="alert-item-meta">Apr 13 <span></span> Investor Awareness</div>
+        </div>
         <div class="alert-item" onclick="scrollToMatch('nicm')" style="cursor:pointer;">
           <div class="alert-item-title">Nicola Mining engages Global One Media for digital communications</div>
           <div class="alert-item-meta">Apr 14 <span></span> Investor Awareness</div>
@@ -5501,17 +5533,25 @@
         if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
         try {
           await psnSubscribe(email);
-          // Google Ads conversion event — fires on form submit
+          const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
+          if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
+          // Fire Google Ads conversion and wait for the beacon before redirecting.
+          // Without event_callback, the redirect races the beacon and Google Ads drops the conversion.
+          const redirectTo = '/subscribed';
+          let navigated = false;
+          const go = () => { if (!navigated) { navigated = true; window.location.href = redirectTo; } };
           if (typeof gtag === 'function') {
             gtag('event', 'conversion', {
               'send_to': 'AW-16831029460/4b6YCILa9pkcENTB1Nk-',
               'value': 2.0,
-              'currency': 'CAD'
+              'currency': 'CAD',
+              'event_callback': go
             });
+            // Fallback: if gtag is blocked or slow, navigate anyway after 1.2s
+            setTimeout(go, 1200);
+          } else {
+            go();
           }
-          const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
-          if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
-          window.location.href = '/subscribed';
         } catch (err) {
           if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
           alert("Sorry, we couldn't subscribe you right now. Please try again in a moment.");
@@ -5548,17 +5588,25 @@
         if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
         try {
           await psnSubscribe(email);
-          // Google Ads conversion event — fires on form submit
+          const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
+          if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
+          // Fire Google Ads conversion and wait for the beacon before redirecting.
+          // Without event_callback, the redirect races the beacon and Google Ads drops the conversion.
+          const redirectTo = '/subscribed';
+          let navigated = false;
+          const go = () => { if (!navigated) { navigated = true; window.location.href = redirectTo; } };
           if (typeof gtag === 'function') {
             gtag('event', 'conversion', {
               'send_to': 'AW-16831029460/4b6YCILa9pkcENTB1Nk-',
               'value': 2.0,
-              'currency': 'CAD'
+              'currency': 'CAD',
+              'event_callback': go
             });
+            // Fallback: if gtag is blocked or slow, navigate anyway after 1.2s
+            setTimeout(go, 1200);
+          } else {
+            go();
           }
-          const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
-          if (!subs.includes(email)) { subs.push(email); localStorage.setItem('psn_subscribers', JSON.stringify(subs)); }
-          window.location.href = '/subscribed';
         } catch (err) {
           if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
           alert("Sorry, we couldn't subscribe you right now. Please try again in a moment.");
