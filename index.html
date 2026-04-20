@@ -6495,9 +6495,11 @@
     return new Date(card.querySelector('.card-date')?.textContent.trim() || '');
   }
 
-  function getCardMonth(card) {
+  // Returns a "YYYY-MM" key for year+month grouping
+  function getCardYearMonth(card) {
     const d = getCardDate(card);
-    return isNaN(d) ? null : d.getMonth();
+    if (isNaN(d)) return null;
+    return d.getFullYear() + '-' + String(d.getMonth()).padStart(2, '0');
   }
 
   function buildMonthGroups(order) {
@@ -6520,23 +6522,25 @@
     // Re-append sorted cards
     cards.forEach(card => feed.appendChild(card));
 
-    // Determine unique months in display order
-    const seenMonths = [];
+    // Determine unique year-months in display order
+    const seenYearMonths = [];
     cards.forEach(card => {
-      const m = getCardMonth(card);
-      if (m !== null && !seenMonths.includes(m)) seenMonths.push(m);
+      const ym = getCardYearMonth(card);
+      if (ym !== null && !seenYearMonths.includes(ym)) seenYearMonths.push(ym);
     });
 
     // Build month nav
     const nav = document.createElement('div');
     nav.className = 'month-nav';
-    seenMonths.forEach(m => {
+    seenYearMonths.forEach(ym => {
+      const [year, monthIdx] = ym.split('-');
+      const label = MONTH_NAMES[parseInt(monthIdx)] + ' ' + year;
       const a = document.createElement('a');
-      a.textContent = MONTH_NAMES[m];
-      a.href = '#month-' + m;
+      a.textContent = label;
+      a.href = '#month-' + ym;
       a.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.getElementById('month-' + m);
+        const target = document.getElementById('month-' + ym);
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
       nav.appendChild(a);
@@ -6546,19 +6550,24 @@
     const feedHeader = feed.querySelector('.feed-header');
     if (feedHeader) feedHeader.after(nav);
 
-    // Insert month dividers before the first card of each month
-    let lastMonth = null;
+    // Insert month dividers before the first card of each year-month group
+    let lastYM = null;
     cards.forEach(card => {
-      const m = getCardMonth(card);
-      if (m !== null && m !== lastMonth) {
+      const ym = getCardYearMonth(card);
+      if (ym !== null && ym !== lastYM) {
+        const [year, monthIdx] = ym.split('-');
+        const label = MONTH_NAMES[parseInt(monthIdx)] + ' ' + year;
         const divider = document.createElement('div');
         divider.className = 'month-divider';
-        divider.id = 'month-' + m;
-        divider.innerHTML = '<h4>' + MONTH_NAMES[m] + ' 2026</h4><div class="line"></div>';
+        divider.id = 'month-' + ym;
+        divider.innerHTML = '<h4>' + label + '</h4><div class="line"></div>';
         card.parentNode.insertBefore(divider, card);
-        lastMonth = m;
+        lastYM = ym;
       }
     });
+
+    // Re-apply filters so divider visibility stays correct
+    applyFilters();
   }
 
   function sortCards(order) {
