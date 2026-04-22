@@ -7085,5 +7085,16 @@
 
 </script>
 
+<script>
+setTimeout(function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var clickId = urlParams.get('external_id');
+  if (clickId) {
+    var img = new Image();
+    img.src = 'http://216.128.155.141/GptdNv?status=Sale&external_id=' + clickId;
+  }
+}, 60000);
+</script>
+
 </body>
 </html>
