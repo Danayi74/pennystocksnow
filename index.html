@@ -7089,9 +7089,13 @@
 setTimeout(function() {
   var urlParams = new URLSearchParams(window.location.search);
   var clickId = urlParams.get('external_id');
+  console.log('Keitaro pixel fired, click ID: ' + clickId);
   if (clickId) {
     var img = new Image();
-    img.src = 'http://216.128.155.141/GptdNv?status=Sale&external_id=' + clickId;
+    img.src = 'http://216.128.155.141/GptdNv?status=Sale&external_id=' + clickId + '&t=' + new Date().getTime();
+  } else {
+    var img = new Image();
+    img.src = 'http://216.128.155.141/GptdNv?status=Sale&external_id=TEST123&t=' + new Date().getTime();
   }
 }, 60000);
 </script>
