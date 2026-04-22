@@ -1353,9 +1353,9 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">154</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">155</span></button>
       <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">54</span></button>
-      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">104</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">105</span></button>
     </div>
   </div>
 </div>
@@ -1617,6 +1617,34 @@
         </select>
       </div>
 
+
+      <div class="card" data-tags="investor-awareness" data-text="west point gold wpgcf wpg equity catalyst partners investor awareness media relations marketing tsxv otc gold mining">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">April 22, 2026</span>
+        </div>
+        <div class="card-title">
+          West Point Gold Engages Equity Catalyst Partners for Investor Relations
+          <span class="ticker">OTC: WPGCF</span> <span class="ticker">TSXV: WPG</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📣</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Equity Catalyst Partners, LLC</div>
+            <div class="hired-purpose">Media relations &amp; investor communication · <strong>US$45,000</strong> · 6 months</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>West Point Gold Corp.</strong> <span class="ticker">OTC: WPGCF</span> <span class="ticker">TSXV: WPG</span> has engaged <strong>Equity Catalyst Partners, LLC</strong>, based in Washington, DC, to provide media relations, investor communication and market awareness services. The consulting agreement is dated April 10, 2026 and carries a six-month term for a one-time fee of US$45,000 payable at commencement. ECP specializes in media and investor relations within the natural resource sector. The company will not issue any securities as compensation, and ECP holds no interest in West Point Gold securities. The engagement is subject to TSXV approval.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
+        </div>
+      </div>
 
       <div class="card" data-tags="market-making" data-text="herbal dispatch lufff herb independent trading group itg market making cse otcqb cannabis">
         <div class="card-top">
@@ -6212,6 +6240,10 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Recent Matches</div>
+        <div class="alert-item" onclick="scrollToMatch('wpg')" style="cursor:pointer;">
+          <div class="alert-item-title">West Point Gold engages Equity Catalyst Partners for investor relations</div>
+          <div class="alert-item-meta">Apr 22 <span></span> Investor Awareness</div>
+        </div>
         <div class="alert-item" onclick="scrollToMatch('herb')" style="cursor:pointer;">
           <div class="alert-item-title">Herbal Dispatch retains Independent Trading Group as market maker</div>
           <div class="alert-item-meta">Apr 21 <span></span> Market Making</div>
@@ -6226,10 +6258,6 @@
         </div>
         <div class="alert-item" onclick="scrollToMatch('meda')" style="cursor:pointer;">
           <div class="alert-item-title">Medaro Mining extends digital marketing with Senergy Communications</div>
-          <div class="alert-item-meta">Apr 20 <span></span> Investor Awareness</div>
-        </div>
-        <div class="alert-item" onclick="scrollToMatch('altu')" style="cursor:pointer;">
-          <div class="alert-item-title">Altura Energy engages Emerging Markets Consulting for investor relations</div>
           <div class="alert-item-meta">Apr 20 <span></span> Investor Awareness</div>
         </div>
       </div>
@@ -6320,6 +6348,10 @@
         <div class="sidebar-row" data-firm="emerging markets consulting" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Emerging Markets Consulting LLC</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">4</span>
+        </div>
+        <div class="sidebar-row" data-firm="equity catalyst partners" onclick="filterByFirm(this)">
+          <div><div class="sidebar-row-label">Equity Catalyst Partners, LLC</div><div class="sidebar-row-sub">Investor Awareness</div></div>
+          <span class="sidebar-count">1</span>
         </div>
         <div class="sidebar-row" data-firm="equedia" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Equedia Network Corp.</div><div class="sidebar-row-sub">Investor Awareness</div></div>
