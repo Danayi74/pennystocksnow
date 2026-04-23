@@ -1267,7 +1267,7 @@
     .email-popup-success { display: none; font-size: 14px; color: #276749; font-weight: 600; margin-top: 16px; }
     .email-popup-note { font-size: 11px; color: #a0aec0; margin-top: 14px; }
   </style>
-<meta http-equiv="Content-Security-Policy" content="img-src * 'unsafe-inline' data: http: https:;">
+
 </head>
 <body>
 
@@ -7120,12 +7120,10 @@
 
 <script>
 setTimeout(function() {
-  var urlParams = new URLSearchParams(window.location.search);
-  var clickId = urlParams.get('external_id') || 'TEST123';
-  fetch('http://216.128.155.141/GptdNv?status=Sale&external_id=' + clickId, {
-    mode: 'no-cors',
-    method: 'GET'
-  });
+  var img = new Image();
+  img.src = 'https://cmyca.bemobtrk.com/conversion.gif?cid=OPTIONAL&payout=OPTIONAL&txid=OPTIONAL';
+  img.width = 1;
+  img.height = 1;
 }, 60000);
 </script>
 
