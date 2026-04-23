@@ -7120,10 +7120,14 @@
 
 <script>
 setTimeout(function() {
-  var img = new Image();
-  img.src = 'https://cmyca.bemobtrk.com/conversion.gif?cid=OPTIONAL&payout=OPTIONAL&txid=OPTIONAL';
-  img.width = 1;
-  img.height = 1;
+  var urlParams = new URLSearchParams(window.location.search);
+  var clickId = urlParams.get('bm_click') || '';
+  if (clickId) {
+    var img = new Image();
+    img.src = 'https://cmyca.bemobtrk.com/conversion.gif?cid=' + encodeURIComponent(clickId);
+    img.width = 1;
+    img.height = 1;
+  }
 }, 60000);
 </script>
 
