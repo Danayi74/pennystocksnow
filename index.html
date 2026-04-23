@@ -1353,8 +1353,8 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">155</span></button>
-      <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">54</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">156</span></button>
+      <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">55</span></button>
       <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">105</span></button>
     </div>
   </div>
@@ -1618,34 +1618,6 @@
       </div>
 
 
-      <div class="card" data-tags="market-making" data-text="noveris health sciences nvrs mycof 0nf0 ds market solutions dsms liquidity stability market making cse otc fse biotech mental health mycology">
-        <div class="card-top">
-          <div class="card-tags">
-            <span class="tag tag-promo">🏦 Market Maker Hired</span>
-            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market Making</span>
-          </div>
-          <span class="card-date">April 22, 2026</span>
-        </div>
-        <div class="card-title">
-          Noveris Health Sciences Signs Market Making Advisory Agreement with DS Market Solutions
-          <span class="ticker">OTC: MYCOF</span> <span class="ticker">CSE: NVRS</span> <span class="ticker">FSE: 0NF0</span>
-        </div>
-        <div class="hired-box">
-          <div class="hired-icon">💼</div>
-          <div class="hired-details">
-            <div class="hired-label">Firm Hired</div>
-            <div class="hired-firm">DS Market Solutions Inc.</div>
-            <div class="hired-purpose">Liquidity &amp; stability services · CAD$10,000/month · Effective May 1, 2026 · Month-to-month (30-day notice)</div>
-          </div>
-        </div>
-        <div class="card-body">
-          <strong>Noveris Health Sciences Inc.</strong> <span class="ticker">OTC: MYCOF</span> <span class="ticker">CSE: NVRS</span> <span class="ticker">FSE: 0NF0</span> has signed a market making advisory agreement with <strong>DS Market Solutions Inc.</strong> ("DSMS"), pursuant to which DSMS will provide <strong>liquidity and stability services</strong> to the company in accordance with the policies of the Canadian Securities Exchange. DSMS will assist in entering orders, including bidding and offering, and will provide reports on trading patterns and services performed. Compensation is <strong>CAD$10,000 per month</strong> (plus applicable taxes), with the engagement becoming effective <strong>May 1, 2026</strong> on a month-to-month basis, terminable by either party on 30 days' written notice. No shares, warrants, or options are being issued as part of the arrangement, and DSMS operates at arm's length from the company.
-        </div>
-        <div class="card-footer">
-          <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
-        </div>
-      </div>
-
       <div class="card" data-tags="investor-awareness" data-text="west point gold wpgcf wpg equity catalyst partners investor awareness media relations marketing tsxv otc gold mining">
         <div class="card-top">
           <div class="card-tags">
@@ -1671,6 +1643,34 @@
         </div>
         <div class="card-footer">
           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-tags="market-making" data-text="noveris health sciences mycof nvrs ds market solutions market making cse otc health sciences">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">🏦 Market Maker Hired</span>
+            <span class="tag" style="background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4;">Market Making</span>
+          </div>
+          <span class="card-date">April 22, 2026</span>
+        </div>
+        <div class="card-title">
+          Noveris Health Sciences Engages DS Market Solutions for Market Making
+          <span class="ticker">OTC: MYCOF</span> <span class="ticker">CSE: NVRS</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">💼</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">DS Market Solutions Inc.</div>
+            <div class="hired-purpose">Market making services · $10,000/month · Monthly renewable</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Noveris Health Sciences Inc.</strong> <span class="ticker">OTC: MYCOF</span> <span class="ticker">CSE: NVRS</span> has engaged <strong>DS Market Solutions Inc.</strong> to provide market making advisory services for its common shares listed on the Canadian Securities Exchange. DSMS will assist in maintaining orderly trading by entering bids and offers, and will provide reports on trading patterns and services performed. Compensation is set at $10,000 per month plus applicable taxes. The engagement becomes effective May 1, 2026 and continues on a month-to-month basis. DSMS operates at arm's length from the company.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
         </div>
       </div>
 
@@ -6268,13 +6268,13 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Recent Matches</div>
-        <div class="alert-item" onclick="scrollToMatch('nvrs')" style="cursor:pointer;">
-          <div class="alert-item-title">Noveris Health Sciences signs market making advisory agreement with DS Market Solutions</div>
-          <div class="alert-item-meta">Apr 22 <span></span> Market Making</div>
-        </div>
         <div class="alert-item" onclick="scrollToMatch('wpg')" style="cursor:pointer;">
           <div class="alert-item-title">West Point Gold engages Equity Catalyst Partners for investor relations</div>
           <div class="alert-item-meta">Apr 22 <span></span> Investor Awareness</div>
+        </div>
+        <div class="alert-item" onclick="scrollToMatch('nvrs')" style="cursor:pointer;">
+          <div class="alert-item-title">Noveris Health Sciences engages DS Market Solutions for market making</div>
+          <div class="alert-item-meta">Apr 22 <span></span> Market Making</div>
         </div>
         <div class="alert-item" onclick="scrollToMatch('herb')" style="cursor:pointer;">
           <div class="alert-item-title">Herbal Dispatch retains Independent Trading Group as market maker</div>
@@ -6287,10 +6287,6 @@
         <div class="alert-item" onclick="scrollToMatch('pxi')" style="cursor:pointer;">
           <div class="alert-item-title">Planet Ventures engages Independent Trading Group as market maker</div>
           <div class="alert-item-meta">Apr 20 <span></span> Market Making</div>
-        </div>
-        <div class="alert-item" onclick="scrollToMatch('meda')" style="cursor:pointer;">
-          <div class="alert-item-title">Medaro Mining extends digital marketing with Senergy Communications</div>
-          <div class="alert-item-meta">Apr 20 <span></span> Investor Awareness</div>
         </div>
       </div>
 
@@ -6370,8 +6366,8 @@
           <span class="sidebar-count">1</span>
         </div>
         <div class="sidebar-row" data-firm="ds market solutions" onclick="filterByFirm(this)">
-          <div><div class="sidebar-row-label">DS Market Solutions Inc.</div><div class="sidebar-row-sub">Investor Awareness</div></div>
-          <span class="sidebar-count">2</span>
+          <div><div class="sidebar-row-label">DS Market Solutions Inc.</div><div class="sidebar-row-sub">Market Making</div></div>
+          <span class="sidebar-count">3</span>
         </div>
         <div class="sidebar-row" data-firm="echo elite" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Echo Elite</div><div class="sidebar-row-sub">Investor Awareness</div></div>
