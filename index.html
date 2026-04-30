@@ -1363,9 +1363,9 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">171</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">172</span></button>
       <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">58</span></button>
-      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">118</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">119</span></button>
     </div>
   </div>
 </div>
@@ -1627,6 +1627,34 @@
         </select>
       </div>
 
+
+      <div class="card" data-tags="investor-awareness" data-text="alaska energy metals aemc akemf capital gain media marketing services extension amending agreement tsxv otcqb nickel copper">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">April 28, 2026</span>
+        </div>
+        <div class="card-title">
+          Alaska Energy Metals Extends Marketing Services Agreement with Capital Gain
+          <span class="ticker">TSXV: AEMC</span> <span class="ticker">OTCQB: AKEMF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📣</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Capital Gain Media Inc.</div>
+            <div class="hired-purpose">Marketing services extension · CAD$200,000 + tax · 2 months</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Alaska Energy Metals Corp.</strong> <span class="ticker">TSXV: AEMC</span> <span class="ticker">OTCQB: AKEMF</span> has entered into an Amending Agreement with <strong>Capital Gain Media Inc.</strong>, a Vancouver-based investor relations firm whose principal is Graham Colmer, to extend its marketing services engagement for an additional two-month term running from June 6, 2026 to August 6, 2026. The extension carries an additional marketing budget of CAD$200,000 plus applicable taxes, payable in cash from the company's working capital. No securities will be issued to Capital Gain as compensation. The Amending Agreement is subject to TSX Venture Exchange approval, and Capital Gain operates at arm's length from the company.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
+        </div>
+      </div>
 
       <div class="card" data-tags="investor-awareness" data-text="intrepid metals intr imtcf capital analytica triomphe holdings marketing social media tsxv otc copper exploration arizona">
         <div class="card-top">
@@ -6707,6 +6735,10 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title">Recent Matches</div>
+        <div class="alert-item" onclick="scrollToMatch('aemc')" style="cursor:pointer;">
+          <div class="alert-item-title">Alaska Energy Metals extends marketing services agreement with Capital Gain</div>
+          <div class="alert-item-meta">Apr 28 <span></span> Investor Awareness</div>
+        </div>
         <div class="alert-item" onclick="scrollToMatch('intr')" style="cursor:pointer;">
           <div class="alert-item-title">Intrepid Metals engages Capital Analytica for marketing &amp; social media services</div>
           <div class="alert-item-meta">Apr 28 <span></span> Investor Awareness</div>
@@ -6721,10 +6753,6 @@
         </div>
         <div class="alert-item" onclick="scrollToMatch('stif')" style="cursor:pointer;">
           <div class="alert-item-title">Plaid Technologies engages Machai Capital for marketing &amp; investor awareness</div>
-          <div class="alert-item-meta">Apr 28 <span></span> Investor Awareness</div>
-        </div>
-        <div class="alert-item" onclick="scrollToMatch('mfg')" style="cursor:pointer;">
-          <div class="alert-item-title">Mayfair Gold engages Native Ads for digital advertising campaign</div>
           <div class="alert-item-meta">Apr 28 <span></span> Investor Awareness</div>
         </div>
       </div>
@@ -6782,7 +6810,7 @@
         </div>
         <div class="sidebar-row" data-firm="capital gain" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Capital Gain</div><div class="sidebar-row-sub">Investor Awareness</div></div>
-          <span class="sidebar-count">2</span>
+          <span class="sidebar-count">3</span>
         </div>
         <div class="sidebar-row" data-firm="capitaliz marketing" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Capitaliz Marketing</div><div class="sidebar-row-sub">Investor Awareness</div></div>
