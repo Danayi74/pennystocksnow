@@ -1271,7 +1271,7 @@
 </head>
 <body>
 
-<!-- EMAIL POPUP (triggers after 30 seconds) -->
+<!-- EMAIL POPUP (triggers after 15 seconds) -->
 <div class="email-popup-overlay" id="email-popup-overlay">
   <div class="email-popup">
     <button class="email-popup-close" onclick="closeEmailPopup()">&times;</button>
@@ -7335,12 +7335,12 @@
           alert("Sorry, we couldn't subscribe you right now. Please try again in a moment.");
         }
       }
-  // Show popup after 30 seconds if not already subscribed or dismissed
+  // Show popup after 15 seconds if not already subscribed or dismissed
   setTimeout(() => {
     const dismissed = sessionStorage.getItem('psn_popup_dismissed');
     const subs = JSON.parse(localStorage.getItem('psn_subscribers') || '[]');
     if (!dismissed && subs.length === 0) { openEmailPopup(); }
-  }, 30000);
+  }, 15000);
   // Close popup on overlay click
   document.getElementById('email-popup-overlay').addEventListener('click', function(e) {
     if (e.target === this) closeEmailPopup();
