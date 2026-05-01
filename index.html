@@ -7335,6 +7335,16 @@
           alert("Sorry, we couldn't subscribe you right now. Please try again in a moment.");
         }
       }
+  // Open / close popup helpers
+  function openEmailPopup() {
+    const overlay = document.getElementById('email-popup-overlay');
+    if (overlay) overlay.classList.add('active');
+  }
+  function closeEmailPopup() {
+    const overlay = document.getElementById('email-popup-overlay');
+    if (overlay) overlay.classList.remove('active');
+    try { sessionStorage.setItem('psn_popup_dismissed', '1'); } catch(_) {}
+  }
   // Show popup after 15 seconds if not already subscribed or dismissed
   setTimeout(() => {
     const dismissed = sessionStorage.getItem('psn_popup_dismissed');
