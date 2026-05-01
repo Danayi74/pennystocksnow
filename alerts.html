@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free Weekly Small-Cap Sector Alerts — PennyStocksNow.com</title>
-  <meta name="description" content="Get our free weekly sector analysis of US and Canadian small-cap companies. Delivered every Monday morning. Information only — not investment advice."/>
+  <title>5 Red Flags of Every Penny Stock Promo — Free PDF | PennyStocksNow.com</title>
+  <meta name="description" content="Free PDF: the 5 patterns that show up before nearly every penny-stock pump-and-dump. Plus our weekly small-cap promo watch every Monday. Information only — not investment advice."/>
   <link rel="icon" type="image/png" href="favicon.png"/>
 
   <!-- Google tag (gtag.js) -->
@@ -47,7 +47,7 @@
       min-height: 100vh;
     }
 
-    /* Minimal nav — logo only, no menu to avoid conversion leaks */
+    /* Minimal nav — logo only, no menu, no link to home (squeeze page) */
     nav {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
@@ -65,7 +65,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
       color: inherit;
     }
     .logo-icon { font-size: 28px; }
@@ -179,6 +178,17 @@
     }
     .form-error.show { display: block; }
 
+    /* Trust line */
+    .trust-line {
+      max-width: 520px;
+      margin: 18px auto 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .trust-line strong { color: var(--text-primary); font-weight: 700; }
+
     /* Value bullets */
     .values {
       max-width: 760px;
@@ -228,7 +238,7 @@
     }
     .disclaimer strong { color: var(--text-primary); }
 
-    /* Footer */
+    /* Footer — no escape links on a squeeze page */
     footer {
       max-width: 760px;
       margin: 48px auto 0;
@@ -264,33 +274,49 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="logo">
+    <div class="logo">
       <div class="logo-icon">📈</div>
       <div class="brand">PennyStocks<span>Now</span>.com</div>
-    </a>
+    </div>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-eyebrow">Free Weekly Newsletter</div>
-  <h1>Small-Cap <span>Sector Alerts</span>, Delivered Every Monday</h1>
+  <div class="hero-eyebrow">Free PDF + Weekly Promo Watch</div>
+  <h1>The <span>5 Red Flags</span> Behind Every Penny Stock Pump-and-Dump</h1>
   <p class="hero-sub">
-    Curated weekly sector analysis on emerging North American small-cap companies. Read by retail investors who want a clearer view of what's moving, before the week begins.
+    Spot the patterns before they cost you. Get the free PDF the moment you sign up — plus our weekly small-cap promo watch every Monday morning.
   </p>
 
   <div class="signup-card">
     <form id="alerts-form" novalidate>
       <div class="form-row">
         <input type="email" id="alerts-email" placeholder="your@email.com" required autocomplete="email"/>
-        <button type="submit" id="alerts-submit">Get Free Alerts</button>
+        <button type="submit" id="alerts-submit">Send Me the PDF</button>
       </div>
-      <div class="form-note">Unsubscribe with one click. No spam.</div>
+      <div class="form-note">Instant download. Unsubscribe with one click. No spam.</div>
       <div class="form-error" id="alerts-error"></div>
     </form>
   </div>
+
+  <p class="trust-line">
+    Tracking <strong>170+ disclosed marketing &amp; market-making engagements</strong> across NASDAQ, NYSE, OTC, TSX, TSXV and CSE in 2026 alone.
+  </p>
 </section>
 
 <section class="values">
+  <div class="value">
+    <div class="value-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="12" y1="18" x2="12" y2="12"/>
+        <line x1="9" y1="15" x2="15" y2="15"/>
+      </svg>
+    </div>
+    <div class="value-title">Free PDF — Instant</div>
+    <div class="value-desc">The 5 Red Flags guide downloads the second you sign up. Learn the patterns that show up before nearly every pump-and-dump.</div>
+  </div>
   <div class="value">
     <div class="value-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -300,29 +326,18 @@
         <line x1="3" y1="10" x2="21" y2="10"/>
       </svg>
     </div>
-    <div class="value-title">Every Monday Morning</div>
-    <div class="value-desc">One focused email every Monday morning covering the small-cap sectors in motion: energy, mining, biotech, tech.</div>
+    <div class="value-title">Mondays — Promo Watch</div>
+    <div class="value-desc">A weekly digest of new marketing-firm engagements, market-maker hires, and the small-caps heating up. One focused email, in under 5 minutes.</div>
   </div>
   <div class="value">
     <div class="value-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="2" y1="12" x2="22" y2="12"/>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        <path d="M9 12l2 2 4-4"/>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     </div>
-    <div class="value-title">US and Canada</div>
-    <div class="value-desc">Small-cap companies listed on NASDAQ, NYSE, OTC, TSX, TSXV, and CSE. No foreign listings.</div>
-  </div>
-  <div class="value">
-    <div class="value-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
-      </svg>
-    </div>
-    <div class="value-title">Concise &amp; Actionable</div>
-    <div class="value-desc">A clear read in under 5 minutes. Just the names, tickers, catalysts, and context, no fluff.</div>
+    <div class="value-title">Sourced From Filings</div>
+    <div class="value-desc">Every alert ties to an actual exchange filing or public disclosure. No rumors, no paid pumps, no insider tips.</div>
   </div>
 </section>
 
@@ -331,22 +346,20 @@
 </section>
 
 <footer>
-  <a href="/">Home</a>
-  <a href="/about.html">About</a>
   <a href="/privacy.html">Privacy</a>
   <a href="/terms.html">Terms</a>
   <div style="margin-top: 10px;">© 2026 PennyStocksNow.com</div>
 </footer>
 
 <script>
-  // Capture UTM params so Beehiiv attribution works end-to-end from Google Ads
+  // Capture UTM params so Beehiiv attribution works end-to-end from Google Ads / pop traffic
   async function psnSubscribe(email) {
     const params = new URLSearchParams(window.location.search);
     const payload = {
       email,
-      utm_source: params.get('utm_source') || 'google-ads',
+      utm_source: params.get('utm_source') || 'alerts-lp',
       utm_medium: params.get('utm_medium') || 'cpc',
-      utm_campaign: params.get('utm_campaign') || 'alerts-lp',
+      utm_campaign: params.get('utm_campaign') || '5-red-flags',
       referring_site: document.referrer || 'https://www.pennystocksnow.com/alerts',
     };
     const res = await fetch('/.netlify/functions/subscribe', {
@@ -376,27 +389,27 @@
       return;
     }
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Subscribing…';
+    submitBtn.textContent = 'Sending PDF…';
     try {
       await psnSubscribe(email);
+      // Redirect to /confirmed which auto-downloads the PDF
+      const goConfirm = function () { window.location.href = '/confirmed?dl=1'; };
       // Google Ads conversion event — fires on form submit
       if (typeof gtag === 'function') {
         gtag('event', 'conversion', {
           'send_to': 'AW-16831029460/4b6YCILa9pkcENTB1Nk-',
           'value': 2.0,
           'currency': 'CAD',
-          'event_callback': function () {
-            window.location.href = '/subscribed';
-          }
+          'event_callback': goConfirm
         });
-        // fallback in case gtag doesn't fire within 1s
-        setTimeout(function () { window.location.href = '/subscribed'; }, 1000);
+        // fallback in case gtag doesn't fire within 1.2s
+        setTimeout(goConfirm, 1200);
       } else {
-        window.location.href = '/subscribed';
+        goConfirm();
       }
     } catch (err) {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Get Free Alerts';
+      submitBtn.textContent = 'Send Me the PDF';
       errorBox.textContent = err.message || 'Something went wrong. Please try again.';
       errorBox.classList.add('show');
     }

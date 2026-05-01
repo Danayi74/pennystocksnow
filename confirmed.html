@@ -14,7 +14,7 @@
     gtag('config', 'AW-16831029460');
   </script>
 
-  <title>You're In! — PennyStocksNow.com</title>
+  <title>You're In! — Download Your Free PDF | PennyStocksNow.com</title>
   <link rel="icon" type="image/png" href="favicon.png"/>
   <style>
     :root {
@@ -27,6 +27,7 @@
       --orange-bg: #fffaf0;
       --orange-border: #fbd38d;
       --red: #e53e3e;
+      --red-hover: #c53030;
       --border: #e2e8f0;
       --surface: #ffffff;
     }
@@ -101,7 +102,82 @@
       font-size: 17px;
       color: var(--text-secondary);
       line-height: 1.7;
-      margin-bottom: 36px;
+      margin-bottom: 30px;
+    }
+
+    /* Primary PDF download card */
+    .pdf-card {
+      background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+      border: 2px solid var(--red);
+      border-radius: 14px;
+      padding: 28px 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 24px rgba(217,43,43,0.12);
+      text-align: center;
+    }
+    .pdf-card-eyebrow {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .pdf-card-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .pdf-card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .pdf-download-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .pdf-download-btn:hover { background: var(--red-hover); }
+    .pdf-card-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* Success banner */
+    .success-banner {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+    .success-banner-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .success-banner-text {
+      font-size: 14px;
+      color: var(--green);
+      font-weight: 600;
+      line-height: 1.5;
     }
 
     /* What to expect card */
@@ -112,7 +188,7 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.06);
       overflow: hidden;
       text-align: left;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
 
     .expect-header {
@@ -130,7 +206,7 @@
     }
 
     .expect-body {
-      padding: 24px 20px;
+      padding: 22px 20px;
     }
 
     .expect-item {
@@ -147,7 +223,6 @@
       margin-top: 1px;
     }
 
-    .expect-content {}
     .expect-title {
       font-size: 14px;
       font-weight: 700;
@@ -157,29 +232,6 @@
     .expect-desc {
       font-size: 13px;
       color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    /* Success banner */
-    .success-banner {
-      background: var(--green-bg);
-      border: 1px solid var(--green-border);
-      border-radius: 10px;
-      padding: 16px 22px;
-      margin-bottom: 36px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-align: left;
-    }
-    .success-banner-icon {
-      font-size: 24px;
-      flex-shrink: 0;
-    }
-    .success-banner-text {
-      font-size: 14px;
-      color: var(--green);
-      font-weight: 600;
       line-height: 1.5;
     }
 
@@ -195,7 +247,7 @@
       font-weight: 700;
       transition: background 0.2s;
     }
-    .back-btn:hover { background: #c53030; }
+    .back-btn:hover { background: var(--red-hover); }
 
     .note {
       font-size: 12px;
@@ -210,6 +262,8 @@
       .icon-wrap { font-size: 44px; }
       .title { font-size: 24px; }
       .subtitle { font-size: 15px; }
+      .pdf-card { padding: 22px 18px; }
+      .pdf-card-title { font-size: 19px; }
       .expect-body { padding: 18px 14px; }
       .success-banner { flex-direction: column; text-align: center; gap: 8px; }
     }
@@ -230,12 +284,25 @@
   <div class="icon-wrap">🎉</div>
   <h1 class="title">You're In!</h1>
   <p class="subtitle">
-    Your email is confirmed and you're officially part of the PennyStocksNow.com community. Here's what happens next.
+    Your subscription is confirmed. Grab your free PDF below — it's yours to keep.
   </p>
+
+  <!-- Primary PDF download card (top of page) -->
+  <div class="pdf-card">
+    <div class="pdf-card-eyebrow">Your Free PDF</div>
+    <div class="pdf-card-title">📄 The 5 Red Flags of Every Penny Stock Promo</div>
+    <div class="pdf-card-desc">
+      The patterns that show up before nearly every pump-and-dump. Save it, print it, share it.
+    </div>
+    <a id="pdf-download" href="/5-red-flags.pdf" download class="pdf-download-btn">
+      ⬇ Download the PDF
+    </a>
+    <div class="pdf-card-note">If the download didn't start automatically, click the button above.</div>
+  </div>
 
   <div class="success-banner">
     <div class="success-banner-icon">✅</div>
-    <div class="success-banner-text">Subscription confirmed — you're all set to receive alerts.</div>
+    <div class="success-banner-text">You'll also get our weekly small-cap promo watch every Monday morning.</div>
   </div>
 
   <div class="expect-card">
@@ -246,21 +313,21 @@
     <div class="expect-body">
       <div class="expect-item">
         <div class="expect-icon">📊</div>
-        <div class="expect-content">
+        <div>
           <div class="expect-title">Weekly Sector Analysis</div>
           <div class="expect-desc">Every Monday morning, you'll get a breakdown of sector activity and trending penny stock alerts.</div>
         </div>
       </div>
       <div class="expect-item">
         <div class="expect-icon">🚨</div>
-        <div class="expect-content">
+        <div>
           <div class="expect-title">Real-Time Promo Alerts</div>
           <div class="expect-desc">When a public company hires a marketing or market-making firm, you'll know about it.</div>
         </div>
       </div>
       <div class="expect-item">
         <div class="expect-icon">🔍</div>
-        <div class="expect-content">
+        <div>
           <div class="expect-title">Transparency You Can Trust</div>
           <div class="expect-desc">Every alert is sourced from official exchange filings and public disclosures — no rumors, no hype.</div>
         </div>
@@ -271,6 +338,20 @@
   <a href="/" class="back-btn">Browse Latest Alerts</a>
   <p class="note">Add our email to your contacts so alerts never end up in spam.</p>
 </div>
+
+<script>
+  // If the user just signed up via the /alerts squeeze page (?dl=1), auto-trigger the PDF download
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('dl') === '1') {
+      // Programmatically click the download link after a brief delay so the page is visible first
+      setTimeout(function () {
+        var link = document.getElementById('pdf-download');
+        if (link) link.click();
+      }, 600);
+    }
+  })();
+</script>
 
 </body>
 </html>
