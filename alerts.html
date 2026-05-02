@@ -350,7 +350,7 @@
 </head>
 <body>
 
-<!-- EMAIL POPUP (triggers after 15 seconds) -->
+<!-- EMAIL POPUP (triggers after 5 seconds) -->
 <div class="email-popup-overlay" id="email-popup-overlay">
   <div class="email-popup">
     <button class="email-popup-close" onclick="closeAlertsPopup()" aria-label="Close">&times;</button>
@@ -561,12 +561,12 @@
     }
   }
 
-  // Show popup after 15s if user hasn't already dismissed it this session
+  // Show popup after 5s if user hasn't already dismissed it this session
   setTimeout(function () {
     var dismissed = false;
     try { dismissed = sessionStorage.getItem('psn_popup_dismissed') === '1'; } catch(_) {}
     if (!dismissed) openAlertsPopup();
-  }, 15000);
+  }, 5000);
 
   // Close on overlay click
   document.getElementById('email-popup-overlay').addEventListener('click', function (e) {
