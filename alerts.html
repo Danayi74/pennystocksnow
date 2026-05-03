@@ -598,5 +598,56 @@
   });
 </script>
 
+
+<!-- QualifiedView: fires after 10s of *visible* time on /alerts (filters bounces & background tabs) -->
+<script>
+(function () {
+  try { if (sessionStorage.getItem('psn_qualified_fired') === '1') return; } catch(_) {}
+
+  var THRESHOLD_MS = 10000; // 10s of visible time
+  var visibleMs = 0;
+  var lastVisibleStart = (document.visibilityState === 'visible') ? Date.now() : null;
+  var fired = false;
+
+  function bankVisibleTime() {
+    if (lastVisibleStart !== null) {
+      visibleMs += Date.now() - lastVisibleStart;
+      lastVisibleStart = null;
+    }
+  }
+
+  function maybeFire() {
+    if (fired) return;
+    var current = visibleMs + (lastVisibleStart !== null ? Date.now() - lastVisibleStart : 0);
+    if (current >= THRESHOLD_MS) {
+      fired = true;
+      try { sessionStorage.setItem('psn_qualified_fired', '1'); } catch(_) {}
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', 'QualifiedView');
+      }
+    }
+  }
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') {
+      lastVisibleStart = Date.now();
+    } else {
+      bankVisibleTime();
+    }
+  });
+
+  // Page unload — make sure we don't lose unbanked time (no-op if already fired)
+  window.addEventListener('pagehide', function () {
+    bankVisibleTime();
+    maybeFire();
+  });
+
+  var iv = setInterval(function () {
+    maybeFire();
+    if (fired) clearInterval(iv);
+  }, 1000);
+})();
+</script>
+
 </body>
 </html>
