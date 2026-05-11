@@ -9336,4 +9336,24 @@
         '<td><span class="exchange-badge">' + (r.exchange || '') + '</span></td>' +
         '<td style="text-align:right;">' + (r.openPrice != null ? fmtMoney(r.openPrice) : '—') + '</td>' +
         '<td style="text-align:right;font-weight:600;">' + (r.price != null ? fmtMoney(r.price) : '—') + '</td>' +
-        '<td class="' + changeClass + '" style="text-a
+        '<td class="' + changeClass + '" style="text-align:right;font-weight:600;">' + changeStr + '</td>' +
+        '<td class="' + pctClass + '" style="text-align:right;font-weight:700;">' + pctStr + '</td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  // loadTopMovers — restored after accidental truncation.
+  // Top Movers tab uses hardcoded static data; live price loading via Twelve Data
+  // is currently a no-op stub to keep onclick handlers from throwing.
+  async function loadTopMovers(showStatus) {
+    var statusEl = document.getElementById('movers-status');
+    if (statusEl && showStatus) {
+      statusEl.style.display = '';
+      statusEl.textContent = 'Live price loading is currently unavailable.';
+    }
+    moversLoaded = true;
+  }
+
+</script>
+</body>
+</html>
