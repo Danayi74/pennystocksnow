@@ -1401,9 +1401,9 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">225</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">227</span></button>
       <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">63</span></button>
-      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">167</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">169</span></button>
     </div>
   </div>
 </div>
@@ -1665,6 +1665,64 @@
         </select>
       </div>
 
+
+            <div class="card" data-tags="investor-awareness" data-text="gold strike resources corp gsr sadmf target ir communications salisha ilyas investor relations digital marketing tsxv otc pink gold exploration canada vancouver">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">May 20, 2026</span>
+        </div>
+        <div class="card-title">
+          Gold Strike Resources Engages Target IR &amp; Communications for Investor Relations
+          <span class="ticker">TSXV: GSR</span>
+          <span class="ticker">OTC Pink: SADMF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤝</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Target IR &amp; Communications</div>
+            <div class="hired-purpose">Investor relations services incl. digital marketing support · CAD$8,000/month (payable monthly in arrears) · 12-month term from May 19, 2026, renewable quarterly · 300,000 options granted to Target IR personnel at $0.75, expiring May 19, 2031</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Gold Strike Resources Corp.</strong> <span class="ticker">TSXV: GSR</span> <span class="ticker">OTC Pink: SADMF</span> has entered into an investor relations agreement with <strong>Target IR &amp; Communications</strong> (2608124 Ontario Inc.), a Toronto-based investor communications firm, effective May 19, 2026. Target IR will provide investor relations services including digital marketing support for <strong>CAD$8,000 per month</strong> over an initial 12-month term, renewable quarterly at the Company&#39;s option. In connection with the agreement, 300,000 stock options were granted to Target IR personnel at $0.75, exercisable until May 19, 2031. The agreement is subject to TSX Venture Exchange approval.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
+        </div>
+      </div>
+
+            <div class="card" data-tags="investor-awareness" data-text="rocket doctor ai inc aidr airdf north star investor relations marketing services cse otc healthcare ai telemedicine essam hamza">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">May 20, 2026</span>
+        </div>
+        <div class="card-title">
+          Rocket Doctor AI Engages North Star Investor Relations for IR Services
+          <span class="ticker">CSE: AIDR</span>
+          <span class="ticker">OTC: AIRDF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">📈</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">North Star Investor Relations Inc.</div>
+            <div class="hired-purpose">Investor relations &amp; marketing services · CAD$10,000/month · 1-year term from May 15, 2026 · no performance factors; no shares or options issued</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Rocket Doctor AI Inc.</strong> <span class="ticker">CSE: AIDR</span> <span class="ticker">OTC: AIRDF</span> has engaged <strong>North Star Investor Relations Inc.</strong> to provide investor relations and marketing services under an agreement dated May 15, 2026. North Star will receive <strong>CAD$10,000 per month</strong> for a one-year term. The agreement contains no performance factors, and North Star will receive no shares or options as compensation. North Star holds no interest in the Company and operates at arm&#39;s length. The engagement is subject to regulatory approval.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
+        </div>
+      </div>
 
             <div class="card" data-tags="investor-awareness" data-text="vizsla copper corp vcu vcuff 97e0 capitaliz capitaliz on it capitaliz marketing investor awareness digital advertising influencer outreach tsxv otcqb frankfurt copper palmer project alaska woodjam british columbia">
         <div class="card-top">
@@ -8540,6 +8598,10 @@
           <div><div class="sidebar-row-label">Nordcore Media LLC</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
+        <div class="sidebar-row" data-firm="north star investor relations" onclick="filterByFirm(this)">
+          <div><div class="sidebar-row-label">North Star Investor Relations Inc.</div><div class="sidebar-row-sub">Investor Awareness</div></div>
+          <span class="sidebar-count">1</span>
+        </div>
         <div class="sidebar-row" data-firm="oakstrom advisors" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Oakstrom Advisors</div><div class="sidebar-row-sub">Investor Relations</div></div>
           <span class="sidebar-count">1</span>
@@ -8600,6 +8662,10 @@
           <div><div class="sidebar-row-label">Stock Marketing Inc.</div><div class="sidebar-row-sub">Social Media Marketing</div></div>
           <span class="sidebar-count">1</span>
         </div>
+        <div class="sidebar-row" data-firm="target ir" onclick="filterByFirm(this)">
+          <div><div class="sidebar-row-label">Target IR &amp; Communications</div><div class="sidebar-row-sub">Investor Awareness</div></div>
+          <span class="sidebar-count">1</span>
+        </div>
         <div class="sidebar-row" data-firm="td media" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">TD Media LLC</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
@@ -8631,7 +8697,7 @@
       </div>
 
       <div class="sidebar-card">
-        <div class="sidebar-title">Issuer Directory (179 companies)</div>
+        <div class="sidebar-title">Issuer Directory (182 companies)</div>
         <div class="sidebar-row" data-issuer="abitibi metals" onclick="filterByIssuer(this)">
           <div><div class="sidebar-row-label">Abitibi Metals Corp.</div><div class="sidebar-row-sub">CSE: AMQ / OTCQB: AMQFF</div></div>
           <span class="sidebar-count">1</span>
@@ -8874,6 +8940,10 @@
         </div>
         <div class="sidebar-row" data-issuer="gmv minerals" onclick="filterByIssuer(this)">
           <div><div class="sidebar-row-label">GMV Minerals Inc.</div><div class="sidebar-row-sub">OTCQB: GMVMF / TSXV: GMV</div></div>
+          <span class="sidebar-count">1</span>
+        </div>
+        <div class="sidebar-row" data-issuer="gold strike resources" onclick="filterByIssuer(this)">
+          <div><div class="sidebar-row-label">Gold Strike Resources Corp.</div><div class="sidebar-row-sub">TSXV: GSR / OTC Pink: SADMF</div></div>
           <span class="sidebar-count">1</span>
         </div>
         <div class="sidebar-row" data-issuer="gold x2 mining" onclick="filterByIssuer(this)">
@@ -9194,7 +9264,7 @@
         </div>
         <div class="sidebar-row" data-issuer="rocket doctor ai" onclick="filterByIssuer(this)">
           <div><div class="sidebar-row-label">Rocket Doctor AI Inc.</div><div class="sidebar-row-sub">CSE: AIDR / OTC: AIRDF</div></div>
-          <span class="sidebar-count">1</span>
+          <span class="sidebar-count">2</span>
         </div>
         <div class="sidebar-row" data-issuer="rua gold" onclick="filterByIssuer(this)">
           <div><div class="sidebar-row-label">Rua Gold Inc.</div><div class="sidebar-row-sub">TSX: RUA / OTCQX: NZAUF</div></div>
