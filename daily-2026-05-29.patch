@@ -1,0 +1,53 @@
+From 183197992221e6801bc751946fd11b526379c3ff Mon Sep 17 00:00:00 2001
+From: PSN Daily Scanner <mehran@danayi.co>
+Date: Fri, 29 May 2026 16:26:42 +0000
+Subject: [PATCH] Daily update: add 2 new card(s) (May 29, 2026)
+
+---
+ index.html | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/index.html b/index.html
+index 0c842f7..b24ffaa 100644
+--- a/index.html
++++ b/index.html
+@@ -1704,11 +1704,11 @@
+           <div class="hired-details">
+             <div class="hired-label">Firm Hired</div>
+             <div class="hired-firm">Independent Trading Group (ITG)</div>
+-            <div class="hired-purpose">Market-making services on the TSX Venture Exchange and other trading venues · <strong>CAD$6,000 per month</strong> payable monthly in advance · 1-month initial term, auto-renewing for additional one-month terms · 30 days&#39; notice to terminate · no performance factors · no shares or options as compensation</div>
++            <div class="hired-purpose">Market-making services on the TSX Venture Exchange · <strong>CAD$6,000 per month</strong> payable monthly in advance · 1-month initial term, auto-renewing · 30 days&#39; notice to terminate · no performance factors · no equity compensation</div>
+           </div>
+         </div>
+         <div class="card-body">
+-          <strong>Onyx Gold Corp.</strong> <span class="ticker">TSXV: ONYX</span> <span class="ticker">OTCQX: ONXGF</span>, a Vancouver-based gold exploration company focused on Timmins, Ontario and Yukon, has engaged <strong>Independent Trading Group (ITG)</strong>, a Toronto-based CIRO dealer-member, to provide market-making services in accordance with TSX Venture Exchange policies. ITG will trade shares of the Company on the TSXV and all other trading venues with the objective of maintaining a reasonable market and improving the liquidity of the Company&#39;s common shares. ITG will receive <strong>CAD$6,000 per month</strong> payable monthly in advance for an initial one-month term, auto-renewing for additional one-month terms unless terminated on 30 days&#39; notice by either party. There are no performance factors and ITG will not receive shares or options as compensation. ITG and the Company are unrelated and unaffiliated; neither ITG nor its principals hold any interest in the Company&#39;s securities. The engagement remains subject to regulatory approval.
++          <strong>Onyx Gold Corp.</strong> <span class="ticker">TSXV: ONYX</span> <span class="ticker">OTCQX: ONXGF</span> has engaged <strong>Independent Trading Group (ITG)</strong>, a Toronto-based CIRO dealer-member, to provide market-making services on the TSX Venture Exchange in accordance with TSXV policies, with the objective of maintaining a reasonable market and improving liquidity of the Company&#39;s common shares. ITG receives <strong>CAD$6,000 per month</strong> payable monthly in advance for an initial one-month term, auto-renewing unless either party gives 30 days&#39; notice; no performance factors and no equity compensation. ITG operates at arm&#39;s length and holds no securities of the Company. The engagement remains subject to regulatory approval.
+         </div>
+         <div class="card-footer">
+           <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
+@@ -1733,7 +1733,7 @@
+           <div class="hired-details">
+             <div class="hired-label">Firm Hired</div>
+             <div class="hired-firm">Euroswiss Capital Partners Inc.</div>
+-            <div class="hired-purpose">Strategic marketing and financial advisory partner · investor communications, European business development, and corporate finance opportunities across central Europe · 12-month non-exclusive consulting agreement · fixed consulting fee of <strong>CAD$100,000</strong> · arm&#39;s-length negotiation · an affiliate of Euroswiss currently holds 200,000 common shares of the Company</div>
++            <div class="hired-purpose">Strategic marketing and financial advisory · investor communications, European business development, corporate finance · 12-month non-exclusive consulting agreement · fixed fee of <strong>CAD$100,000</strong> · arm&#39;s length</div>
+           </div>
+         </div>
+         <div class="hired-box">
+@@ -1741,11 +1741,11 @@
+           <div class="hired-details">
+             <div class="hired-label">Firm Hired</div>
+             <div class="hired-firm">Market IQ Media Group Limited</div>
+-            <div class="hired-purpose">Investor awareness agreement dated May 26, 2026 · full North American financial news distribution for up to 20 Company news releases including market commentary, industry analysis and event-based coverage · total fee of <strong>US$30,000</strong>, subject to CSE acceptance · MIQL domiciled in Ireland · arm&#39;s length; no interest in the Company&#39;s securities</div>
++            <div class="hired-purpose">Investor awareness agreement dated May 26, 2026 · North American financial news distribution for up to 20 Company releases · total fee of <strong>US$30,000</strong>, subject to CSE acceptance · MIQL domiciled in Ireland · arm&#39;s length</div>
+           </div>
+         </div>
+         <div class="card-body">
+-          <strong>Integrated Cyber Solutions Inc.</strong> <span class="ticker">CSE: ICS</span> <span class="ticker">OTCQB: IGCRF</span>, doing business as <strong>Integrated Quantum Technologies</strong> (&quot;IQT&quot;), announced on May 28, 2026 the appointment of <strong>Euroswiss Capital Partners Inc.</strong> as a strategic marketing and financial advisory partner to support brand recognition and capital markets visibility across central Europe under a 12-month non-exclusive consulting agreement with a fixed consulting fee of <strong>CAD$100,000</strong>. Euroswiss is a Switzerland-based (Lucerne) capital markets advisory firm focused on investor outreach, media distribution and institutional networking. An affiliate of Euroswiss currently holds 200,000 common shares of the Company; the agreement was negotiated at arm&#39;s length. Concurrently, the Company entered into an investor awareness agreement dated May 26, 2026 with <strong>Market IQ Media Group Limited</strong> (&quot;MIQL&quot;), an Ireland-domiciled firm, for full North American financial news distribution services covering up to 20 Company news releases, including market commentary, industry analysis and event-based distribution coverage, for a total fee of <strong>US$30,000</strong>, subject to acceptance by the Canadian Securities Exchange. Both firms operate at arm&#39;s length from the Company. The Company concurrently announced the initiation of the patent process for MASQ™, its AI agent governance and security architecture.
++          <strong>Integrated Cyber Solutions Inc.</strong> <span class="ticker">CSE: ICS</span> <span class="ticker">OTCQB: IGCRF</span>, doing business as <strong>Integrated Quantum Technologies</strong>, announced on May 28, 2026 the appointment of <strong>Euroswiss Capital Partners Inc.</strong>, a Switzerland-based capital markets advisory firm, as strategic marketing and financial advisory partner across central Europe under a 12-month non-exclusive consulting agreement for a fixed fee of <strong>CAD$100,000</strong>. An affiliate of Euroswiss holds 200,000 common shares of the Company. Concurrently, the Company entered into an investor awareness agreement dated May 26, 2026 with <strong>Market IQ Media Group Limited</strong>, an Ireland-domiciled firm, for North American financial news distribution covering up to 20 Company releases, for a total fee of <strong>US$30,000</strong>, subject to CSE acceptance. Both firms operate at arm&#39;s length.
+         </div>
+         <div class="card-footer">
+           <div class="alert-kw">Source: <span>CSE Filing / Public Disclosure</span></div>
+-- 
+2.34.1
+
