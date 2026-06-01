@@ -9129,7 +9129,7 @@
           <div><div class="sidebar-row-label">Gold Standard Media, LLC</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">3</span>
         </div>
-        <div class="sidebar-row" data-firm="goldinvest consulting gmbh" onclick="filterByFirm(this)">
+        <div class="sidebar-row" data-firm="goldinvest" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">GOLDINVEST Consulting GmbH</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
@@ -9141,7 +9141,7 @@
           <div><div class="sidebar-row-label">Green Times Consulting</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
-        <div class="sidebar-row" data-firm="hillside consulting and media inc" onclick="filterByFirm(this)">
+        <div class="sidebar-row" data-firm="hillside consulting" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Hillside Consulting and Media Inc.</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
@@ -9149,7 +9149,7 @@
           <div><div class="sidebar-row-label">Interactive Offers</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
-        <div class="sidebar-row" data-firm="investing news network dig media inc" onclick="filterByFirm(this)">
+        <div class="sidebar-row" data-firm="investing news network" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Investing News Network (Dig Media Inc.)</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">5</span>
         </div>
@@ -9189,7 +9189,7 @@
           <div><div class="sidebar-row-label">Market One Media</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
-        <div class="sidebar-row" data-firm="mayfair media operations pty ltd miningcomau" onclick="filterByFirm(this)">
+        <div class="sidebar-row" data-firm="mayfair media operations" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Mayfair Media Operations Pty. Ltd. (Mining.com.au)</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
@@ -10383,8 +10383,19 @@
     scrollToCards();
   }
 
+  // Strip trailing corporate-suffix tokens (inc, llc, ltd, gmbh, corp, corporation,
+  // pty, pte, co) so sidebar data-firm values match the suffix-less form used in card data-text.
+  function stripCorporateSuffix(s) {
+    let prev;
+    do {
+      prev = s;
+      s = s.replace(/\s+(inc|llc|ltd|gmbh|corp|corporation|pty|pte|co)$/i, '').trim();
+    } while (s !== prev);
+    return s;
+  }
+
   function filterByFirm(row) {
-    const firm = row.getAttribute('data-firm');
+    const firm = stripCorporateSuffix(row.getAttribute('data-firm'));
     const isActive = row.classList.contains('active-firm');
 
     // Clear all active-firm highlights
@@ -10394,7 +10405,7 @@
       // Clicking the same firm again clears the filter
       document.getElementById('searchInput').value = '';
     } else {
-      // Set search to firm name and highlight the row
+      // Set search to suffix-stripped firm name and highlight the row
       document.getElementById('searchInput').value = firm;
       row.classList.add('active-firm');
     }
