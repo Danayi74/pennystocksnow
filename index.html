@@ -1438,9 +1438,9 @@
       <input type="text" id="searchInput" placeholder="Search company, firm, or keyword…" oninput="filterCards()" aria-label="Search penny stock alerts by company, firm, or keyword"/>
     </div>
     <div class="filter-btns">
-      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">262</span></button>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count">263</span></button>
       <button class="filter-btn" onclick="setFilter('market-making', this)">Market Making <span class="filter-count">76</span></button>
-      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">194</span></button>
+      <button class="filter-btn" onclick="setFilter('investor-awareness', this)">Investor Awareness <span class="filter-count">195</span></button>
     </div>
   </div>
 </div>
@@ -1702,6 +1702,43 @@
         </select>
       </div>
 
+
+            <div class="card" data-tags="investor-awareness" data-text="nord precious metals mining inc nth ccwof emerging growth research llc egr redchip companies inc investor relations investor awareness research package conference digital media roadshow tsxv otcqb silver cobalt critical minerals ontario">
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="tag tag-promo">📣 Marketing Firm Hired</span>
+            <span class="tag" style="background:#faf5ff;color:#6b46c1;border:1px solid #d6bcfa;">Investor Awareness</span>
+          </div>
+          <span class="card-date">June 8, 2026</span>
+        </div>
+        <div class="card-title">
+          Nord Precious Metals Engages Emerging Growth Research and RedChip Companies for Investor Relations
+          <span class="ticker">TSXV: NTH</span>
+          <span class="ticker">OTCQB: CCWOF</span>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🔍</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">Emerging Growth Research, LLC</div>
+            <div class="hired-purpose">Investor relations — research package (one initiation report and up to eight flash reports disseminated by news release) and conference package (three 30-minute conferences with a host page on EmergingGrowth.com and accompanying Ticker Tag Reports) · 12-month term upon TSXV acceptance · <strong>US$36,700</strong> (US$25,000 research + US$11,700 conference)</div>
+          </div>
+        </div>
+        <div class="hired-box">
+          <div class="hired-icon">🤝</div>
+          <div class="hired-details">
+            <div class="hired-label">Firm Hired</div>
+            <div class="hired-firm">RedChip Companies, Inc.</div>
+            <div class="hired-purpose">Investor relations and digital media services — investor collateral, CEO overview video, Small Stocks, Big Money TV and podcast interviews, news distribution, investor calls, webinars, and roadshow scheduling in up to eight cities · six-month initial term upon TSXV acceptance · <strong>US$15,000 per month</strong></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <strong>Nord Precious Metals Mining Inc.</strong> <span class="ticker">TSXV: NTH</span> <span class="ticker">OTCQB: CCWOF</span> announced two investor relations agreements dated June 4, 2026. <strong>Emerging Growth Research, LLC</strong>, of Sheridan, Wyoming, will provide a research package (one initiation report and up to eight flash reports disseminated by news release) and a conference package (three 30-minute conferences with a host page on EmergingGrowth.com and accompanying Ticker Tag Reports) for a 12-month term at a total fee of <strong>US$36,700</strong> (US$25,000 research plus US$11,700 conference), upon acceptance by the TSX Venture Exchange. <strong>RedChip Companies, Inc.</strong>, of Maitland, Florida, will provide investor relations and digital media services — investor collateral, a CEO overview video, Small Stocks, Big Money TV and podcast interviews, news distribution, investor calls, webinars, and roadshow scheduling in up to eight cities — for an initial six-month term at <strong>US$15,000 per month</strong>, also upon Exchange acceptance.
+        </div>
+        <div class="card-footer">
+          <div class="alert-kw">Source: <span>TSXV Filing / Public Disclosure</span></div>
+        </div>
+      </div>
 
             <div class="card" data-tags="market-making investor-awareness" data-text="cullinan metals corp cmt cmtnf independent trading group itg connect 4 marketing market making digital marketing investor awareness liquidity arm's length cse otcqb critical minerals">
         <div class="card-top">
@@ -9665,6 +9702,10 @@
           <div><div class="sidebar-row-label">Emerging Growth, LLC (TDM Financial)</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">1</span>
         </div>
+        <div class="sidebar-row" data-firm="emerging growth research llc" onclick="filterByFirm(this)">
+          <div><div class="sidebar-row-label">Emerging Growth Research, LLC</div><div class="sidebar-row-sub">Investor Awareness</div></div>
+          <span class="sidebar-count">1</span>
+        </div>
         <div class="sidebar-row" data-firm="emerging markets consulting llc" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">Emerging Markets Consulting LLC</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">5</span>
@@ -9840,6 +9881,10 @@
           <div><div class="sidebar-row-label">Red Cloud Securities Inc.</div><div class="sidebar-row-sub">Market Making</div></div>
           <span class="sidebar-count">2</span>
         </div>
+        <div class="sidebar-row" data-firm="redchip companies inc" onclick="filterByFirm(this)">
+          <div><div class="sidebar-row-label">RedChip Companies, Inc.</div><div class="sidebar-row-sub">Investor Awareness</div></div>
+          <span class="sidebar-count">1</span>
+        </div>
         <div class="sidebar-row" data-firm="rmk marketing inc" onclick="filterByFirm(this)">
           <div><div class="sidebar-row-label">RMK Marketing Inc.</div><div class="sidebar-row-sub">Investor Awareness</div></div>
           <span class="sidebar-count">4</span>
@@ -9903,7 +9948,7 @@
       </div>
 
       <div class="sidebar-card">
-        <div class="sidebar-title">Issuer Directory (210 companies)</div>
+        <div class="sidebar-title">Issuer Directory (211 companies)</div>
         <div class="sidebar-row" data-issuer="abitibi metals" onclick="filterByIssuer(this)">
           <div><div class="sidebar-row-label">Abitibi Metals Corp.</div><div class="sidebar-row-sub">CSE: AMQ / OTCQB: AMQFF</div></div>
           <span class="sidebar-count">1</span>
@@ -10411,6 +10456,10 @@
         <div class="sidebar-row" data-issuer="nicola mining" onclick="filterByIssuer(this)">
           <div><div class="sidebar-row-label">Nicola Mining Inc.</div><div class="sidebar-row-sub">NASDAQ: NICM / TSXV: NIM</div></div>
           <span class="sidebar-count">2</span>
+        </div>
+        <div class="sidebar-row" data-issuer="nord precious metals" onclick="filterByIssuer(this)">
+          <div><div class="sidebar-row-label">Nord Precious Metals Mining Inc.</div><div class="sidebar-row-sub">TSXV: NTH / OTCQB: CCWOF</div></div>
+          <span class="sidebar-count">1</span>
         </div>
         <div class="sidebar-row" data-issuer="norsemont mining" onclick="filterByIssuer(this)">
           <div><div class="sidebar-row-label">Norsemont Mining Inc.</div><div class="sidebar-row-sub">CSE: NOM / OTC: NRRSF</div></div>
