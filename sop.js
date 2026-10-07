@@ -261,7 +261,7 @@ const doc = new Document({
         bodyText("The welcome banner (#welcome-banner) appears at the top of the feed below the search bar. Behavior: the banner is hidden on BOTH desktop and mobile whenever a search query is active (including \"No results found\"). It is restored when the search is cleared. The applyFilters() function handles this logic."),
 
         subTitle("3.2", "Email Capture Bar"),
-        bodyText("The email capture bar (#email-capture) sits directly below the welcome banner. Styling: background #fffaf0 (matches the hired-box), border-bottom 1px solid #fbd38d. Contains a bell icon, heading \"Get Weekly Sector Analysis Alerts\", subtext \"Delivered to your inbox every Monday morning.\", an email input, and a red Subscribe button."),
+        bodyText("The email capture bar (#email-capture) sits directly below the welcome banner. Styling: background #fffaf0 (matches the hired-box), border-bottom 1px solid #fbd38d. Contains a bell icon, heading \"Get Weekly Sector Analysis Alerts\", subtext \"Delivered to your inbox every Wednesday morning.\", an email input, and a red Subscribe button."),
         bodyText("Behavior: hidden during search (same as welcome banner). On submit, the email is saved to localStorage under key 'psn_subscribers', then the user is redirected to /subscribed. The bar uses the same hide/show logic as the welcome banner in applyFilters()."),
 
         subTitle("3.3", "Email Signup Popup"),
@@ -272,7 +272,7 @@ const doc = new Document({
         bodyText("Email subscribers are stored in localStorage under key 'psn_subscribers' as a JSON array of email strings. This is client-side only (no backend sync yet). The popup dismissal flag uses sessionStorage under key 'psn_popup_dismissed' (resets when tab is closed, so the popup can reappear on the next visit). Future integration with Beehiiv or Mailchimp will replace the localStorage approach."),
 
         subTitle("3.5", "Thank You Page (/subscribed)"),
-        bodyText("subscribed.html is a standalone page at pennystocksnow.com/subscribed. It contains: the site nav bar with PennyStocksNow logo linking to /, a megaphone icon, \"You're In!\" heading, welcome message confirming the Monday email, a \"Browse Latest Alerts\" red button linking to /, and a spam folder reminder note. Responsive mobile styles included."),
+        bodyText("subscribed.html is a standalone page at pennystocksnow.com/subscribed. It contains: the site nav bar with PennyStocksNow logo linking to /, a megaphone icon, \"You're In!\" heading, welcome message confirming the Wednesday email, a \"Browse Latest Alerts\" red button linking to /, and a spam folder reminder note. Responsive mobile styles included."),
 
         subTitle("3.6", "Month Navigation"),
         bodyText("The month-nav buttons (e.g., \"March 2026\", \"April 2026\") allow users to jump to cards from specific months. These buttons are hidden during search on BOTH desktop and mobile, and restored when search is cleared. The applyFilters() function handles this."),
